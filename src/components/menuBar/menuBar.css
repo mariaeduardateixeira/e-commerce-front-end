@@ -19,6 +19,7 @@
 
 .menu h1{
   text-align: center;
+  color: #555;
 }
 
 .teste{
@@ -30,6 +31,7 @@
 .menu .teste ul{
   list-style-type: none;
   margin: 10;
+  margin-top: 5px;
 }
 
 .menu .teste li{
@@ -55,11 +57,11 @@
 .teste input{
   margin-right: 30px;
   margin-bottom: 10px;
-  width: 180px;
-  padding: 10px 10px;
-  border-radius: 10px;
+  width: 300px;
+  padding: 7px 7px;
+  padding-left: 20px;
+  border-radius: 20px;
   border: none;
   border-style: none;
-  text-align: center;
   float: right;
 }
