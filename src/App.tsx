@@ -6,17 +6,18 @@ import Slider from './components/slider/slider';
 import "./style.css" 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Propaganda from './components/propaganda/propaganda';
 
 function App() {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 3
+      items: 4
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3
+      items: 4
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -79,11 +80,21 @@ function App() {
       <div className='corpo'>
         <header className="App-header">
           <MenuBar/>
+          <Propaganda/>
           <h1 className='card-lancamentos'>Lançamentos</h1>
          <Carousel responsive={responsive}>
           {product}
           </Carousel>
+          <h1 className='card-lancamentos'>Destaques</h1>
+          <Carousel responsive={responsive}>
+          {product}
+          </Carousel>
         </header>
+        <footer>
+          <div className='footer'>
+            <p>Projeto criado por Mariana, Maria Eduarda e Isac da 4º fase da turma de Análise e Desenvolvimento de Sistemas</p>
+          </div>
+        </footer>
       </div>
     </div>
   );

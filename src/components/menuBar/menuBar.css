@@ -18,14 +18,17 @@
 }
 
 .menu h1{
+  font-family: poppins;
   text-align: center;
   color: #555;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.068);
 }
 
 .teste{
   margin: 0;
   overflow: hidden;
   background-color: #73283D;
+  box-shadow: 1px 1px 1px 1px black;
 }
 
 .menu .teste ul{
