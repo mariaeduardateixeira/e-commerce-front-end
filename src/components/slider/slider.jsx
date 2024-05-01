@@ -1,6 +1,6 @@
 import { FC } from "react";
 import "./slider.css"
-
+import imagemAnel from "./imagemAnel.png";
 
 export default function Slider(props) {
   return (
