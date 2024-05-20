@@ -9,10 +9,20 @@ import 'react-multi-carousel/lib/styles.css';
 import Propaganda from './components/propaganda/propaganda';
 import { productData, responsive } from './data';
 import Router from './router';
+import produtosData from './aneis';
+import Aneis from './pages/Aneis/aneis';
 
 
 function App() {
   
+  const produtos = produtosData.map(item => (
+    <Aneis 
+    nome={item.nome} 
+    imagemAnel={item.imagemAnel} 
+    preco={item.preco} 
+    descricao={item.descricao}/>
+  ))
+
   const product = productData.map(item => (
     <Slider 
     name={item.name} 
@@ -37,8 +47,9 @@ function App() {
           <Carousel responsive={responsive}>
           {product}
           </Carousel>
+          
         </main>
-        <Router />
+        <Router/>
         <footer>
           <div className='footer'>
             <p>Projeto criado por Mariana, Maria Eduarda e Isac da 4º fase da turma de Análise e Desenvolvimento de Sistemas</p>

@@ -1,3 +1,19 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap');
+
+
+:root{
+  --fontePrincipal: "Montserrat", sans-serif;
+  --fonteSecundaria: "Raleway", sans-serif;
+  text-align: center;
+}
+
+*{
+  font-family: var(--fontePrincipal);
+}
+
 .body{
   max-width: 100%;
   display: flex;
@@ -12,7 +28,7 @@
 .card-lancamentos{
   margin-top: 18px;
   color: #555;
-  font-family: poppins;
+  font-family: var(--fonteSecundaria);
 }
 
 .footer{
