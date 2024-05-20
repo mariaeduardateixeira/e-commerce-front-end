@@ -1,0 +1,19 @@
+.container-botao{
+  width: 100%;
+  max-width: 100%;
+  margin: 2px;
+ 
+}
+
+.container-botao button{
+  width: 100%;
+  background-color: #73283D;
+  padding: 7px;
+  border: none;
+  border-radius: 15px;
+  color: white;
+}
+
+.container-botao button:hover{
+  background-color: #5d0e24;
+}

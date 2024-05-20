@@ -10,7 +10,8 @@ const Router: FC = () => {
   return(
     <BrowserRouter>
       <Routes>
-      <Route path="/home" element={<Home/>}/>
+      <Route path="/home" element = {<Home/>}/>
+        <Route path="/" element = {<Home/>}/>
         <Route path="/aneis" element={<Aneis/>}/>
         <Route path="/brincos" element={<Brincos/>}/>
         <Route path="/pulseiras" element={<Pulseiras/>}/>

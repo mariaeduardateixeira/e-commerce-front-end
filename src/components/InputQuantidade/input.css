@@ -1,0 +1,36 @@
+.box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.remover-quantidade{
+  top:4px;
+  left: 40px;
+  z-index: 999;
+}
+
+.add-quantidade{
+  top:4px;
+  right: 40px;
+  z-index: 999;
+}
+
+.input-quantidade {
+  border: none;
+  background: transparent;
+}
+
+.input-quantidade:hover {
+  border-color: #f7941d;
+}
+
+.input-quantidade input{
+  text-align: center;
+}
