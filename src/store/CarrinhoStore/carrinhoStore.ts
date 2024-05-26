@@ -2,7 +2,7 @@ import { ICarrinhoStore } from "./type";
 
 const CARRINHO_STORE = "Carrinho"
 
-export const addCarrinho = (item: ICarrinhoStore) => {
+export const addCarrinho = (item: ICarrinhoStore): ICarrinhoStore[] => {
   const carrinho: ICarrinhoStore[] = carregarCarrinho();
 
   if(carrinho && carrinho.length){
@@ -17,8 +17,9 @@ export const addCarrinho = (item: ICarrinhoStore) => {
   }else{
     carrinho.push(item);
   }
-
   addCarrinhoStore(carrinho);
+
+  return carrinho;
 }
 
 export const carregarCarrinho = (): ICarrinhoStore[] => {
@@ -30,6 +31,22 @@ const addCarrinhoStore = (carrinho: ICarrinhoStore[]) => {
   localStorage.setItem(CARRINHO_STORE, JSON.stringify(carrinho));
 
   //stringfy transforma o objeto numa string
+}
 
+export const obterQuantidadeCarrinho = (): number => {
+  const carrinho: ICarrinhoStore[] =  carregarCarrinho();
 
+  return carrinho.length;
+}
+
+export const removerItemCarrinho = (id: number): ICarrinhoStore[] => {
+  const carrinho = carregarCarrinho()
+
+  const indexCarrinho = carrinho.findIndex((c:ICarrinhoStore) => c.id === id);
+  if(indexCarrinho > -1){
+    carrinho.splice(indexCarrinho);
+  }
+
+    addCarrinhoStore(carrinho);
+    return carrinho;
 }

@@ -5,6 +5,7 @@ import Brincos from "./pages/Brincos/brincos";
 import Pulseiras from "./pages/Pulseiras/pulseiras";
 import Home from "./pages/Home/home";
 import Correntes from "./pages/Correntes/correntes";
+import ProdutosDetalhes from "./pages/ProdutosDetalhes/produtosDetalhes";
 
 const Router: FC = () => {
   return(
@@ -16,6 +17,7 @@ const Router: FC = () => {
         <Route path="/brincos" element={<Brincos/>}/>
         <Route path="/pulseiras" element={<Pulseiras/>}/>
         <Route path="/correntes" element={<Correntes/>}/>
+        <Route path="/produtos/detalhes/:codigoProduto" element = {<ProdutosDetalhes/>}/>
       </Routes>
     </BrowserRouter>
   )

@@ -4,7 +4,6 @@ import "./menuBar.css"
 const MenuBar: FC = () => {
   return <>
     <div className="menu">
-      <h1>Nome da loja</h1>
       <div className="teste">
         <ul>
           <li><a href="/home">Home</a></li>

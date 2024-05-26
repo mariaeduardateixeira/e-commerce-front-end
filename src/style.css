@@ -31,6 +31,28 @@
   font-family: var(--fonteSecundaria);
 }
 
+.item-carrinho{
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 20px;
+
+}
+.logo h1{
+  font-family: var(--fonteSecundaria);
+  color: #555;
+  width: 100%;
+  align-items: center;
+}
+
+.logo{
+  margin-top: 15px;
+  margin-bottom: 7px;
+  display: flex;
+  width: 100%;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.068);
+}
+
+
 .footer{
   overflow: hidden;
   max-width: 100%;

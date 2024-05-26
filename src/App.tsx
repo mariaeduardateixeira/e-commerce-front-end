@@ -11,6 +11,7 @@ import { productData, responsive } from './data';
 import Router from './router';
 import produtosData from './aneis';
 import Aneis from './pages/Aneis/aneis';
+import CarrinhoDrawer from './components/CarrinhoDrawer/carrinhoDrawer';
 
 
 function App() {
@@ -35,10 +36,13 @@ function App() {
     <div className="body">
       <div className='corpo'>
         <header className="App-header">
+        <div className='logo'>
+          <h1> Nome da loja</h1>
+            <div className='item-carrinho'>
+            <CarrinhoDrawer/>
+            </div>
+          </div>
           <MenuBar/>
-        </header>
-        <main>
-        <Propaganda/>
           <h1 className='card-lancamentos'>Lançamentos</h1>
          <Carousel responsive={responsive}>
           {product}
@@ -47,8 +51,7 @@ function App() {
           <Carousel responsive={responsive}>
           {product}
           </Carousel>
-          
-        </main>
+        </header>
         <Router/>
         <footer>
           <div className='footer'>
