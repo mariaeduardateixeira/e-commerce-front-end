@@ -9,7 +9,6 @@
 :root{
   --fontePrincipal: "Montserrat", sans-serif;
   --fonteSecundaria: "Raleway", sans-serif;
-  text-align: center;
   --vermelhoPrincipal: #73283D; 
 }
 
@@ -19,6 +18,7 @@
 
 .menu{
   padding-top: 7px;
+  padding-bottom: 1.5%;
 }
 
 .menu h1{

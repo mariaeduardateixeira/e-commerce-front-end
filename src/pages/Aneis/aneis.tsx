@@ -1,24 +1,12 @@
 import { FC, useEffect, useState } from "react";
-import { STATUS_CODE, apiGet } from "../../api/RestClient";
-import { IProduto } from "./types";
-import "./home.css"
+import "./aneis.css" 
+import imagemAnel from "./imagemAnel.png"
 import Botao from "../../components/Botao/botao";
-import productData, { responsive } from "../../data";
-import Carousel from "react-multi-carousel";
-import Slider from "../../components/slider/slider";
+import { apiGet, STATUS_CODE } from "../../api/RestClient";
+import { IProduto } from "../Home/types";
 
 
-
-const product = productData.map(item => (
-  <Slider 
-  name={item.name} 
-  url={item.imageurl} 
-  price={item.price} 
-  description={item.description}/>
-))
-
-const Home: FC = () =>{
-    
+const Aneis: FC = () =>{
   const [produtos, setProdutos] = useState<IProduto[]>([]);
   const carregarProdutos = async () =>{
     const response = await apiGet("/produtos/");
@@ -39,16 +27,6 @@ const Home: FC = () =>{
   }
 
   return <>
-  
-    <>
-    <h1 className='card-lancamentos'>Lançamentos</h1><Carousel responsive={responsive}>
-        {product}
-  </Carousel>
-    <h1 className='card-lancamentos'>Destaques</h1><Carousel responsive={responsive}>
-        {product}
-    </Carousel>
-  </>
-
   {produtos?.length ? <>
     <div className="container">
       {produtos.map((produto: IProduto) =>{
@@ -72,10 +50,11 @@ const Home: FC = () =>{
           </div>
        </>
       })}
+      
       </div> 
   </> : <div>Lista de dados</div>}
 
   </>
 }
 
-export default Home;
+export default Aneis;

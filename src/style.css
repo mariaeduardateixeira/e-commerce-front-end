@@ -7,7 +7,6 @@
 :root{
   --fontePrincipal: "Montserrat", sans-serif;
   --fonteSecundaria: "Raleway", sans-serif;
-  text-align: center;
 }
 
 *{
@@ -17,18 +16,13 @@
 .body{
   max-width: 100%;
   display: flex;
-  justify-content: center;
 }
 
 .corpo{
   max-width: 100%;
   width: 100%;
-}
-
-.card-lancamentos{
-  margin-top: 18px;
-  color: #555;
-  font-family: var(--fonteSecundaria);
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .item-carrinho{
@@ -45,6 +39,7 @@
 }
 
 .logo{
+  text-align: center;
   margin-top: 15px;
   margin-bottom: 7px;
   display: flex;
@@ -59,4 +54,6 @@
   width: 100%;
   color: #fff;
   background-color: #73283D;
+  margin-top: 20px;
+  text-align: center;
 }
