@@ -44,7 +44,7 @@ export const removerItemCarrinho = (id: number): ICarrinhoStore[] => {
 
   const indexCarrinho = carrinho.findIndex((c:ICarrinhoStore) => c.id === id);
   if(indexCarrinho > -1){
-    carrinho.splice(indexCarrinho);
+    carrinho.splice(indexCarrinho,1);
   }
 
     addCarrinhoStore(carrinho);
