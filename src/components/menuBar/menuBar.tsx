@@ -7,10 +7,10 @@ const MenuBar: FC = () => {
       <div className="teste">
         <ul>
           <li><a href="/home">Home</a></li>
-          <li><a href="/aneis">Anéis</a></li>
-          <li><a href="/brincos">Brincos</a></li>
-          <li><a href="/pulseiras">Pulseiras</a></li>
-          <li><a href="/correntes">Correntes</a></li>
+          <li><a href="/ANEIS">Anéis</a></li>
+          <li><a href="/BRINCOS">Brincos</a></li>
+          <li><a href="/PULSEIRAS">Pulseiras</a></li>
+          <li><a href="/COLARES">Colares</a></li>
         </ul>
           <input type="text" placeholder="Digite o que você procura"/>
       </div>

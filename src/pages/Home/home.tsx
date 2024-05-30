@@ -41,9 +41,18 @@ const Home: FC = () =>{
   return <>
   
     <>
-    <h1 className='card-lancamentos'>Lançamentos</h1><Carousel responsive={responsive}>
-        {product}
-  </Carousel>
+    
+    {produtos.length && <>
+      <h1 className='card-lancamentos'>Lançamentos</h1><Carousel responsive={responsive}>
+        {produtos.map(item => (
+            <Slider 
+              name={item.nome} 
+              url={item.imagemPequena} 
+              price={item.preco} 
+              description={item.descricao}/>
+          ))}
+    </Carousel>
+    </>}
     <h1 className='card-lancamentos'>Destaques</h1><Carousel responsive={responsive}>
         {product}
     </Carousel>

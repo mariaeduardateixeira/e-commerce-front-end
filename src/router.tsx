@@ -13,11 +13,8 @@ const Router: FC = () => {
       <Routes>
       <Route path="/home" element = {<Home/>}/>
         <Route path="/" element = {<Home/>}/>
-        <Route path="/aneis" element={<Aneis/>}/>
-        <Route path="/brincos" element={<Brincos/>}/>
-        <Route path="/pulseiras" element={<Pulseiras/>}/>
-        <Route path="/correntes" element={<Correntes/>}/>
         <Route path="/produtos/detalhes/:codigoProduto" element = {<ProdutosDetalhes/>}/>
+        <Route path="/:categoria" element={<Home/>}/>
       </Routes>
     </BrowserRouter>
   )
