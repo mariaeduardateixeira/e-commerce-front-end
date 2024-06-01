@@ -67,7 +67,7 @@ const Home: FC = () =>{
               <img src={produto.imagemPequena} alt="" />
               </a>
           <div className="produto_nome">
-            <p>{produto.nome}</p>
+            <p>{produto.descricao}</p>
           </div>
           <div className="produto_preco">
             <p>{produto.preco}</p>

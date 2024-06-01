@@ -10,15 +10,15 @@ import { addCarrinho, carregarCarrinho } from "../../store/CarrinhoStore/carrinh
 import ConfirmarModal from "../../components/ConfirmarModal/modal";
 
 const ProdutosDetalhes: FC = () =>{
-  const { codigoProduto } = useParams(); //estudar sobre hook e useParams
+  const { id } = useParams(); //estudar sobre hook e useParams
   const [produto, setProduto] = useState<IProdutoDetalhe>(); //states
   const [quantidadeProduto, setQuantidadeProduto] = useState<number>(1)
   const [openModal, setOpenModal] = useState<boolean>(false);
   const carrinho: ICarrinhoStore[] = carregarCarrinho();
   
   useEffect(() => {
-    console.log(codigoProduto);
-    apiGet(`/produtos/${codigoProduto}`).then((response) => {
+    console.log(id);
+    apiGet(`/produtos/${id}`).then((response) => {
       if(response.status === STATUS_CODE.OK){
         console.log(">>>", response.data);
         setProduto(response.data);
@@ -36,14 +36,14 @@ const ProdutosDetalhes: FC = () =>{
   return<>
     <div className="container-produto">
       <div className="produto-detalhe">
-        <div className="imagem-produto">
+        {/* <div className="imagem-produto">
           <img src={produto?.imagemGrande} />
-        </div>
+        </div> */}
         <div className="dados-produto">
-          <div className="nome-produto">{produto?.nome}</div>
+          <div className="nome-produto">{produto?.descricao}</div>
           <hr />
           <div className="descricao-produto">{produto?.descricao}</div>
-          <div className="codigo-produto">{`Código do produto: ${produto?.codigoProduto}`}</div>
+          {/* <div className="codigo-produto">{`Código do produto: ${produto?.codigoProduto}`}</div> */}
           <div className="preco-produto">
             <div className="preco">{`Preço: R$ ${produto?.preco}`}</div>
           </div>

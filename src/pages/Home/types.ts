@@ -4,6 +4,7 @@ export interface IProduto {
   nome: string,
   descricao: string,
   preco: number,
+  valor: number,
   imagemGrande: string,
   imagemPequena: string,
 }

@@ -10,34 +10,16 @@ export default function Slider(props) {
   <div className="image">
   <img src= {image} alt="" />
 </div>
-  // const [produtos, setProdutos] = useState<IProduto[]>([]);
-  // const carregarProdutos = async () =>{
-  //   const response = await apiGet("/produtos/");
-  //   if(response.status === STATUS_CODE.OK){
-  //     console.log(response);
-  //     setProdutos(response.data);
-  //   }
-  // }
 
-  // useEffect(() => {
-  //   carregarProdutos();
-  // }, [])
-
-
-  // const redirecionarDetalhesProduto = (idProduto : number) => {
-  //   if(idProduto){
-  //     window.location.href = `/produtos/detalhes/${idProduto}`;
-  //   }
-  // }
   return (
       <div className="card">
         <img className="
         product--image" src={props.url} alt="" />
-        <h2>{props.name}</h2>
+        <h2>{props.description}</h2>
         <p className="price">{props.price}</p>
-        <p>
+        {/* <p>
           {props.description}
-        </p>
+        </p> */}
         <Botao
                 label = "Comprar"
                 // onClick = {() => {
