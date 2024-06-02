@@ -7,9 +7,6 @@ import image from "./image.jpg";
 
 
 export default function Slider(props) {
-  <div className="image">
-  <img src= {image} alt="" />
-</div>
 
   return (
       <div className="card">

@@ -20,76 +20,54 @@ export const responsive = {
   }
 };
 
- export const productData = [
+ export const produtosImagens = [
   {
     id:1,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
   },
   {
     id:2,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
   },
   {
     id:3,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
+
   },
   {
     id:4,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
+
   },
   {
     id:5,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
+
   },
   {
     id:6,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
+
   },
   {
     id:7,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
+
   },
   {
     id:8,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
+
   },
   {
     id:9,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
+
   },
   {
     id:10,
     imageurl: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    name: "nome",
-    price: "29,90",
-    description: "Descrição"
+
   }
 ]
-export default productData;
+export default produtosImagens;

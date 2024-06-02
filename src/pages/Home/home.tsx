@@ -3,18 +3,16 @@ import { STATUS_CODE, apiGet } from "../../api/RestClient";
 import { IProduto } from "./types";
 import "./home.css"
 import Botao from "../../components/Botao/botao";
-import productData, { responsive } from "../../data";
+import productData, { produtosImagens, responsive } from "../../data";
 import Carousel from "react-multi-carousel";
 import Slider from "../../components/slider/slider";
 
 
 
-const product = productData.map(item => (
+const produtosImg = produtosImagens.map(item => (
   <Slider 
-  name={item.name} 
   url={item.imageurl} 
-  price={item.price} 
-  description={item.description}/>
+/>
 ))
 
 const Home: FC = () =>{
@@ -34,37 +32,38 @@ const Home: FC = () =>{
 
   const redirecionarDetalhesProduto = (idProduto : number) => {
     if(idProduto){
-      window.location.href = `/produtos/detalhes/${idProduto}`;
+      window.location.href = `/produtos/${idProduto}`;
     }
   }
+
 
   return <>
   
     <>
     
     {produtos.length && <>
-      <h1 className='card-lancamentos'>Lançamentos</h1><Carousel responsive={responsive}>
+      <h1 className='card-lancamentos'>Lançamentos</h1>
+      <Carousel responsive={responsive}>
         {produtos.map(item => (
             <Slider 
               name={item.nome} 
-              url={item.imagemPequena} 
+              url={produtosImagens.find((img) => img.id === item.id)} 
               price={item.preco} 
               description={item.descricao}/>
           ))}
     </Carousel>
     </>}
-    <h1 className='card-lancamentos'>Destaques</h1><Carousel responsive={responsive}>
-        {product}
-    </Carousel>
+   
   </>
 
   {produtos?.length ? <>
     <div className="container">
       {produtos.map((produto: IProduto) =>{
+        const imagem = produtosImagens.find((img) => img.id === produto.id);
         return<>
           <div className="produto">
-            <a className="produto_imagem" href={`/produtos/detalhes/${produto.id}`}>
-              <img src={produto.imagemPequena} alt="" />
+            <a className="produto_imagem" href={`/produtos/${produto.id}`}>
+              <img src={imagem?.imageurl} alt="" />
               </a>
           <div className="produto_nome">
             <p>{produto.descricao}</p>
