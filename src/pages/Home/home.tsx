@@ -47,7 +47,7 @@ const Home: FC = () =>{
         {produtos.map(item => (
             <Slider 
               name={item.nome} 
-              url={produtosImagens.find((img) => img.id === item.id)} 
+              url={item.imagemPequena} 
               price={item.preco} 
               description={item.descricao}/>
           ))}
@@ -59,11 +59,11 @@ const Home: FC = () =>{
   {produtos?.length ? <>
     <div className="container">
       {produtos.map((produto: IProduto) =>{
-        const imagem = produtosImagens.find((img) => img.id === produto.id);
+        //const imagem = produtosImagens.find((img) => img.id === produto.id);
         return<>
           <div className="produto">
             <a className="produto_imagem" href={`/produtos/${produto.id}`}>
-              <img src={imagem?.imageurl} alt="" />
+              <img src={produto.imagemPequena} alt="" />
               </a>
           <div className="produto_nome">
             <p>{produto.descricao}</p>
