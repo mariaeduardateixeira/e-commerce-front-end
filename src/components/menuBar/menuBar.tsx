@@ -7,7 +7,7 @@ const MenuBar: FC = () => {
       <div className="teste">
         <ul>
           <li><a href="/home">Home</a></li>
-          <li><a href="/ANEIS">Anéis</a></li>
+          <li><a href="/ANEL">Anéis</a></li>
           <li><a href="/BRINCOS">Brincos</a></li>
           <li><a href="/PULSEIRAS">Pulseiras</a></li>
           <li><a href="/COLARES">Colares</a></li>

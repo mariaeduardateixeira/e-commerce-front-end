@@ -8,17 +8,19 @@ import { IProduto } from "../Home/types";
 
 const Aneis: FC = () =>{
   const [produtos, setProdutos] = useState<IProduto[]>([]);
-  const carregarProdutos = async () =>{
-    const response = await apiGet("/produtos/");
-    if(response.status === STATUS_CODE.OK){
+  
+  const carregarProdutos = async () => {
+    const categoriaProduto = "ANEIS"; // Define a categoria como "ANEL"
+    const response = await apiGet(`/produtos/categoria/${categoriaProduto}`);
+    if (response.status === STATUS_CODE.OK) {
       console.log(response);
       setProdutos(response.data);
     }
   }
-
   useEffect(() => {
     carregarProdutos();
   }, [])
+
 
   const redirecionarDetalhesProduto = (idProduto : number) => {
     if(idProduto){
