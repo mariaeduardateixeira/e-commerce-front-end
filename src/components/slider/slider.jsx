@@ -1,12 +1,17 @@
 import { FC } from "react";
 import "./slider.css"
-import imagemAnel from "./imagemAnel.png";
 import Botao from "../Botao/botao";
 import { IProduto } from "./types";
 import image from "./image.jpg";
 
 
 export default function Slider(props) {
+
+  const redirecionarDetalhesProduto = (idProduto) => {
+    if(idProduto){
+      window.location.href = `/produtos/${idProduto}`;
+    }
+  }
 
   return (
       <div className="card">
@@ -19,9 +24,9 @@ export default function Slider(props) {
         </p> */}
         <Botao
                 label = "Comprar"
-                // onClick = {() => {
-                //   redirecionarDetalhesProduto(produto.id);
-                // }}
+                 onClick = {() => {
+                   redirecionarDetalhesProduto(props.id);
+                 }}
               />
       </div>
   );

@@ -7,6 +7,7 @@ import Home from "./pages/Home/home";
 import Correntes from "./pages/Correntes/correntes";
 import ProdutosDetalhes from "./pages/ProdutosDetalhes/produtosDetalhes";
 import Categoria from "./components/Categoria";
+import Produtos from "./pages/Produtos/produto";
 
 const Router: FC = () => {
   return(
@@ -14,6 +15,7 @@ const Router: FC = () => {
       <Routes>
       <Route path="/home" element = {<Home/>}/>
         <Route path="/" element = {<Home/>}/>
+        <Route path="/produtos" element = {<Produtos/>}/>
         <Route path="/produtos/detalhes/:codigoProduto" element = {<ProdutosDetalhes/>}/>
         <Route path="/:categoria" element={<Categoria/>}/>
       </Routes>

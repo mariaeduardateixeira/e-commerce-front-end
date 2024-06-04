@@ -45,7 +45,8 @@ const Home: FC = () =>{
       <h1 className='card-lancamentos'>Lançamentos</h1>
       <Carousel responsive={responsive}>
         {produtos.map(item => (
-            <Slider 
+            <Slider
+              id={item.id}
               name={item.nome} 
               url={item.imagemPequena} 
               price={item.preco} 
@@ -65,6 +66,7 @@ const Home: FC = () =>{
             <a className="produto_imagem" href={`/produtos/${produto.id}`}>
               <img src={produto.imagemPequena} alt="" />
               </a>
+              <img src={`../Home/${produto.imagemPequena}`} alt="" />
           <div className="produto_nome">
             <p>{produto.descricao}</p>
           </div>
