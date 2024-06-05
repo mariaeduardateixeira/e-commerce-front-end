@@ -51,12 +51,29 @@ const Home: FC = () =>{
               url={item.imagemPequena} 
               price={item.preco} 
               description={item.descricao}/>
+              
           ))}
     </Carousel>
     </>}
-   
-  </>
+    
 
+    {produtos.length && <>
+      <h1 className='card-lancamentos'>Lançamentos</h1>
+      <Carousel responsive={responsive}>
+        {produtos.map(item => (
+            <Slider
+              id={item.id}
+              name={item.nome} 
+              url={item.imagemPequena} 
+              price={item.preco} 
+              description={item.descricao}/>
+          ))}
+    </Carousel>
+    
+    </>}
+    
+  </>
+  const citrus = slider.slice(1, 5);
   {produtos?.length ? <>
     <div className="container">
       {produtos.map((produto: IProduto) =>{
@@ -66,7 +83,6 @@ const Home: FC = () =>{
             <a className="produto_imagem" href={`/produtos/${produto.id}`}>
               <img src={produto.imagemPequena} alt="" />
               </a>
-              <img src={`../Home/${produto.imagemPequena}`} alt="" />
           <div className="produto_nome">
             <p>{produto.descricao}</p>
           </div>
