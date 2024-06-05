@@ -45,17 +45,35 @@ const Home: FC = () =>{
       <h1 className='card-lancamentos'>Lançamentos</h1>
       <Carousel responsive={responsive}>
         {produtos.map(item => (
-            <Slider 
+            <Slider
+              id={item.id}
+              name={item.nome} 
+              url={item.imagemPequena} 
+              price={item.preco} 
+              description={item.descricao}/>
+              
+          ))}
+    </Carousel>
+    </>}
+    
+
+    {produtos.length && <>
+      <h1 className='card-lancamentos'>Lançamentos</h1>
+      <Carousel responsive={responsive}>
+        {produtos.map(item => (
+            <Slider
+              id={item.id}
               name={item.nome} 
               url={item.imagemPequena} 
               price={item.preco} 
               description={item.descricao}/>
           ))}
     </Carousel>
+    
     </>}
-   
+    
   </>
-
+  const citrus = slider.slice(1, 5);
   {produtos?.length ? <>
     <div className="container">
       {produtos.map((produto: IProduto) =>{

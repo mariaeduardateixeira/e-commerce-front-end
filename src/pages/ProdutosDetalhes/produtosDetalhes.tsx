@@ -15,7 +15,8 @@ const ProdutosDetalhes: FC = () =>{
   const [quantidadeProduto, setQuantidadeProduto] = useState<number>(1)
   const [openModal, setOpenModal] = useState<boolean>(false);
   const carrinho: ICarrinhoStore[] = carregarCarrinho();
-  
+
+  console.log(id);
   useEffect(() => {
     console.log(id);
     apiGet(`/produtos/${id}`).then((response) => {
@@ -36,11 +37,11 @@ const ProdutosDetalhes: FC = () =>{
   return<>
     <div className="container-produto">
       <div className="produto-detalhe">
-        {/* <div className="imagem-produto">
+        { <div className="imagem-produto">
           <img src={produto?.imagemGrande} />
-        </div> */}
+        </div> }
         <div className="dados-produto">
-          <div className="nome-produto">{produto?.descricao}</div>
+          { <div className="nome-produto">{produto?.descricao}</div> }
           <hr />
           <div className="descricao-produto">{produto?.descricao}</div>
           {/* <div className="codigo-produto">{`Código do produto: ${produto?.codigoProduto}`}</div> */}

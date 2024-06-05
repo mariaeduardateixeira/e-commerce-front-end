@@ -7,15 +7,16 @@ import Home from "./pages/Home/home";
 import Correntes from "./pages/Correntes/correntes";
 import ProdutosDetalhes from "./pages/ProdutosDetalhes/produtosDetalhes";
 import Categoria from "./components/Categoria";
-import SearchResults from "./pages/SearchResults";
+import Produtos from "./pages/Produtos/produto";
 
 const Router: FC = () => {
   return(
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<Home/>}/>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/produtos/detalhes/:codigoProduto" element={<ProdutosDetalhes/>}/>
+      <Route path="/home" element = {<Home/>}/>
+        <Route path="/" element = {<Home/>}/>
+        <Route path="/produtos" element = {<Produtos/>}/>
+        <Route path="/produtos/:id" element = {<ProdutosDetalhes/>}/>
         <Route path="/:categoria" element={<Categoria/>}/>
         <Route path="/search" element={<SearchResults/>}/> {/* Adicione a rota de pesquisa */}
       </Routes>

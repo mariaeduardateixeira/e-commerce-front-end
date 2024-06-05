@@ -34,7 +34,7 @@ const Aneis: FC = () =>{
       {produtos.map((produto: IProduto) =>{
         return<>
           <div className="produto">
-            <a className="produto_imagem" href={`/produtos/detalhes/${produto.id}`}>
+            <a className="produto_imagem" href={`/produtos/${produto.id}`}>
               <img src={produto.imagemPequena} alt="" />
               </a>
           <div className="produto_nome">
