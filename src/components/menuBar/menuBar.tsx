@@ -17,7 +17,9 @@ const MenuBar: FC = () => {
   };
 
   const executeSearch = () => {
-    navigate(`/search?query=${searchTerm}`);
+    if (searchTerm.trim() !== "") {
+      navigate(`/search?descricao=${searchTerm}`);
+    }
   };
 
   return (

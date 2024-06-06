@@ -1,61 +1,63 @@
-// src/pages/SearchResults.tsx
-import React, { FC, useState, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { apiGet } from "../api/RestClient";
+import Botao from "../components/Botao/botao";
 
-interface SearchResult {
-  id: number;
-  name: string;
-  description: string;
-}
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
 
 const SearchResults: FC = () => {
-  const location = useLocation();
-  const query = new URLSearchParams(location.search).get("query");
-
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [produtos, setProdutos] = useState<any[]>([]); // Usando 'any' para representar os produtos
+  const query = useQuery();
+  const descricao = query.get("descricao") || "";
 
   useEffect(() => {
-    const fetchResults = async () => {
-      setLoading(true);
-      setError(null);
-
+    const carregarProdutos = async () => {
       try {
-        // Substitua a URL abaixo pela URL real da sua API
-        const response = await fetch(`https:8085/produtos/carregarProdutos/search?query=${query}`);
-        
-        if (!response.ok) {
-          throw new Error("Erro ao buscar resultados");
+        const response = await apiGet(`/?descricao=${descricao}`);
+        if (response.status === 200) {
+          setProdutos(response.data);
         }
-
-        const data = await response.json();
-        setResults(data);
       } catch (error) {
-        setError((error as Error).message);
-      } finally {
-        setLoading(false);
+        console.error("Erro ao carregar produtos:", error);
       }
     };
+    carregarProdutos();
+  }, [descricao]);
 
-    if (query) {
-      fetchResults();
+  const redirecionarDetalhesProduto = (idProduto: number) => {
+    if (idProduto) {
+      window.location.href = `/produtos/${idProduto}`;
     }
-  }, [query]);
+  };
 
   return (
-    <div>
-      <h1>Resultados da pesquisa para: {query}</h1>
-      {loading && <p>Carregando...</p>}
-      {error && <p>Erro: {error}</p>}
-      <ul>
-        {results.map(result => (
-          <li key={result.id}>
-            <h2>{result.name}</h2>
-            <p>{result.description}</p>
-          </li>
-        ))}
-      </ul>
+    <div className="search-results">
+      <h1>Resultados da Pesquisa</h1>
+      {produtos.length > 0 ? (
+        <div className="container">
+          {produtos.map((produto: any) => ( // Usando 'any' para representar cada produto
+            <div key={produto.id} className="produto">
+              <a className="produto_imagem" href={`/produtos/${produto.id}`}>
+                <img src={produto.imagemPequena} alt={produto.nome} />
+              </a>
+              <div className="produto_nome">
+                <p>{produto.nome}</p>
+              </div>
+              <div className="produto_preco">
+                <p>{produto.preco}</p>
+              </div>
+              <Botao
+                label="Comprar"
+                onClick={() => redirecionarDetalhesProduto(produto.id)}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>Nenhum produto encontrado</div>
+      )}
     </div>
   );
 };
