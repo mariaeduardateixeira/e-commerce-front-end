@@ -26,7 +26,7 @@ const Categoria: FC = () => {
 
   const redirecionarDetalhesProduto = (idProduto: number) => {
     if (idProduto) {
-      window.location.href = `/produtos/detalhes/${idProduto}`;
+      window.location.href = `/produtos/${idProduto}`;
     }
   };
 
@@ -36,7 +36,7 @@ const Categoria: FC = () => {
         <div className="container">
           {produtos.map((produto: IProduto) => (
             <div key={produto.id} className="produto">
-              <a className="produto_imagem" href={`/produtos/detalhes/${produto.id}`}>
+              <a className="produto_imagem" href={`/produtos/${produto.id}`}>
                 <img src={produto.imagemPequena} alt={produto.nome} />
               </a>
               <div className="produto_nome">

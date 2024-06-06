@@ -5,6 +5,8 @@ import MenuBar from './components/menuBar/menuBar';
 import './style.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Router from './router';
+//import Aneis from './pages/Aneis/aneis';
 import Router from './router'; // Remove a importação do BrowserRouter
 import CarrinhoDrawer from './components/CarrinhoDrawer/carrinhoDrawer';
 
