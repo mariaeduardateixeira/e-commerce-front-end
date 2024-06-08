@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MenuBar from './components/menuBar/menuBar';
 import './style.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+<<<<<<< HEAD
+import Router from './router';
+import Aneis from './pages/Aneis/aneis';
+=======
+//import Aneis from './pages/Aneis/aneis';
 //import Aneis from './pages/Aneis/aneis';
 import Router from './router'; // Remove a importação do BrowserRouter
+>>>>>>> 2ea6371c3632dbae8217d1f57a6a23dc565a7389
 import CarrinhoDrawer from './components/CarrinhoDrawer/carrinhoDrawer';
+import LoginModal from './components/Login/LoginModal';
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div className="body">
       <div className='corpo'>
@@ -18,11 +30,13 @@ function App() {
             <h1>Nome da loja</h1>
             <div className='item-carrinho'>
               <CarrinhoDrawer />
+              <button onClick={openModal}>Login</button>
             </div>
           </div>
           <MenuBar />
         </header>
-        <Router /> {/* Renderize o componente Router diretamente */}
+        <Router />
+        <LoginModal isOpen={isModalOpen} onClose={closeModal} />
         <footer>
           <div className='footer'>
             <p>Projeto criado por Mariana, Maria Eduarda e Isac da 4º fase da turma de Análise e Desenvolvimento de Sistemas</p>
