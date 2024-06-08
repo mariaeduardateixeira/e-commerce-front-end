@@ -5,8 +5,13 @@ import MenuBar from './components/menuBar/menuBar';
 import './style.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+<<<<<<< HEAD
 import Router from './router';
 import Aneis from './pages/Aneis/aneis';
+=======
+//import Aneis from './pages/Aneis/aneis';
+import Router from './router'; // Remove a importação do BrowserRouter
+>>>>>>> 2ea6371c3632dbae8217d1f57a6a23dc565a7389
 import CarrinhoDrawer from './components/CarrinhoDrawer/carrinhoDrawer';
 import LoginModal from './components/Login/LoginModal';
 

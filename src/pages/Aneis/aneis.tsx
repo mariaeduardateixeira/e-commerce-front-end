@@ -7,29 +7,29 @@ import { IProduto } from "../Home/types";
 
 
 const Aneis: FC = () =>{
-  const [produtos, setProdutos] = useState<IProduto[]>([]);
+  // const [produtos, setProdutos] = useState<IProduto[]>([]);
   
-  const carregarProdutos = async () => {
-    const categoriaProduto = "ANEIS"; // Define a categoria como "ANEL"
-    const response = await apiGet(`/produtos/categoria/${categoriaProduto}`);
-    if (response.status === STATUS_CODE.OK) {
-      console.log(response);
-      setProdutos(response.data);
-    }
-  }
-  useEffect(() => {
-    carregarProdutos();
-  }, [])
+  // const carregarProdutos = async () => {
+  //   const categoriaProduto = "ANEIS"; // Define a categoria como "ANEL"
+  //   const response = await apiGet(`/produtos/categoria/${categoriaProduto}`);
+  //   if (response.status === STATUS_CODE.OK) {
+  //     console.log(response);
+  //     setProdutos(response.data);
+  //   }
+  // }
+  // useEffect(() => {
+  //   carregarProdutos();
+  // }, [])
 
 
-  const redirecionarDetalhesProduto = (idProduto : number) => {
-    if(idProduto){
-      window.location.href = `/produtos/detalhes/${idProduto}`;
-    }
-  }
+  // const redirecionarDetalhesProduto = (idProduto : number) => {
+  //   if(idProduto){
+  //     window.location.href = `/produtos/detalhes/${idProduto}`;
+  //   }
+  // }
 
   return <>
-  {produtos?.length ? <>
+  {/* {produtos?.length ? <>
     <div className="container">
       {produtos.map((produto: IProduto) =>{
         return<>
@@ -54,7 +54,7 @@ const Aneis: FC = () =>{
       })}
       
       </div> 
-  </> : <div>Lista de dados</div>}
+  </> : <div>Lista de dados</div>} */}
 
   </>
 }

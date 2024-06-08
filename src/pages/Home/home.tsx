@@ -35,7 +35,9 @@ const Home: FC = () =>{
       window.location.href = `/produtos/${idProduto}`;
     }
   }
-
+  const half = Math.ceil(produtos.length / 2);
+  const primeiraMetade = produtos.slice(0, half);
+  const segundaMetade = produtos.slice(half);
 
   return <>
   
@@ -44,23 +46,23 @@ const Home: FC = () =>{
     {produtos.length && <>
       <h1 className='card-lancamentos'>Lançamentos</h1>
       <Carousel responsive={responsive}>
-        {produtos.map(item => (
+        {primeiraMetade.map(item => (
             <Slider
               id={item.id}
               name={item.nome} 
               url={item.imagemPequena} 
               price={item.preco} 
               description={item.descricao}/>
-              
           ))}
+          
     </Carousel>
     </>}
     
 
     {produtos.length && <>
-      <h1 className='card-lancamentos'>Lançamentos</h1>
+      <h1 className='card-lancamentos'>Destaques</h1>
       <Carousel responsive={responsive}>
-        {produtos.map(item => (
+        {segundaMetade.map(item => (
             <Slider
               id={item.id}
               name={item.nome} 
@@ -73,8 +75,7 @@ const Home: FC = () =>{
     </>}
     
   </>
-  const citrus = slider.slice(1, 5);
-  {produtos?.length ? <>
+  {/* {produtos?.length ? <>
     <div className="container">
       {produtos.map((produto: IProduto) =>{
         //const imagem = produtosImagens.find((img) => img.id === produto.id);
@@ -99,7 +100,7 @@ const Home: FC = () =>{
        </>
       })}
       </div> 
-  </> : <div>Lista de dados</div>}
+  </> : <div>Lista de dados</div>} */}
 
   </>
 }
