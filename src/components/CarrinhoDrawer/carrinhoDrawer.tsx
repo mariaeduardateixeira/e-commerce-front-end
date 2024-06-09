@@ -7,10 +7,12 @@ import { Box, Button, Drawer, Grid, Paper, Typography } from "@mui/material";
 
 import { ICarrinhoStore } from "../../store/CarrinhoStore/type";
 import InputQuantidade from "../InputQuantidade/input";
+import Botao from "../Botao/botao";
 
 const CarrinhoDrawer: FC = () => {
     const [openDrawer, setOpenDrawer] = useState<boolean>(false);
     const [carrinho, setCarrinho]= useState<ICarrinhoStore[]>(carregarCarrinho());
+      
     
     const atualizarQuantidadeCarrinho = (item: ICarrinhoStore) => {
      const carrinhoAtualizado = addCarrinho(item);
@@ -20,7 +22,13 @@ const CarrinhoDrawer: FC = () => {
       const carrinhoAtualizado = removerItemCarrinho(id);
 
       setCarrinho(carrinhoAtualizado);
+        
+      }
+
+      const calcularTotal = () => {
+        return carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0);
     }
+    
     return <>
         <div className="carrinho" onClick={() =>{
             setOpenDrawer(true)
@@ -76,7 +84,7 @@ const CarrinhoDrawer: FC = () => {
                             </Grid>
                             <Grid className="box-detalhes" item={true}>
                                 <Box>
-                                  <strong>{c.nome}</strong>
+                                  <strong>{c.descricao}</strong>
                                 </Box>
                             </Grid>
                            <Grid className="box-quantidade">
@@ -91,6 +99,11 @@ const CarrinhoDrawer: FC = () => {
                                 }}
                               />
                            </Grid>
+                           <Grid className="box-preco" item={true}>
+                                <Box>
+                                  <strong>{((c.quantidade)*(c.preco)).toFixed(2)}</strong>
+                                </Box>
+                            </Grid>
                            <Grid className="box-remover" item={true}>
                               <IconButton
                                 onClick={() =>{
@@ -101,8 +114,26 @@ const CarrinhoDrawer: FC = () => {
                            </Grid>
                         </Grid>
                     </>
+                    
                 })}
+                
             </Box>
+           
+            {carrinho.length > 0 && (
+                    <Box paddingLeft={"10px"} paddingRight={"10px"}>
+                        <Typography variant="h6">
+                            Total: {calcularTotal().toFixed(2)}
+                        </Typography>
+                        <div className="botao-carrinho">
+                            <Botao
+                                label="Fechar pedido"
+                                onClick={() => {
+                                    window.location.href = `/fecharPedido`;
+                                }}
+                            />
+                        </div>
+                    </Box>
+                    )}
         </Drawer>
     </>;
 }

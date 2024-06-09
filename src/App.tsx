@@ -6,7 +6,6 @@ import './style.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Router from './router';
-import Aneis from './pages/Aneis/aneis';
 import CarrinhoDrawer from './components/CarrinhoDrawer/carrinhoDrawer';
 import LoginModal from './components/Login/LoginModal';
 
@@ -38,6 +37,7 @@ function App() {
         </footer>
       </div>
     </div>
+    
   );
 }
 

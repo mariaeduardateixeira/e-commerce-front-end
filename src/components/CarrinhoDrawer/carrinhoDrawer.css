@@ -17,3 +17,32 @@
   height: 50px;
   border-radius: 50%;
 }
+
+.container-botao{
+  display: flex;
+}
+
+.botao-carrinho{
+  width: 50%;
+  justify-items: right;
+  justify-content: right;
+  align-items: end;
+}
+
+.box-detalhes{
+  font-weight: lighter;
+  font-size: small;
+  width: 20%;
+}
+
+.box-quantidade{
+  width: 35%;
+}
+
+.box-preco{
+  width: 20%;
+}
+
+.box-remover{
+  width: 10%;
+}
