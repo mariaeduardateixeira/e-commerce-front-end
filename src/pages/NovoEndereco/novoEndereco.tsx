@@ -1,9 +1,19 @@
 import { AlternateEmail, Key, VisibilityOff, Visibility } from "@mui/icons-material";
 import { TextField, InputAdornment, IconButton } from "@mui/material";
-import { FC } from "react";
+import { FC, useState } from "react";
 import "./novoEndereco.css";
 
+
+
 const NovoEndereco: FC = () => {
+
+  const [selectedState, setSelectedState] = useState('');
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOption = event.target.selectedOptions[0].text;
+    setSelectedState(selectedOption);
+  };
+
   return<>
     <div className="div-endereco">
       <div className="div-endereco-linha">
@@ -34,7 +44,7 @@ const NovoEndereco: FC = () => {
           <div className="estado">
             <fieldset>
             <legend>Estado</legend>
-            <select className="select">
+            <select className="select" onChange={handleSelectChange}>
               <option value="someOption">Acre</option>
               <option value="otherOption">Alagoas</option>
               <option value="someOption">Amapá</option>
@@ -63,11 +73,12 @@ const NovoEndereco: FC = () => {
               <option value="otherOption">Sergipe</option>
               <option value="otherOption">Tocantins</option>
             </select>
-            </fieldset>
+            </fieldset>           
           </div>
         </div>
       </div>
       </div>
+
   </>
 }
 
