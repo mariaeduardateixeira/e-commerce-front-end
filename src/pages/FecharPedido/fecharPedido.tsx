@@ -5,7 +5,7 @@ import Botao from "../../components/Botao/botao";
 
 const Compra: FC = () => {
   return<>
-    <div className="container">
+    <div className="container-fechar-pedido">
     <fieldset className="endereco">
       <legend>Endereço de entrega</legend>
       <div>

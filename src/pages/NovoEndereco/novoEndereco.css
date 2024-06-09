@@ -18,12 +18,12 @@
   justify-content: space-between;
 }
 
-.estado-cidade .estado{
-  
+ .estado{
+width: 20%;
 }
 
-.estado-cidade .cidade{
-
+ .cidade{
+  width: 100%;
 }
 
 .select{

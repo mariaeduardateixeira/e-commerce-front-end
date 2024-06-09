@@ -8,13 +8,6 @@ import Carousel from "react-multi-carousel";
 import Slider from "../../components/slider/slider";
 
 
-
-const produtosImg = produtosImagens.map(item => (
-  <Slider 
-  url={item.imageurl} 
-/>
-))
-
 const Home: FC = () =>{
     
   const [produtos, setProdutos] = useState<IProduto[]>([]);

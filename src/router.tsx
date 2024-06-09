@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/fecha";
+import Home from "./pages/Home/home";
 import ProdutosDetalhes from "./pages/ProdutosDetalhes/produtosDetalhes";
 import Categoria from "./components/Categoria";
 import Produtos from "./pages/Produtos/produto";
