@@ -1,4 +1,5 @@
-.modal-overlay {
+/* Estilos para o fundo escurecido do modal */
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -8,11 +9,69 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
   }
   
+  /* Estilos para o conteúdo do modal */
   .modal-content {
-    background: white;
+    background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Aumentado de 300px para 400px */
+    max-width: 90%; /* Ajustado para 90% para manter responsividade */
   }
+  
+  .modal-content input[type="text"],
+  .modal-content input[type="password"] {
+    width: 100%;
+    max-width: 350px; /* Define um max-width para os campos */
+    padding: 10px;
+    margin: 10px auto; /* Centraliza os campos se eles forem menores que o max-width */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Estilos para o botão de login */
+  .modal-content button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para o botão de fechar */
+  .close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #f00;
+  }
+  
+  /* Estilo para o link de registro */
+  .register-link {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .register-link a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .register-link a:hover {
+    color: #0056b3;
+  }
+  
