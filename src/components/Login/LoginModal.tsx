@@ -5,12 +5,13 @@ import './LoginModal.css';
 interface IProps {
   isOpen: boolean;
   onClose: () => void;
-  onAuthenticated: (username: string) => void;
+  onAuthenticated: (username: string, idCliente: number) => void; // Corrigido: Number para number
 }
 
 const LoginModal: React.FC<IProps> = ({ isOpen, onClose, onAuthenticated }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [idCliente, setIdCliente] = useState<number | null>(null); // Inicializa como null
   const [error, setError] = useState('');
 
   const handleLogin = async () => {
@@ -22,7 +23,11 @@ const LoginModal: React.FC<IProps> = ({ isOpen, onClose, onAuthenticated }) => {
 
       if (response.data === "Login bem-sucedido!") {
         console.log('Login realizado com sucesso!');
-        onAuthenticated(username);
+        if (idCliente !== null) {
+          onAuthenticated(username, idCliente);
+        } else {
+          setError('ID do cliente inválido.');
+        }
         onClose();
       } else {
         setError('Credenciais inválidas. Tente novamente ou cadastre-se.');
@@ -57,6 +62,12 @@ const LoginModal: React.FC<IProps> = ({ isOpen, onClose, onAuthenticated }) => {
           placeholder="Senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="number" // Campo de entrada para idCliente
+          placeholder="ID Cliente"
+          value={idCliente !== null ? idCliente : ''}
+          onChange={(e) => setIdCliente(Number(e.target.value))}
         />
         <button onClick={handleLogin}>Entrar</button>
         <p className="register-link">Não tem uma conta? <a href="/registrar">Registre-se aqui</a></p>

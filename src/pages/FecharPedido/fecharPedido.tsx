@@ -12,13 +12,14 @@ const FecharPedido: FC = () => {
   const [endereco, setEndereco] = useState<IEndereco[]>([]);
 
   const carregarEndereco = async () => {
-    if (!id) {
+    const dadosCliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
+    if (!dadosCliente?.id) {
       console.error("ID não definido");
       return;
     }
 
     try {
-      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${id}`);
+      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${dadosCliente}`);
       if (response.status === STATUS_CODE.OK) {
         console.log(response);
         setEndereco(response.data);
