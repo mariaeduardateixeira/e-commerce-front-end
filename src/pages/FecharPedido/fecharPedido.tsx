@@ -1,28 +1,36 @@
-import { TextField } from "@mui/material";
 import { FC, useEffect, useState } from "react";
-import "./fecharPedido.css";
-import Botao from "../../components/Botao/botao";
+import { useParams } from 'react-router-dom';
 import { apiGet, STATUS_CODE } from "../../api/RestClient";
 import { IEndereco } from "./types";
-import { useParams } from 'react-router-dom';
+import "./fecharPedido.css";
+import Botao from "../../components/Botao/botao";
 
 const FecharPedido: FC = () => {
   const { id } = useParams<{ id: string }>();
-  console.log(id); // Verifique se o id está sendo exibido corretamente no console
   const [endereco, setEndereco] = useState<IEndereco[]>([]);
 
   const carregarEndereco = async () => {
-    const dadosCliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
-    if (!dadosCliente?.id) {
-      console.error("ID não definido");
-      return;
-    }
-
     try {
-      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${dadosCliente}`);
+      const dadosCliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
+      if (!dadosCliente?.id) {
+        console.error("ID do cliente não definido");
+        return;
+      }
+
+      console.log("ID do cliente:", dadosCliente.id);
+
+      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${dadosCliente.id}`);
+      console.log("Resposta da API:", response);
+
       if (response.status === STATUS_CODE.OK) {
-        console.log(response);
-        setEndereco(response.data);
+        console.log("Dados de endereço carregados com sucesso:", response.data);
+        if (response.data && response.data.length > 0) {
+          setEndereco(response.data);
+        } else {
+          console.log("Nenhum endereço encontrado");
+        }
+      } else {
+        console.error("Erro ao carregar endereços, status:", response.status);
       }
     } catch (error) {
       console.error("Erro ao carregar endereço:", error);
@@ -30,13 +38,16 @@ const FecharPedido: FC = () => {
   };
 
   useEffect(() => {
-    if (id) {
-      carregarEndereco();
-    }
-  }, [id]); 
+    carregarEndereco();
+  }, [id]);
+
+  useEffect(() => {
+    console.log("Estado de endereco atualizado:", endereco);
+  }, [endereco]);
+
   return (
     <>
-      {endereco?.length ? (
+      {endereco.length > 0 ? (
         endereco.map((endereco: IEndereco) => (
           <div className="container-fechar-pedido" key={endereco.id}>
             <fieldset className="endereco">
@@ -71,7 +82,7 @@ const FecharPedido: FC = () => {
           </div>
         ))
       ) : (
-        <div>Lista de dados</div>
+        <div>Carregando dados...</div>
       )}
     </>
   );
