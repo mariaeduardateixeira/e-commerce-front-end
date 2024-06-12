@@ -11,14 +11,20 @@ const SearchResults: FC = () => {
   const [produtos, setProdutos] = useState<any[]>([]); // Usando 'any' para representar os produtos
   const query = useQuery();
   const descricao = query.get("descricao") || "";
+  console.log("Descrição pesquisada:", descricao); // Verifique o valor
 
   useEffect(() => {
     const carregarProdutos = async () => {
       try {
-        const response = await apiGet(`/?descricao=${descricao}`);
-        if (response.status === 200) {
-          setProdutos(response.data);
-        }
+        const response = await apiGet(`produtos/?descricao=${descricao}`);
+          console.log("Resposta da API:", response); // Verifique a resposta completa
+            if (response.status === 200) {
+              console.log("Dados recebidos:", response.data); // Verifique os dados especificamente
+                setProdutos(response.data);
+              } else {
+                console.log("Nenhum produto encontrado");
+                setProdutos([]); // Garantir que a lista está sendo limpa
+              }
       } catch (error) {
         console.error("Erro ao carregar produtos:", error);
       }
@@ -37,13 +43,13 @@ const SearchResults: FC = () => {
       <h1>Resultados da Pesquisa</h1>
       {produtos.length > 0 ? (
         <div className="container">
-          {produtos.map((produto: any) => ( // Usando 'any' para representar cada produto
+          {produtos.map((produto: any) => (
             <div key={produto.id} className="produto">
               <a className="produto_imagem" href={`/produtos/${produto.id}`}>
                 <img src={produto.imagemPequena} alt={produto.nome} />
               </a>
               <div className="produto_nome">
-                <p>{produto.nome}</p>
+                <p>{produto.descricao}</p>
               </div>
               <div className="produto_preco">
                 <p>{produto.preco}</p>
@@ -60,6 +66,6 @@ const SearchResults: FC = () => {
       )}
     </div>
   );
-};
+}  
 
 export default SearchResults;
