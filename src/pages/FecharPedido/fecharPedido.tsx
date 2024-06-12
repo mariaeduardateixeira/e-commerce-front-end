@@ -8,12 +8,17 @@ import { useParams } from 'react-router-dom';
 
 const FecharPedido: FC = () => {
   const { id } = useParams<{ id: string }>();
-  console.log(id);
+  console.log(id); // Verifique se o id está sendo exibido corretamente no console
   const [endereco, setEndereco] = useState<IEndereco[]>([]);
 
   const carregarEndereco = async () => {
+    if (!id) {
+      console.error("ID não definido");
+      return;
+    }
+
     try {
-      const response = await apiGet(`/carregarEnderecoByCliente/${id}`);
+      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${id}`);
       if (response.status === STATUS_CODE.OK) {
         console.log(response);
         setEndereco(response.data);
@@ -24,9 +29,10 @@ const FecharPedido: FC = () => {
   };
 
   useEffect(() => {
-    carregarEndereco();
-  }, []);
-
+    if (id) {
+      carregarEndereco();
+    }
+  }, [id]); 
   return (
     <>
       {endereco?.length ? (
