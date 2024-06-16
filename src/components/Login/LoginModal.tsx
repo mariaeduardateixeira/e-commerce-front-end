@@ -32,7 +32,7 @@ const LoginModal: React.FC<IProps> = ({ isOpen, onClose, onAuthenticated }) => {
       }
       if (response.status === 200) {
         const idCliente = response.data; // Assume que o ID do cliente é retornado pelo backend
-console.log(">>>> dados: ",idCliente);
+    console.log(">>>> dados: ",idCliente);
         // Chama a função onAuthenticated com email e idCliente
         onAuthenticated(email, idCliente);
         onClose();
