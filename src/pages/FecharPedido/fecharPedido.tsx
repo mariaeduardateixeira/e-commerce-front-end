@@ -19,7 +19,7 @@ const FecharPedido: FC = () => {
     }
 
     try {
-      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${dadosCliente}`);
+      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${dadosCliente.id}`);
       if (response.status === STATUS_CODE.OK) {
         console.log(response);
         setEndereco(response.data);

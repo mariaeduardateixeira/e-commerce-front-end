@@ -1,0 +1,12 @@
+.div-login{
+  width: 90%;
+  border: 1px solid black;
+  padding: 30px;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.div-login-linha{
+  width: 90%;
+  color: aqua;
+}

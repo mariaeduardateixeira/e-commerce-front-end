@@ -27,10 +27,10 @@ const MenuBar: FC = () => {
       <div className="teste">
         <ul>
           <li><a href="/home">Home</a></li>
-          <li><a href="/ANEL">Anéis</a></li>
-          <li><a href="/BRINCOS">Brincos</a></li>
-          <li><a href="/PULSEIRAS">Pulseiras</a></li>
-          <li><a href="/COLARES">Colares</a></li>
+          <li><a href="/categoria/ANEL">Anéis</a></li>
+          <li><a href="/categoria/BRINCOS">Brincos</a></li>
+          <li><a href="/categoria/PULSEIRAS">Pulseiras</a></li>
+          <li><a href="/categoria/COLARES">Colares</a></li>
         </ul>
         <input
           type="text"
