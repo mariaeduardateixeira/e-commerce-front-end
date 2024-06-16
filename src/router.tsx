@@ -21,7 +21,7 @@ const Router: FC = () => {
       <Route path="/search" element={<SearchResults />} /> {/* Rota para os resultados de pesquisa */}
       <Route path="/fecharPedido/:id" element={<FecharPedido />} />
       <Route path="/novoEndereco" element={<NovoEndereco />} />
-      <Route path="/enderecos/" element={<Clientes/>}/>
+      <Route path="/clientes/" element={<Clientes/>}/>
     </Routes>
   );
 };
