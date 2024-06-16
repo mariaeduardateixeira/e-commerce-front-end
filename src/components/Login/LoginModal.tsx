@@ -75,3 +75,13 @@ console.log(">>>> dados: ",idCliente);
 };
 
 export default LoginModal;
+// function apiPost(arg0: string, data: {
+//   nome: string | undefined;
+//   //sobrenome: sobrenome,
+//   //cpf: cpf,
+//   //sexo: genero,
+//   email: string | undefined; senha: string | undefined;
+// }) {
+//   throw new Error('Function not implemented.');
+// }
+
