@@ -24,7 +24,7 @@ function App() {
   //const id = JSON.parse("idCliente") || "{}";
   const handleAuthentication = (username: string, idCliente: Number ) => {
     setAuthenticatedUser(username);
-    localStorage.setItem('authenticatedUser', JSON.stringify({username, id: idCliente}));
+    localStorage.setItem('authenticatedUser', JSON.stringify({username}));
     setIsModalOpen(false);
   };
 
