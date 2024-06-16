@@ -6,24 +6,19 @@ import "./fecharPedido.css";
 import Botao from "../../components/Botao/botao";
 
 const FecharPedido: FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string }>(); // Certifique-se de que id seja do tipo string
   const [endereco, setEndereco] = useState<IEndereco[]>([]);
 
   const carregarEndereco = async () => {
     try {
-      // const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${dadosCliente.id}`);
-
-      const dadosCliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
-      if (!dadosCliente?.id) {
-        console.error("ID do cliente não definido");
+      if (!id) {
+        console.log("ID não definido");
         return;
       }
 
-      console.log("ID do cliente:", dadosCliente.id);
-
-      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${dadosCliente.id}`);
-      console.log("Resposta da API:", response);
-
+      const clienteId = parseInt(id); // Converte o id para número inteiro, se necessário
+      const response = await apiGet(`enderecos/carregarEnderecoByCliente/${clienteId}`);
+      
       if (response.status === STATUS_CODE.OK) {
         console.log("Dados de endereço carregados com sucesso:", response.data);
         if (response.data && response.data.length > 0) {
@@ -40,7 +35,9 @@ const FecharPedido: FC = () => {
   };
 
   useEffect(() => {
-    carregarEndereco();
+    if (id) {
+      carregarEndereco();
+    }
   }, [id]);
 
   useEffect(() => {
