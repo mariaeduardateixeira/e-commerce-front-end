@@ -66,7 +66,7 @@ const LoginModal: React.FC<IProps> = ({ isOpen, onClose, onAuthenticated }) => {
           variant="contained"
           onClick={salvarCliente}
         >
-          Salvar
+          Entrar
         </Button>
         <p className="register-link">Não tem uma conta? <a href="/clientes/">Registre-se aqui</a></p>
       </div>

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import { useNavigate } from 'react-router-dom'; // Importa o useNavigate
 import './App.css';
 import MenuBar from './components/menuBar/menuBar';
 import './style.css';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 import Router from './router';
 import CarrinhoDrawer from './components/CarrinhoDrawer/carrinhoDrawer';
 import LoginModal from './components/Login/LoginModal';
@@ -14,17 +12,18 @@ function App() {
   const [authenticatedUser, setAuthenticatedUser] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
 
+  const navigate = useNavigate(); // Hook para navegação
+
   useEffect(() => {
     const user = localStorage.getItem('authenticatedUser');
     if (user) {
-      setAuthenticatedUser(user);
+      setAuthenticatedUser(JSON.parse(user).username);
     }
   }, []);
 
-  //const id = JSON.parse("idCliente") || "{}";
-  const handleAuthentication = (username: string, idCliente: Number ) => {
+  const handleAuthentication = (username: React.SetStateAction<string>) => {
     setAuthenticatedUser(username);
-    localStorage.setItem('authenticatedUser', JSON.stringify({username}));
+    localStorage.setItem('authenticatedUser', JSON.stringify({ username }));
     setIsModalOpen(false);
   };
 
@@ -33,17 +32,22 @@ function App() {
   const handleLogout = () => {
     setAuthenticatedUser('');
     localStorage.removeItem('authenticatedUser');
-    setShowDropdown(false); // Esconde o dropdown ao deslogar
+    setShowDropdown(false);
   };
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
+
+  // Função para redirecionar para a página inicial
+  const handleHomeClick = () => {
+    navigate('/'); // Redireciona para a home
+  };
 
   return (
     <div className="body">
       <div className='corpo'>
         <header className="App-header">
           <div className='logo'>
-            <h1>Nome da loja</h1>
+            <h1 onClick={handleHomeClick} style={{ cursor: 'pointer' }}>Nome da loja</h1> {/* Adiciona o evento de clique */}
             {authenticatedUser ? (
               <div className="user-section">
                 <span className="user-name" onClick={toggleDropdown}>
