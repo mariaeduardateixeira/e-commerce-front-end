@@ -21,13 +21,12 @@ const Clientes: FC = () => {
             senha: senha,
         };
 
-        const response = await apiPost("/clientes/", data);
-        if(response.status === STATUS_CODE.CREATED){
-          alert("Cliente cadastrado com sucesso!");
-        }else {
+        const response = await apiPost('/cadastroCliente/cadastrar', data); // Alterado para /cadastroCliente/cadastrar
+        if (response.status === STATUS_CODE.CREATED) {
+            alert('Cliente cadastrado com sucesso!');
+        } else {
             alert(`Erro ao cadastrar cliente: ${response.message}`);
         }
-      console.log(">>>>",data)
     };
 
     return (

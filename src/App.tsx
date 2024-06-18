@@ -49,7 +49,6 @@ function App() {
   };
 
 
-  const toggleDropdown = () => setShowDropdown(!showDropdown);
 
   return (
     <div className="body">
