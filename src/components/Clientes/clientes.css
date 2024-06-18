@@ -1,12 +1,83 @@
-.div-login{
+/* Estilos para o contêiner de login */
+.div-login {
   width: 90%;
-  border: 1px solid black;
+  max-width: 500px;
+  margin: 0 auto; /* Centraliza o contêiner na tela */
   padding: 30px;
-  align-items: center;
+  background-color: #ffffff; /* Cor de fundo branca */
+  border: 1px solid #cccccc; /* Borda mais suave */
   border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra para destaque */
+  display: flex;
+  flex-direction: column; /* Disposição vertical dos elementos */
+  gap: 15px; /* Espaçamento entre os elementos */
 }
 
-.div-login-linha{
-  width: 90%;
-  color: aqua;
+/* Estilos para cada linha de entrada */
+.div-login-linha {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaçamento entre label e input */
+}
+
+.div-login-linha .MuiTextField-root { /* Estilização específica do TextField */
+  background-color: #ffffff; /* Fundo branco para o input */
+  border-radius: 4px; /* Borda arredondada */
+}
+
+/* Remove bordas personalizadas dos inputs */
+.div-login-linha input,
+.div-login-linha .MuiInputBase-root {
+  border: none; /* Remove a borda adicional */
+  background-color: #ffffff; /* Cor de fundo branco */
+}
+
+/* Estilos para o botão */
+.div-login-linha button {
+  width: 100%; /* Botão ocupa toda a largura disponível */
+  max-width: 200px; /* Define um máximo de largura para o botão */
+  padding: 10px;
+  margin: 20px auto; /* Centraliza o botão */
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase; /* Transforma o texto em maiúsculas */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.div-login-linha button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+}
+
+/* Estilos para o campo de seleção */
+.div-login-linha select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc; /* Apenas uma borda leve */
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-size: 16px;
+}
+
+/* Estilos para o contêiner responsivo */
+@media (max-width: 768px) {
+  .div-login {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .div-login-linha button {
+    font-size: 14px;
+  }
+
+  .div-login-linha input,
+  .div-login-linha select {
+    font-size: 14px;
+  }
 }
