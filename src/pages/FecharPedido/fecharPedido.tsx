@@ -8,16 +8,19 @@ import Botao from "../../components/Botao/botao";
 const FecharPedido: FC = () => {
   const { id } = useParams<{ id: string }>(); // Certifique-se de que id seja do tipo string
   const [endereco, setEndereco] = useState<IEndereco[]>([]);
+  const [clienteStore, setClienteStore] = useState<any>()
 
   const carregarEndereco = async () => {
+    console.log("entrou");
+    const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
     try {
-      if (!id) {
+      if (!cliente?.id) {
         console.log("ID não definido");
         return;
       }
 
-      const clienteId = parseInt(id); // Converte o id para número inteiro, se necessário
-      const response = await apiGet(`enderecos/carregarEnderecoByCliente/${clienteId}`);
+      const clienteId = parseInt(cliente.id); // Converte o id para número inteiro, se necessário
+      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${clienteId}`);
       
       if (response.status === STATUS_CODE.OK) {
         console.log("Dados de endereço carregados com sucesso:", response.data);
@@ -35,10 +38,9 @@ const FecharPedido: FC = () => {
   };
 
   useEffect(() => {
-    if (id) {
       carregarEndereco();
-    }
-  }, [id]);
+    
+  }, []);
 
   useEffect(() => {
     console.log("Estado de endereco atualizado:", endereco);
