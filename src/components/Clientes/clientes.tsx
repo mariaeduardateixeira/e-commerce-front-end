@@ -24,6 +24,7 @@ const Clientes: FC = () => {
         const response = await apiPost('/cadastroCliente/cadastrar', data); // Alterado para /cadastroCliente/cadastrar
         if (response.status === STATUS_CODE.CREATED) {
             alert('Cliente cadastrado com sucesso!');
+            window.location.href = '/'; // Redireciona para a página inicial
         } else {
             alert(`Erro ao cadastrar cliente: ${response.message}`);
         }
