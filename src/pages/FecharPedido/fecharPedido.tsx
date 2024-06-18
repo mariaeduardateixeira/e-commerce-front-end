@@ -62,7 +62,6 @@ const FecharPedido: FC = () => {
               <div className="novo-endereco">
                 <p>
                   <a href="/novoEndereco">Adicionar novo endereço</a>
-                
                 </p>
               </div>
             </fieldset>
