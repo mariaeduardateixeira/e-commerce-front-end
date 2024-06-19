@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MenuBar from './components/menuBar/menuBar';
-import { useNavigate } from 'react-router-dom'; // Importa o useNavigate
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -16,28 +16,23 @@ function App() {
   const [clienteId, setClienteId] = useState<number | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const navigate = useNavigate(); // Hook para navegação
+  const navigate = useNavigate();
   
   useEffect(() => {
     const user = localStorage.getItem('authenticatedUser');
-    const id = localStorage.getItem('clienteId');
     if (user) {
-      setAuthenticatedUser(user);
-    }
-    if (id) {
-      setClienteId(Number(id));
+      const parsedUser = JSON.parse(user);
+      setAuthenticatedUser(parsedUser.username); // Corrigido: Acessa o campo username
+      setClienteId(parsedUser.id);
     }
   }, []);
 
   const handleAuthentication = (username: string, idCliente: any) => {
     setAuthenticatedUser(username);
 
-    localStorage.setItem('authenticatedUser', JSON.stringify({username,id: idCliente?.id}));
+    localStorage.setItem('authenticatedUser', JSON.stringify({ username, id: idCliente }));
 
     setClienteId(idCliente);
-    // localStorage.setItem('authenticatedUser', username);
-    // localStorage.setItem('clienteId', idCliente.toString());
-
     setIsModalOpen(false);
   };
 
@@ -48,23 +43,21 @@ function App() {
     setClienteId(null);
     localStorage.removeItem('authenticatedUser');
     localStorage.removeItem('clienteId');
-    setShowDropdown(false); // Esconde o dropdown ao deslogar
+    setShowDropdown(false);
   };
-
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
-  // Função para redirecionar para a página inicial
   const handleHomeClick = () => {
-    navigate('/'); // Redireciona para a home
+    navigate('/');
   };
 
   return (
     <div className="body">
       <div className='corpo'>
         <header className="App-header">
-        <div className='logo'>
-            <h1 onClick={handleHomeClick} style={{ cursor: 'pointer' }}>Nome da loja</h1> {/* Adiciona o evento de clique */}
+          <div className='logo'>
+            <h1 onClick={handleHomeClick} style={{ cursor: 'pointer' }}>Trio de Brilho</h1>
             {authenticatedUser ? (
               <div className="user-section">
                 <span className="user-name" onClick={toggleDropdown}>
