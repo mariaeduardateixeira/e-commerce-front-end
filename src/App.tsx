@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MenuBar from './components/menuBar/menuBar';
+import { useNavigate } from 'react-router-dom'; // Importa o useNavigate
 import './style.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -15,6 +16,8 @@ function App() {
   const [clienteId, setClienteId] = useState<number | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
+  const navigate = useNavigate(); // Hook para navegação
+  
   useEffect(() => {
     const user = localStorage.getItem('authenticatedUser');
     const id = localStorage.getItem('clienteId');
@@ -51,12 +54,17 @@ function App() {
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
+  // Função para redirecionar para a página inicial
+  const handleHomeClick = () => {
+    navigate('/'); // Redireciona para a home
+  };
+
   return (
     <div className="body">
       <div className='corpo'>
         <header className="App-header">
-          <div className='logo'>
-            <h1>Nome da loja</h1>
+        <div className='logo'>
+            <h1 onClick={handleHomeClick} style={{ cursor: 'pointer' }}>Nome da loja</h1> {/* Adiciona o evento de clique */}
             {authenticatedUser ? (
               <div className="user-section">
                 <span className="user-name" onClick={toggleDropdown}>
