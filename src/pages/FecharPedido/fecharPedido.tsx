@@ -1,68 +1,83 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { apiGet, STATUS_CODE } from "../../api/RestClient";
+import { apiGet, apiPost, STATUS_CODE } from "../../api/RestClient";
 import { IEndereco } from "./types";
 import "./fecharPedido.css";
-import Botao from "../../components/Botao/botao";
+import EnderecoModal from "../../components/EnderecoModal/EnderecoModal";
+import { Button } from "@mui/material";
 
 const FecharPedido: FC = () => {
-  const { id } = useParams<{ id: string }>(); // Certifique-se de que id seja do tipo string
-  const [endereco, setEndereco] = useState<IEndereco[]>([]);
-  const [clienteStore, setClienteStore] = useState<any>()
-
-  const carregarEndereco = async () => {
-    console.log("entrou");
-    const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
-    try {
-      if (!cliente?.id) {
-        console.log("ID não definido");
-        return;
-      }
-
-      const clienteId = parseInt(cliente.id); // Converte o id para número inteiro, se necessário
-      const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${clienteId}`);
-      
-      if (response.status === STATUS_CODE.OK) {
-        console.log("Dados de endereço carregados com sucesso:", response.data);
-        if (response.data && response.data.length > 0) {
-          setEndereco(response.data);
-        } else {
-          console.log("Nenhum endereço encontrado");
-        }
-      } else {
-        console.error("Erro ao carregar endereços, status:", response.status);
-      }
-    } catch (error) {
-      console.error("Erro ao carregar endereço:", error);
-    }
-  };
+  const { id } = useParams<{ id: string }>();
+  const [enderecos, setEnderecos] = useState<IEndereco[]>([]);
+  const [clienteStore, setClienteStore] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-      carregarEndereco();
-    
+    const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
+    if (cliente?.id) {
+      setClienteStore(cliente);
+    } else {
+      console.log("Cliente não autenticado ou ID não definido");
+    }
   }, []);
 
   useEffect(() => {
-    console.log("Estado de endereco atualizado:", endereco);
-  }, [endereco]);
+    if (clienteStore?.id) {
+      carregarEnderecos();
+    }
+  }, [clienteStore]);
+
+  const carregarEnderecos = async () => {
+    const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${clienteStore.id}`);
+    if (response.status === STATUS_CODE.OK) {
+      setEnderecos(response.data);
+    } else {
+      console.error("Erro ao carregar endereços, status:", response.status);
+    }
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSaveAddress = async (novoEndereco: { rua: string, bairro: string, cidade: string, estado: string }) => {
+    try {
+      const response = await apiPost('/enderecos/criarEndereco', {
+        ...novoEndereco,
+        clienteId: clienteStore.id
+      });
+  
+      if (response.status === STATUS_CODE.CREATED) {
+        setEnderecos([...enderecos, response.data]);
+      } else {
+        console.error('Erro ao salvar o endereço, status:', response.status);
+      }
+    } catch (error) {
+      console.error('Erro ao salvar o endereço:', error);
+    }
+  
+    handleCloseModal();
+  };
 
   return (
     <>
-      {endereco.length > 0 ? (
-        endereco.map((endereco: IEndereco) => (
+      {enderecos.length > 0 ? (
+        enderecos.map((endereco: IEndereco) => (
           <div className="container-fechar-pedido" key={endereco.id}>
             <fieldset className="endereco">
               <legend>Endereço de entrega</legend>
               <div>
-                <input type="checkbox" id="endereco" name="endereco" />
-                <label htmlFor="endereco">Enviar no meu endereço atual</label>
+                <input type="checkbox" id={`endereco-${endereco.id}`} name="endereco" />
+                <label htmlFor={`endereco-${endereco.id}`}>Enviar no meu endereço atual</label>
                 <p>{endereco.rua}, {endereco.bairro}, {endereco.cidade}, {endereco.estado}</p>
               </div>
               <hr />
               <div className="novo-endereco">
-                <p>
-                  <a href="/novoEndereco">Adicionar novo endereço</a>
-                </p>
+                <Button variant="contained" onClick={handleOpenModal}>Adicionar novo endereço</Button>
               </div>
             </fieldset>
             <fieldset className="forma-pagamento">
@@ -85,9 +100,13 @@ const FecharPedido: FC = () => {
       ) : (
         <div>Carregando dados...</div>
       )}
+      <EnderecoModal
+        aberto={isModalOpen}
+        onFechar={handleCloseModal}
+        onSalvar={handleSaveAddress}
+      />
     </>
   );
 };
 
 export default FecharPedido;
-

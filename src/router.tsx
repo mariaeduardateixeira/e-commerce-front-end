@@ -7,7 +7,6 @@ import Categoria from "./components/Categoria";
 import Produtos from "./pages/Produtos/produto";
 import SearchResults from "./pages/SearchResults";
 import FecharPedido from "./pages/FecharPedido/fecharPedido";
-import NovoEndereco from "./pages/NovoEndereco/novoEndereco";
 import Clientes from "./components/Clientes/clientes";
 
 
@@ -21,7 +20,6 @@ const Router: FC = () => {
       <Route path="/categoria/:categoria" element={<Categoria />} />
       <Route path="/search" element={<SearchResults />} /> {/* Rota para os resultados de pesquisa */}
       <Route path="/fecharPedido/" element={<FecharPedido />} />
-      <Route path="/novoEndereco" element={<NovoEndereco />} />
       <Route path="/clientes/" element={<Clientes/>}/>
     </Routes>
   );
