@@ -65,41 +65,47 @@ const FecharPedido: FC = () => {
 
   return (
     <>
-      {enderecos.length > 0 ? (
-        enderecos.map((endereco: IEndereco) => (
-          <div className="container-fechar-pedido" key={endereco.id}>
-            <fieldset className="endereco">
-              <legend>Endereço de entrega</legend>
-              <div>
-                <input type="checkbox" id={`endereco-${endereco.id}`} name="endereco" />
-                <label htmlFor={`endereco-${endereco.id}`}>Enviar no meu endereço atual</label>
-                <p>{endereco.rua}, {endereco.bairro}, {endereco.cidade}, {endereco.estado}</p>
+      <div className="div-central-fieldset">
+        <fieldset className="fieldset">
+          <legend>Endereço de entrega</legend>
+          {enderecos.length > 0 ? (
+            enderecos.map((endereco: IEndereco) => (
+              <div className="container-fechar-pedido" key={endereco.id}>
+                <fieldset className="endereco">
+                  <div>
+                    <input type="checkbox" id="endereco" name="endereco" />
+                    <p>{endereco.rua}, {endereco.bairro}, {endereco.cidade}, {endereco.estado}</p>
+                  </div>
+                </fieldset>
+        
               </div>
-              <hr />
-              <div className="novo-endereco">
+            ) )
+          ) : (
+            <div>Carregando dados...</div>
+          )}
+        </fieldset>
+      </div>
+      <div className="novo-endereco">
                 <Button variant="contained" onClick={handleOpenModal}>Adicionar novo endereço</Button>
               </div>
+     <div className="container-fechar-pedido">
+        <fieldset className="forma-pagamento">
+                <legend>Forma de pagamento</legend>
+                <div>
+                  <input type="checkbox" id="pix" name="pix" />
+                  <label htmlFor="pix">Pix</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="debito" name="debito" />
+                  <label htmlFor="debito">Débito</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="credito" name="credito" />
+                  <label htmlFor="credito">Crédito</label>
+                </div>
+      
             </fieldset>
-            <fieldset className="forma-pagamento">
-              <legend>Forma de pagamento</legend>
-              <div>
-                <input type="checkbox" id="pix" name="pix" />
-                <label htmlFor="pix">Pix</label>
-              </div>
-              <div>
-                <input type="checkbox" id="debito" name="debito" />
-                <label htmlFor="debito">Débito</label>
-              </div>
-              <div>
-                <input type="checkbox" id="credito" name="credito" />
-                <label htmlFor="credito">Crédito</label>
-              </div>
-            </fieldset>
-          </div>
-        ))
-      ) : (
-        <div>Carregando dados...</div>
-      )}
+        </div>
       <EnderecoModal
         aberto={isModalOpen}
         onFechar={handleCloseModal}
