@@ -20,6 +20,7 @@ const FecharPedido: FC = () => {
       const data = {
         clienteId: cliente.id,
         enderecoId: enderecoId,
+        
       }
 
       localStorage.setItem("resumo", JSON.stringify(data));
