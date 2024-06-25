@@ -10,6 +10,7 @@ import { ICarrinhoStore } from "../../store/CarrinhoStore/type";
 const CarrinhoDrawer: FC = () => {
     const [openDrawer, setOpenDrawer] = useState(false);
     const [carrinho, setCarrinho] = useState<ICarrinhoStore[]>(carregarCarrinho());
+    const totalCarrinho = JSON.parse(localStorage.getItem("calcularTotal") || "{}");
 
     const atualizarQuantidadeCarrinho = (item: ICarrinhoStore) => {
         const carrinhoAtualizado = addCarrinho(item);

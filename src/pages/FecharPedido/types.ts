@@ -5,3 +5,18 @@ export interface IEndereco {
   cidade: string,
   estado: string,
 }
+
+export const formasPagamento = [
+  {
+    valor: "BOLETO",
+    texto: "Boleto"
+  },
+  {
+    valor: "PIX",
+    texto: "Pix"
+  },
+  {
+    valor: "CREDITO",
+    texto: "Crédito"
+  }
+]

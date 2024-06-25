@@ -41,7 +41,7 @@ const ProdutosDetalhes: FC = () =>{
           <img src={produto?.imagemGrande} />
         </div> }
         <div className="dados-produto">
-          { <div className="nome-produto">{produto?.descricao}</div> }
+          { <div className="nome-produto">{produto?.nome}</div> }
           <hr />
           <div className="descricao-produto">{produto?.descricao}</div>
           {/* <div className="codigo-produto">{`Código do produto: ${produto?.codigoProduto}`}</div> */}
