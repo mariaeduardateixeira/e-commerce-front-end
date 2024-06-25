@@ -40,7 +40,7 @@ const Categoria: FC = () => {
                 <img src={produto.imagemPequena} alt={produto.nome} />
               </a>
               <div className="produto_nome">
-                <p>{produto.descricao}</p>
+                <p>{produto.nome}</p>
               </div>
               <div className="produto_preco">
                 <p>{produto.preco}</p>
