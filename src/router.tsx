@@ -9,6 +9,7 @@ import SearchResults from "./pages/SearchResults";
 import FecharPedido from "./pages/FecharPedido/fecharPedido";
 import Clientes from "./components/Clientes/clientes";
 import Enderecos from "./pages/Enderecos/Enderecos";
+import Resumo from "./pages/ResumoCompra/resumo";
 
 
 
@@ -20,10 +21,11 @@ const Router: FC = () => {
       <Route path="/produtos" element={<Produtos />} />
       <Route path="/produtos/:id" element={<ProdutosDetalhes />} />
       <Route path="/categoria/:categoria" element={<Categoria />} />
-      <Route path="/search" element={<SearchResults />} /> {/* Rota para os resultados de pesquisa */}
+      <Route path="/search" element={<SearchResults />} />
       <Route path="/fecharPedido/" element={<FecharPedido />} />
       <Route path="/clientes/" element={<Clientes/>}/>
       <Route path="/enderecos/" element={<Enderecos/>}/>
+      <Route path="/resumo/" element={<Resumo/>}/>
     </Routes>
   );
 };

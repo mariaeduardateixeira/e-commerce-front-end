@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, Button } from '@mui/material';
-import { EnderecosResponseDom } from '../../pages/Enderecos/types';
+import { IEndereco } from '../../pages/Enderecos/types';
 import { apiPut, STATUS_CODE } from '../../api/RestClient';
 
 interface EnderecoModalProps {
   aberto: boolean;
-  endereco?: EnderecosResponseDom;
+  endereco?: IEndereco;
   onFechar: () => void;
   onSalvar: (endereco: { rua: string; bairro: string; cidade: string; estado: string; }) => void;
 }

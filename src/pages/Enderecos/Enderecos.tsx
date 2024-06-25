@@ -1,17 +1,16 @@
-// pages/Enderecos/Enderecos.tsx
 import React, { useEffect, useState } from 'react';
 import { apiGet, apiPost, apiPut, apiDelete, STATUS_CODE } from '../../api/RestClient';
-import { EnderecosResponseDom } from './types';
+import { IEndereco } from './types';
 import EnderecoModal from '../../components/EnderecoModal/EnderecoModal';
 import { Button, List, ListItem, ListItemText, Typography, IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const Enderecos: React.FC = () => {
-  const [enderecos, setEnderecos] = useState<EnderecosResponseDom[]>([]);
+  const [enderecos, setEnderecos] = useState<IEndereco[]>([]);
   const [clienteStore, setClienteStore] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [enderecoAtual, setEnderecoAtual] = useState<EnderecosResponseDom | null>(null);
+  const [enderecoAtual, setEnderecoAtual] = useState<IEndereco | null>(null);
 
   useEffect(() => {
     const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
@@ -37,7 +36,7 @@ const Enderecos: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  const abrirModalParaEditar = (endereco: EnderecosResponseDom) => {
+  const abrirModalParaEditar = (endereco: IEndereco) => {
     setEnderecoAtual(endereco);
     setIsModalOpen(true);
   };
@@ -122,4 +121,4 @@ const Enderecos: React.FC = () => {
 };
 
 export default Enderecos;
-export {}; // Exportação vazia para garantir que o arquivo seja tratado como um módulo
+export {};
