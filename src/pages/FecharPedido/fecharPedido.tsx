@@ -1,19 +1,32 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { apiGet, apiPost, STATUS_CODE } from "../../api/RestClient";
-import { IEndereco } from "./types";
+import { IEndereco, formasPagamento } from "./types";
 import "./fecharPedido.css";
 import EnderecoModal from "../../components/EnderecoModal/EnderecoModal";
-import { Button } from "@mui/material";
+import { Button, Radio } from "@mui/material";
+import Botao from "../../components/Botao/botao";
+
 
 const FecharPedido: FC = () => {
   const { id } = useParams<{ id: string }>();
   const [enderecos, setEnderecos] = useState<IEndereco[]>([]);
   const [clienteStore, setClienteStore] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [enderecoId, setEnderecoId] = useState<number>()
+  const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
+
+  const finalizarCompra = () => {
+      const data = {
+        clienteId: cliente.id,
+        enderecoId: enderecoId,
+      }
+
+      localStorage.setItem("resumo", JSON.stringify(data));
+       window.location.href = `/resumo`
+  }
 
   useEffect(() => {
-    const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
     if (cliente?.id) {
       setClienteStore(cliente);
     } else {
@@ -73,7 +86,11 @@ const FecharPedido: FC = () => {
               <div className="container-fechar-pedido" key={endereco.id}>
                 <fieldset className="endereco">
                   <div>
-                    <input type="checkbox" id="endereco" name="endereco" />
+                    <Radio 
+                      checked={endereco.id === (enderecoId || 0)}
+                       onChange={() => {
+                      setEnderecoId(endereco.id);
+                    }}/>
                     <p>{endereco.rua}, {endereco.bairro}, {endereco.cidade}, {endereco.estado}</p>
                   </div>
                 </fieldset>
@@ -91,21 +108,27 @@ const FecharPedido: FC = () => {
      <div className="container-fechar-pedido">
         <fieldset className="forma-pagamento">
                 <legend>Forma de pagamento</legend>
-                <div>
-                  <input type="checkbox" id="pix" name="pix" />
-                  <label htmlFor="pix">Pix</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="debito" name="debito" />
-                  <label htmlFor="debito">Débito</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="credito" name="credito" />
-                  <label htmlFor="credito">Crédito</label>
-                </div>
+                  {formasPagamento.map(f => (
+                    <div>
+                    <Radio 
+                     
+                       onChange={() => {
+                     
+                    }}/>
+                    <label htmlFor="pix">{f.texto}</label>
+                  </div>
+                  ))}
+
       
             </fieldset>
         </div>
+        <div className="botao-carrinho">
+                            <Botao
+                                label="Finalizar Compra"
+                                onClick={() => {finalizarCompra()}}
+                            />
+                        </div>
+
       <EnderecoModal
         aberto={isModalOpen}
         onFechar={handleCloseModal}
