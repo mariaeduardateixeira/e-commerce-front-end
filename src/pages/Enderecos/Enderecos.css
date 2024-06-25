@@ -1,0 +1,35 @@
+.div-central {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .h1-titulo {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .lista-enderecos {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .lista-enderecos li {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .lista-enderecos li p {
+    margin: 0;
+    color: #555;
+  }
+  
+  .mensagem-vazia {
+    text-align: center;
+    color: #999;
+  }
+  
