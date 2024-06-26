@@ -169,9 +169,9 @@ const Resumo: FC = () => {
   const salvarPedido = async () => {
     const data = {
       clienteId: clienteStore.id,
-      enderecoId: enderecos,
+      enderecoId: enderecos?.id,
       forma_pagamento: formaPagamento,
-      itens: carrinho.map((item: ICarrinhoStore) => {
+      carrinho: carrinho.map((item: ICarrinhoStore) => {
         return {
           produtoId: item.id,
           clienteId: clienteStore.id,

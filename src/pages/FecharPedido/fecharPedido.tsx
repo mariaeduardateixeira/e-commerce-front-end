@@ -24,7 +24,7 @@ const FecharPedido: FC = () => {
       enderecoId: enderecoId,
       forma_pagamento: pagamento,
     };
-    console.log("dayafyfayf",data);
+    
     localStorage.setItem("resumo", JSON.stringify(data));
     window.location.href = `/resumo`;
   };
@@ -70,6 +70,7 @@ const FecharPedido: FC = () => {
   
       if (response.status === STATUS_CODE.CREATED) {
         setEnderecos([...enderecos, response.data]);
+        console.log("dayafyfayf",response.data);
       } else {
         console.error('Erro ao salvar o endereço, status:', response.status);
       }
