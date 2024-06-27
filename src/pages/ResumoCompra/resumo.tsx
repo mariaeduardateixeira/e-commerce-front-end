@@ -174,7 +174,6 @@ const Resumo: FC = () => {
       carrinho: carrinho.map((item: ICarrinhoStore) => {
         return {
           produtoId: item.id,
-          clienteId: clienteStore.id,
           quantidade: item.quantidade,
           valor: item.valor,
         }

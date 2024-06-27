@@ -134,7 +134,7 @@ const FecharPedido: FC = () => {
                                 onClick={() => {finalizarCompra()}}
                             />
                         </div>
-                        
+  
 
       <EnderecoModal
         aberto={isModalOpen}
