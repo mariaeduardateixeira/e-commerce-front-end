@@ -2,15 +2,16 @@
 .div-login {
   width: 90%;
   max-width: 500px;
-  margin: 0 auto; /* Centraliza o contêiner na tela */
-  padding: 30px;
+  margin: 10px auto; /* Centraliza o contêiner na tela */
+  padding: 25px;
   background-color: #ffffff; /* Cor de fundo branca */
   border: 1px solid #cccccc; /* Borda mais suave */
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra para destaque */
   display: flex;
   flex-direction: column; /* Disposição vertical dos elementos */
-  gap: 15px; /* Espaçamento entre os elementos */
+  gap: 10px; /* Espaçamento entre os elementos */
+  align-items: center; /* Centraliza os itens no eixo horizontal */
 }
 
 /* Estilos para cada linha de entrada */
@@ -38,9 +39,9 @@
   width: 100%; /* Botão ocupa toda a largura disponível */
   max-width: 200px; /* Define um máximo de largura para o botão */
   padding: 10px;
-  margin: 20px auto; /* Centraliza o botão */
+  margin: 10px auto; /* Centraliza o botão */
   border: none;
-  background-color: #007bff;
+  background-color: #73283D;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -51,7 +52,7 @@
 }
 
 .div-login-linha button:hover {
-  background-color: #0056b3;
+  background-color: #5d0e24;
   transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
 }
 
