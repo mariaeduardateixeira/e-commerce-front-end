@@ -3,6 +3,7 @@ import axios from 'axios';
 import './LoginModal.css';
 import { STATUS_CODE, apiPost } from '../../api/RestClient';
 import { TextField, InputAdornment, IconButton, InputLabel, Button } from "@mui/material";
+import Botao from "../../components/Botao/botao";
 
 interface IProps {
   isOpen: boolean;

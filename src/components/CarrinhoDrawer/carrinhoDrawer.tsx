@@ -40,6 +40,7 @@ const CarrinhoDrawer: FC = () => {
             <Drawer 
                 open={openDrawer} 
                 anchor="right" 
+                onClose={() => setOpenDrawer(false)}  // Adicionando onClose
                 classes={{ paper: "tamanho-paper-drawer" }}
             >
                 <Box paddingLeft="10px" paddingRight="10px">
@@ -56,7 +57,7 @@ const CarrinhoDrawer: FC = () => {
                         </Box>
                     ) : (
                         carrinho.map((c: ICarrinhoStore) => (
-                            <Grid container key={c.id} alignItems="center">
+                            <Grid container key={c.id} alignItems="center" className="carrinho-item">
                                 <Grid className="box-imagem" item>
                                     <img className="imagem" src={c.imagemPequena} alt="produto" />
                                 </Grid>
@@ -89,15 +90,20 @@ const CarrinhoDrawer: FC = () => {
                     )}
                 </Box>
                 {carrinho.length > 0 && (
-                    <Box paddingLeft="10px" paddingRight="10px">
+                    <Box paddingLeft="10px" paddingRight="10px" className="total-carrinho">
                         <Typography variant="h6">
                             Total: {calcularTotal().toFixed(2)}
                         </Typography>
-                        <div className="botao-carrinho">
-                            <Botao
-                                label="Fechar pedido"
-                                onClick={() => window.location.href = `/fecharPedido`}
-                            />
+                        <div className="frete-info-botao">
+                            <Typography variant="body2" color="textSecondary" className="frete-info">
+                                O valor da entrega será calculado na sacola
+                            </Typography>
+                            <div className="botao-carrinho">
+                                <Botao
+                                    label="Fechar pedido"
+                                    onClick={() => window.location.href = `/fecharPedido`}
+                                />
+                            </div>
                         </div>
                     </Box>
                 )}

@@ -1,48 +1,71 @@
-.carrinho{
+.carrinho {
   display: flex;
   align-items: center;
 }
 
-.tamanho-paper-drawer{
+.tamanho-paper-drawer {
   width: 600px;
 }
 
-.box-imagem{
+.box-imagem {
   min-width: 60px;
   max-width: 60px;
 }
 
-.imagem{
+.imagem {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 
-.container-botao{
+.container-botao {
   display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adicione um espaço acima do botão */
 }
 
-.botao-carrinho{
-  width: 50%;
-  justify-items: right;
-  justify-content: right;
-  align-items: end;
+.botao-carrinho {
+  width: 100%; /* O botão ocupa 100% da largura */
+  display: flex;
+  justify-content: center;
 }
 
-.box-detalhes{
+.box-detalhes {
   font-weight: lighter;
   font-size: small;
   width: 20%;
 }
 
-.box-quantidade{
+.box-quantidade {
   width: 35%;
 }
 
-.box-preco{
+.box-preco {
   width: 20%;
 }
 
-.box-remover{
+.box-remover {
   width: 10%;
+}
+
+.total-carrinho {
+  margin-top: 20px; /* Espaçamento acima do total */
+  margin-bottom: 10px; /* Espaçamento abaixo do total */
+}
+
+.carrinho-item {
+  margin-bottom: 10px; /* Espaçamento entre os itens do carrinho */
+}
+
+.frete-info {
+  text-align: center; /* Centraliza o texto horizontalmente */
+  margin-bottom: 10px; /* Espaçamento abaixo da frase */
+}
+
+.frete-info-botao {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os itens no eixo horizontal */
+  justify-content: center; /* Centraliza os itens no eixo vertical */
+  margin-top: 20px; /* Espaçamento acima do contêiner */
 }
