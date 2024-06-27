@@ -15,8 +15,6 @@ const FecharPedido: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [enderecoId, setEnderecoId] = useState<number>();
 
-  const [pagamento, setPagamento] = useState<string>();;
-
   const [pagamento, setPagamento] = useState<string>();
   const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
 
@@ -30,16 +28,6 @@ const FecharPedido: FC = () => {
     localStorage.setItem("resumo", JSON.stringify(data));
     window.location.href = `/resumo`;
 
-  };
- 
-    const data = {
-      clienteId: cliente.id,
-      enderecoId: enderecoId,
-      forma_pagamento: pagamento,
-    };
-    
-    localStorage.setItem("resumo", JSON.stringify(data));
-    window.location.href = `/resumo`;
   };
  
 
@@ -83,7 +71,6 @@ const FecharPedido: FC = () => {
   
       if (response.status === STATUS_CODE.CREATED) {
         setEnderecos([...enderecos, response.data]);
-        console.log("dayafyfayf",response.data);
         console.log("dayafyfayf",response.data);
       } else {
         console.error('Erro ao salvar o endereço, status:', response.status);
@@ -131,9 +118,7 @@ const FecharPedido: FC = () => {
                     <div>
                     <Radio 
                       checked={f.valor === (pagamento || 0)}
-                      checked={f.valor === (pagamento || 0)}
                        onChange={() => {
-                      setPagamento(f.valor);
                       setPagamento(f.valor);
                     }}/>
                     <label htmlFor="pix">{f.texto}</label>
@@ -149,7 +134,6 @@ const FecharPedido: FC = () => {
                                 onClick={() => {finalizarCompra()}}
                             />
                         </div>
-                        
                         
 
       <EnderecoModal
