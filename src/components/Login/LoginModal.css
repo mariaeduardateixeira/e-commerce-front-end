@@ -61,7 +61,7 @@
   padding: 10px; /* Padding reduzido para um botão menor */
   margin: 20px auto; /* Centraliza e adiciona espaçamento vertical */
   border: none;
-  background-color: #007bff;
+  background-color: #73283D;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -70,7 +70,7 @@
 }
 
 .modal-content button:hover {
-  background-color: #0056b3;
+  background-color: #5d0e24;
   transform: translateY(-2px);
 }
 
