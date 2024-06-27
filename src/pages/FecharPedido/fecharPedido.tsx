@@ -13,19 +13,23 @@ const FecharPedido: FC = () => {
   const [enderecos, setEnderecos] = useState<IEndereco[]>([]);
   const [clienteStore, setClienteStore] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [enderecoId, setEnderecoId] = useState<number>()
+  const [enderecoId, setEnderecoId] = useState<number>();
+
+  const [pagamento, setPagamento] = useState<string>();
   const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
 
   const finalizarCompra = () => {
-      const data = {
-        clienteId: cliente.id,
-        enderecoId: enderecoId,
-        
-      }
+    const data = {
+      clienteId: cliente.id,
+      enderecoId: enderecoId,
+      forma_pagamento: pagamento,
+    };
+    
+    localStorage.setItem("resumo", JSON.stringify(data));
+    window.location.href = `/resumo`;
 
-      localStorage.setItem("resumo", JSON.stringify(data));
-       window.location.href = `/resumo`
-  }
+  };
+ 
 
   useEffect(() => {
     if (cliente?.id) {
@@ -67,6 +71,7 @@ const FecharPedido: FC = () => {
   
       if (response.status === STATUS_CODE.CREATED) {
         setEnderecos([...enderecos, response.data]);
+        console.log("dayafyfayf",response.data);
       } else {
         console.error('Erro ao salvar o endereço, status:', response.status);
       }
@@ -112,9 +117,9 @@ const FecharPedido: FC = () => {
                   {formasPagamento.map(f => (
                     <div>
                     <Radio 
-                     
+                      checked={f.valor === (pagamento || 0)}
                        onChange={() => {
-                     
+                      setPagamento(f.valor);
                     }}/>
                     <label htmlFor="pix">{f.texto}</label>
                   </div>
@@ -129,6 +134,7 @@ const FecharPedido: FC = () => {
                                 onClick={() => {finalizarCompra()}}
                             />
                         </div>
+                        
 
       <EnderecoModal
         aberto={isModalOpen}
