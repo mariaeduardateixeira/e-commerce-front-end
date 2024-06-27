@@ -1,72 +1,114 @@
 @charset "UTF-8";
 
-
+/* Importação de fontes */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap');
 
-
-:root{
+/* Variáveis globais */
+:root {
   --fontePrincipal: "Montserrat", sans-serif;
   --fonteSecundaria: "Raleway", sans-serif;
-  --vermelhoPrincipal: #73283D; 
+  --corPrincipal: #73283D;
+  --corSecundaria: #555;
+  --corFundoMenu: #73283D;
+  --corTextoMenu: #fff;
+  --corHoverMenu: #bfbfbf93;
+  --corHoverTextoMenu: var(--corPrincipal);
+  --radiusBorda: 7px;
+  --paddingInput: 7px 20px;
+  --larguraInput: 300px;
+  --paddingMenu: 14px 16px;
 }
 
-*{
+/* Reset básico */
+* {
   font-family: var(--fontePrincipal);
-}
-
-.menu{
-  padding-top: 7px;
-  padding-bottom: 1.5%;
-}
-
-.menu h1{
-  font-family: var(--fonteSecundaria);
-  color: #555;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.068);
-}
-
-.teste{
   margin: 0;
-  overflow: hidden;
-  background-color: #73283D;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.menu .teste ul{
-  list-style-type: none;
-  margin: 10;
-  margin-top: 5px;
+/* Estilos do menu */
+.menu {
+  padding: 7px 0;
+  background-color: var(--corFundoMenu);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.068);
 }
 
-.menu .teste li{
-  float: left;
+.menu h1 {
+  font-family: var(--fonteSecundaria);
+  color: var(--corSecundaria);
+  margin: 0; /* Remove o espaço padrão */
 }
 
-.teste li a{
+.teste {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--corFundoMenu);
+  padding: 0 15px;
+}
+
+.menu .teste ul {
+  display: flex;
+  list-style: none;
+}
+
+.menu .teste li {
+  margin-right: 10px; /* Espaçamento entre itens do menu */
+  margin-bottom: 0; /* Remove qualquer margem inferior */
+}
+
+.teste li a {
   display: block;
-  color: #fff;
-  /* color: #f7941d;*/
+  color: var(--corTextoMenu);
   text-decoration: none;
   text-align: center;
-  padding: 14px 16px;
+  padding: var(--paddingMenu);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para hover */
 }
 
-.menu li a:hover{
-  background-color: #bfbfbf93;
-  color: var(--vermelhoPrincipal);
-  border-radius: 7px;
-  font-weight: bolder;
+.menu li a:hover {
+  background-color: var(--corHoverMenu);
+  color: var(--corHoverTextoMenu);
+  border-radius: var(--radiusBorda);
+  font-weight: bold; /* Em vez de bolder, que é desaconselhado */
 }
 
-.teste input{
-  margin-right: 30px;
-  margin-bottom: 10px;
-  width: 300px;
-  padding: 7px 7px;
-  padding-left: 20px;
+/* Estilos do campo de entrada */
+.teste input {
+  width: var(--larguraInput);
+  padding: var(--paddingInput);
   border-radius: 20px;
   border: none;
-  border-style: none;
-  float: right;
+  outline: none; /* Remove o outline padrão */
+  margin-bottom: 10px;
+  transition: box-shadow 0.3s ease; /* Transição suave para foco */
+}
+
+.teste input:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Adiciona um efeito de sombra no foco */
+}
+
+/* Responsividade básica */
+@media (max-width: 600px) {
+  .teste {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu .teste ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+
+  .menu .teste li {
+    margin: 0;
+  }
+
+  .teste input {
+    width: 100%; /* Ajusta a largura para o tamanho do container */
+    margin-right: 0; /* Remove a margem lateral */
+  }
 }
