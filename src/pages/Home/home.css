@@ -137,6 +137,7 @@ body{
 
 .card-lancamentos{
   margin-top: 18px;
+  margin-bottom: 20px;
   color: #555;
   font-family: var(--fonteSecundaria);
   text-align: center;
