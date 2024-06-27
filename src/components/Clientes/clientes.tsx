@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Typography } from '@mui/material';
 import { apiPost, STATUS_CODE } from '../../api/RestClient';
 import './clientes.css';
 
@@ -25,14 +25,17 @@ const Clientes: FC = () => {
         if(response.status === STATUS_CODE.CREATED){
           alert("Cliente cadastrado com sucesso!");
         }else {
-            alert(`Erro ao cadastrar cliente: ${response.message}`);
+            alert(`Erro ao cadastrar cliente`);
         }
       console.log(">>>>",data)
     };
 
     return (
         <>
-            <div className="div-login">
+        <div className="div-login">
+        <Typography>
+            Cadastre-se!
+        </Typography>
                 <div className="div-login-linha">
                     <TextField
                         fullWidth

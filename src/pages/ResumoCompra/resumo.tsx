@@ -183,7 +183,11 @@ const Resumo: FC = () => {
     console.log("DATA>>>>", data);
    
 
+<<<<<<< HEAD
     const response = await apiPost(`/pedidos/criarPedido`, data);
+=======
+    const response = await apiPost(`/pedidos/criar/${clienteStore.id}`, data);
+>>>>>>> 302443243584bff51f6c1760a8167ca8469f7674
       if(response.status === STATUS_CODE.CREATED){
           alert("Pedido gerado com sucesso");
       }else{
@@ -233,7 +237,10 @@ const Resumo: FC = () => {
       console.log("Nenhum endereço armazenado encontrado");
     }
 
+<<<<<<< HEAD
     console.log(">>>>forma de pagamento",storedResumo)
+=======
+>>>>>>> 302443243584bff51f6c1760a8167ca8469f7674
     if (storedResumo.forma_pagamento) {
       setFormaPagamento(storedResumo.forma_pagamento);
     } else {
