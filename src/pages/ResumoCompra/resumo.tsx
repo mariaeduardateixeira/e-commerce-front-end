@@ -175,7 +175,7 @@ const Resumo: FC = () => {
         return {
           produtoId: item.id,
           quantidade: item.quantidade,
-          valor: item.valor,
+          valor: item.preco,
         }
       })
     };
