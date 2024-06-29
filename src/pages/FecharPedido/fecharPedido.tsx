@@ -69,6 +69,7 @@ const FecharPedido: FC = () => {
         clienteId: clienteStore.id
       });
   
+      
       if (response.status === STATUS_CODE.CREATED) {
         setEnderecos([...enderecos, response.data]);
         console.log("dayafyfayf",response.data);
