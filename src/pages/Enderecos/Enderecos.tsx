@@ -36,10 +36,10 @@ const Enderecos: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  const abrirModalParaEditar = (endereco: IEndereco) => {
-    setEnderecoAtual(endereco);
-    setIsModalOpen(true);
-  };
+  // const abrirModalParaEditar = (endereco: IEndereco) => {
+  //   setEnderecoAtual(endereco);
+  //   setIsModalOpen(true);
+  // };
 
   const fecharModal = () => {
     setIsModalOpen(false);
@@ -49,35 +49,10 @@ const Enderecos: React.FC = () => {
     const enderecoParaSalvar = enderecoAtual ? { ...endereco, id: enderecoAtual.id } : endereco;
     const apiEndpoint = enderecoAtual ? `/enderecos/atualizarEndereco/${enderecoAtual.id}` : '/enderecos/criarEndereco';
   
-    try {
-      const response = await (enderecoAtual ? apiPut : apiPost)(apiEndpoint, {
-        ...enderecoParaSalvar,
-        clienteId: clienteStore.id
-      });
-  
-      if (response.status === STATUS_CODE.CREATED || response.status === STATUS_CODE.OK) {
-        carregarEnderecos(clienteStore.id);
-        fecharModal();
-      } else {
-        console.error('Erro ao salvar o endereço, status:', response.status);
-      }
-    } catch (error) {
-      console.error('Erro ao salvar o endereço:', error);
-    }
+    
   };
 
-  const deletarEndereco = async (id: number) => {
-    try {
-      const response = await apiDelete(`/enderecos/deletar/${id}`);
-      if (response.status === STATUS_CODE.OK) {
-        setEnderecos(enderecos.filter((endereco) => endereco.id !== id));
-      } else {
-        console.error('Erro ao deletar o endereço, status:', response.status);
-      }
-    } catch (error) {
-      console.error('Erro ao deletar o endereço:', error);
-    }
-  };
+  
 
   return (
     <div>
@@ -92,12 +67,8 @@ const Enderecos: React.FC = () => {
           {enderecos.map((endereco) => (
             <ListItem key={endereco.id} secondaryAction={
               <>
-                <IconButton edge="end" aria-label="editar" onClick={() => abrirModalParaEditar(endereco)}>
-                  <EditIcon />
-                </IconButton>
-                <IconButton edge="end" aria-label="deletar" onClick={() => deletarEndereco(endereco.id)}>
-                  <DeleteIcon />
-                </IconButton>
+                
+               
               </>
             }>
               <ListItemText

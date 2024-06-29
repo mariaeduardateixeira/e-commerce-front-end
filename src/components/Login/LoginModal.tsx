@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './LoginModal.css';
 import { STATUS_CODE, apiPost } from '../../api/RestClient';
-import { TextField, InputAdornment, IconButton, InputLabel, Button } from "@mui/material";
-import Botao from "../../components/Botao/botao";
+import { Button } from "@mui/material";
 
 interface IProps {
   isOpen: boolean;
   onClose: () => void;
-  onAuthenticated: (email: string, id: number) => void;
+  onAuthenticated: (username: string, idCliente: number) => void;
 }
 
 const LoginModal: React.FC<IProps> = ({ isOpen, onClose, onAuthenticated }) => {
   const [password, setPassword] = useState('');
-  const [id, setId] = useState<number | null>(null);
-  const [error, setError] = useState('');
   const [email, setEmail] = useState<string>('');
-  const [username, setUsername] = useState('');
+  const [error, setError] = useState('');
 
   const salvarCliente = async () => {
     const data = {
@@ -24,23 +20,22 @@ const LoginModal: React.FC<IProps> = ({ isOpen, onClose, onAuthenticated }) => {
       senha: password
     };
 
-    console.log(">>>", data);
+    console.log("Dados enviados:", data); // Verificar dados enviados na requisição
 
-
+    try {
       const response = await apiPost("/clientes/autenticar/", data);
-      if (response.status === 200) {
-        alert("Cliente autenticado com sucesso!");
-      }
-      if (response.status === 200) {
-        const idCliente = response.data; // Assume que o ID do cliente é retornado pelo backend
-    console.log(">>>> dados: ",idCliente);
-        // Chama a função onAuthenticated com email e idCliente
+      if (response.status === STATUS_CODE.OK) {
+        const idCliente = response.data.id; // Extraindo id do cliente da resposta
+        console.log("ID do Cliente recebido: ", idCliente);
         onAuthenticated(email, idCliente);
         onClose();
       } else {
         setError('Credenciais inválidas. Tente novamente ou cadastre-se.');
       }
-      
+    } catch (error) {
+      console.error('Erro ao autenticar:', error);
+      setError('Erro ao autenticar. Tente novamente mais tarde.');
+    }
   };
 
   if (!isOpen) return null;
@@ -76,13 +71,3 @@ const LoginModal: React.FC<IProps> = ({ isOpen, onClose, onAuthenticated }) => {
 };
 
 export default LoginModal;
-// function apiPost(arg0: string, data: {
-//   nome: string | undefined;
-//   //sobrenome: sobrenome,
-//   //cpf: cpf,
-//   //sexo: genero,
-//   email: string | undefined; senha: string | undefined;
-// }) {
-//   throw new Error('Function not implemented.');
-// }
-

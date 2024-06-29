@@ -7,14 +7,12 @@ import EnderecoModal from "../../components/EnderecoModal/EnderecoModal";
 import { Button, Radio } from "@mui/material";
 import Botao from "../../components/Botao/botao";
 
-
 const FecharPedido: FC = () => {
   const { id } = useParams<{ id: string }>();
   const [enderecos, setEnderecos] = useState<IEndereco[]>([]);
   const [clienteStore, setClienteStore] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [enderecoId, setEnderecoId] = useState<number>();
-
   const [pagamento, setPagamento] = useState<string>();
   const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
 
@@ -27,9 +25,7 @@ const FecharPedido: FC = () => {
     
     localStorage.setItem("resumo", JSON.stringify(data));
     window.location.href = `/resumo`;
-
   };
- 
 
   useEffect(() => {
     if (cliente?.id) {
@@ -41,12 +37,13 @@ const FecharPedido: FC = () => {
 
   useEffect(() => {
     if (clienteStore?.id) {
-      carregarEnderecos();
+      carregarEnderecos(clienteStore.id); // Passar o ID do cliente aqui
     }
   }, [clienteStore]);
 
-  const carregarEnderecos = async () => {
-    const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${clienteStore.id}`);
+  const carregarEnderecos = async (clienteId: string | number) => {
+    console.log(`Carregando endereços para o cliente ID: ${clienteId}`);
+    const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${4}`);
     if (response.status === STATUS_CODE.OK) {
       setEnderecos(response.data);
     } else {
@@ -66,13 +63,11 @@ const FecharPedido: FC = () => {
     try {
       const response = await apiPost('/enderecos/criarEndereco', {
         ...novoEndereco,
-        clienteId: clienteStore.id
+        clienteId: 4
       });
   
-      
       if (response.status === STATUS_CODE.CREATED) {
         setEnderecos([...enderecos, response.data]);
-        console.log("dayafyfayf",response.data);
       } else {
         console.error('Erro ao salvar o endereço, status:', response.status);
       }
@@ -95,48 +90,43 @@ const FecharPedido: FC = () => {
                   <div>
                     <Radio 
                       checked={endereco.id === (enderecoId || 0)}
-                       onChange={() => {
-                      setEnderecoId(endereco.id);
-                    }}/>
+                      onChange={() => {
+                        setEnderecoId(endereco.id);
+                      }}/>
                     <p>{endereco.rua}, {endereco.bairro}, {endereco.cidade}, {endereco.estado}</p>
                   </div>
                 </fieldset>
-        
               </div>
-            ) )
+            ))
           ) : (
             <div>Carregando dados...</div>
           )}
         </fieldset>
       </div>
       <div className="novo-endereco">
-                <Button variant="contained" onClick={handleOpenModal}>Adicionar novo endereço</Button>
-              </div>
-     <div className="container-fechar-pedido">
+        <Button variant="contained" onClick={handleOpenModal}>Adicionar novo endereço</Button>
+      </div>
+      <div className="container-fechar-pedido">
         <fieldset className="forma-pagamento">
-                <legend>Forma de pagamento</legend>
-                  {formasPagamento.map(f => (
-                    <div>
-                    <Radio 
-                      checked={f.valor === (pagamento || 0)}
-                       onChange={() => {
-                      setPagamento(f.valor);
-                    }}/>
-                    <label htmlFor="pix">{f.texto}</label>
-                  </div>
-                  ))}
-
-      
-            </fieldset>
-        </div>
-        <div className="botao-carrinho">
-                            <Botao
-                                label="Finalizar Compra"
-                                onClick={() => {finalizarCompra()}}
-                            />
-                        </div>
-  
-
+          <legend>Forma de pagamento</legend>
+          {formasPagamento.map(f => (
+            <div key={f.valor}>
+              <Radio 
+                checked={f.valor === (pagamento || 0)}
+                onChange={() => {
+                  setPagamento(f.valor);
+                }}/>
+              <label htmlFor="pix">{f.texto}</label>
+            </div>
+          ))}
+        </fieldset>
+      </div>
+      <div className="botao-carrinho">
+        <Botao
+          label="Finalizar Compra"
+          onClick={() => {finalizarCompra()}}
+        />
+      </div>
       <EnderecoModal
         aberto={isModalOpen}
         onFechar={handleCloseModal}
