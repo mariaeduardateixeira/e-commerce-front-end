@@ -26,6 +26,8 @@ const CarrinhoDrawer: FC = () => {
         return carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0);
     };
 
+
+
     return (
         <>
             <div className="carrinho" onClick={() => setOpenDrawer(true)}>
@@ -63,7 +65,7 @@ const CarrinhoDrawer: FC = () => {
                                 </Grid>
                                 <Grid className="box-detalhes" item>
                                     <Box>
-                                        <strong>{c.descricao}</strong>
+                                        <strong>{c.nome}</strong>
                                     </Box>
                                 </Grid>
                                 <Grid className="box-quantidade" item>

@@ -59,15 +59,24 @@ const FecharPedido: FC = () => {
     setIsModalOpen(false);
   };
 
+  const validaçãoCartaoCredito = () =>{
+    
+  }
   const handleSaveAddress = async (novoEndereco: { rua: string, bairro: string, cidade: string, estado: string }) => {
+    if (enderecos.length >= 4) {
+      alert("Você já cadastrou o número máximo de endereços (4).");
+      return;
+    }
     try {
       const response = await apiPost('/enderecos/criarEndereco', {
         ...novoEndereco,
-        clienteId: clienteStore.id
+        clienteId: 4
+        //clienteStore.id
       });
   
       if (response.status === STATUS_CODE.CREATED) {
         setEnderecos([...enderecos, response.data]);
+
       } else {
         console.error('Erro ao salvar o endereço, status:', response.status);
       }
@@ -105,7 +114,7 @@ const FecharPedido: FC = () => {
                       />
                         <p>{endereco.rua}, {endereco.bairro}, {endereco.cidade}, {endereco.estado}                </p>
                     </div>
-                                
+                              <hr/>  
                 </div>
               ))
             ) : (
@@ -120,25 +129,28 @@ const FecharPedido: FC = () => {
         <div className="container-fechar-pedido">
           <div className="container-forma-pagamento">
           <fieldset className="forma-pagamento">
-  <legend>Forma de pagamento</legend>
-  {formasPagamento.map(f => (
-    <div className="div-forma-pagamento" key={f.valor}>
-      <Radio
-        checked={f.valor === (pagamento || 0)}
-        onChange={() => {
-          setPagamento(f.valor);
-        }}
-        sx={{
-          color: "#888", // Cor quando não está selecionado
-          '&.Mui-checked': {
-            color: "#9088ba", // Cor quando está selecionado
-          },
-        }}
-      />
-      <label htmlFor="pix">{f.texto}</label>
-    </div>
-  ))}
-</fieldset>
+              <legend>Forma de pagamento</legend>
+                  {formasPagamento.map(f => (
+                    <div className="div-forma-pagamento" key={f.valor}>
+                      <Radio
+                        checked={f.valor === (pagamento || 0)}
+                        onChange={() => {
+                          // if(f.valor === "CREDITO"){
+                            
+                          // }
+                          setPagamento(f.valor);
+                        }}
+                        sx={{
+                          color: "#888", // Cor quando não está selecionado
+                          '&.Mui-checked': {
+                            color: "#9088ba", // Cor quando está selecionado
+                          },
+                        }}
+                      />
+                      <label htmlFor="pix">{f.texto}</label>
+                    </div>
+                  ))}                  
+        </fieldset>
           </div>
         </div>
         <div className="container-botao">

@@ -47,7 +47,10 @@ const InputQuantidade: FC <InputQuantidadeProperties>= ({
         size="small"
         onClick={(event) => {
           const qtde = quantidade + 1;
-          console.log(qtde);
+          if(qtde===6){
+            alert("Você só pode adicionar 5 unidades desse item");
+            return;
+          }
             if(qtde){
               onChange(qtde);
             }

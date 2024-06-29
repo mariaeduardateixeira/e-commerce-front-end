@@ -39,7 +39,7 @@
 }
 
 legend{
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   font-weight: bold;
 }
 
@@ -101,4 +101,9 @@ input#endereco{
 .div-forma-pagamento{
   display: flex;
   align-items: center;
+}
+
+hr{
+  width: 100%;
+  margin-bottom: 0;
 }
