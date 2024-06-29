@@ -10,10 +10,10 @@
   --fonteSecundaria: "Raleway", sans-serif;
   --corPrincipal: #73283D;
   --corSecundaria: #555;
-  --corFundoMenu: #73283D;
-  --corTextoMenu: #fff;
-  --corHoverMenu: #bfbfbf93;
-  --corHoverTextoMenu: var(--corPrincipal);
+  --corFundoMenu: #CECBDE;
+  --corTextoMenu: #3d3c3c;
+  --corHoverMenu: #9088ba;
+  --corHoverTextoMenu: #ffff;
   --radiusBorda: 7px;
   --paddingInput: 7px 20px;
   --larguraInput: 300px;
@@ -69,10 +69,10 @@
 }
 
 .menu li a:hover {
-  background-color: var(--corHoverMenu);
-  color: var(--corHoverTextoMenu);
+  background-color: white;
+  color: var(--corHoverMenu);
   border-radius: var(--radiusBorda);
-  font-weight: bold; /* Em vez de bolder, que é desaconselhado */
+ transition: 0.5s;
 }
 
 /* Estilos do campo de entrada */

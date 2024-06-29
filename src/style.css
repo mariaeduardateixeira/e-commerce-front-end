@@ -7,6 +7,10 @@
 :root{
   --fontePrincipal: "Montserrat", sans-serif;
   --fonteSecundaria: "Raleway", sans-serif;
+  --corFundoMenu: #CECBDE;
+  --corTextoMenu: #3d3c3c;
+  --corBotao: #9088ba;
+  --corHoverTextoMenu: #ffff;
 }
 
 *{
@@ -52,8 +56,8 @@
   position: fixed;  /* Fixa o rodapé na tela */
   bottom: 0;        /* Alinha o rodapé ao final da página */
   width: 100%;      /* Garante que o rodapé ocupa toda a largura */
-  background-color: #73283D; /* Cor de fundo do rodapé */
-  color: #fff;      /* Cor do texto no rodapé */
+  background-color: var(--corFundoMenu); /* Cor de fundo do rodapé */
+  color: var(--corTextoMenu);      /* Cor do texto no rodapé */
   text-align: center; /* Centraliza o conteúdo do rodapé */
   padding: 10px 0;  /* Espaçamento interno do rodapé */
 }
@@ -62,8 +66,8 @@
 
 .login-button {
   background-color: transparent; /* Fundo transparente */
-  color: #73283D; /* Cor do texto */
-  border: 2px solid #73283D; /* Cor da borda */
+  color: var(--corBotao); /* Cor do texto */
+  border: 2px solid var(--corBotao); /* Cor da borda */
   padding: 2px 20px; /* Padding reduzido verticalmente e aumentado horizontalmente */
   text-align: center;
   text-decoration: none;
@@ -72,11 +76,17 @@
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+  
+}
+
+.user-section{
+  display: flex;
+  justify-content: left;
 }
 
 .login-button:hover {
-  background-color: #73283D; /* Cor de fundo ao passar o mouse */
-  color: white; /* Cor do texto ao passar o mouse */
+  background-color: white; /* Cor de fundo ao passar o mouse */
+  color: var(--corBotao); /* Cor do texto ao passar o mouse */
 }
 
 .user-name {
@@ -135,4 +145,9 @@
 
 .dropdown-menu ul li:hover {
   background-color: #f1f1f1;
+}
+
+.search-results h1{
+  margin-top: 3%;
+  margin-left: 13%;
 }

@@ -1,3 +1,11 @@
+:root{
+  --botaoLogin: #CECBDE;
+  --botaoHover: #9088ba;
+  --corTexto: #3d3c3c;
+  --corRosaFraco: #F4D5CD;
+  --corRosaForte: #EAAC9D;
+}
+
 /* Estilos para o fundo escurecido do modal */
 .modal {
   position: fixed;
@@ -61,7 +69,7 @@
   padding: 10px; /* Padding reduzido para um botão menor */
   margin: 20px auto; /* Centraliza e adiciona espaçamento vertical */
   border: none;
-  background-color: #73283D;
+  background-color: var(--botaoHover);
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -70,7 +78,9 @@
 }
 
 .modal-content button:hover {
-  background-color: #5d0e24;
+  background-color: white;
+  color: var(--botaoHover);
+  border: 0.5px solid var(--botaoHover);
   transform: translateY(-2px);
 }
 
@@ -82,11 +92,11 @@
 }
 
 .register-link a {
-  color: #007bff;
+  color: var(--corRosaForte);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .register-link a:hover {
-  color: #0056b3;
+  font-weight: bold;
 }

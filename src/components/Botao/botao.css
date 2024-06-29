@@ -1,3 +1,10 @@
+:root{
+  --fontePrincipal: "Montserrat", sans-serif;
+  --fonteSecundaria: "Raleway", sans-serif;
+  --corBotaoHover: #F4D5CD;
+  --corBotao: #EAAC9D;
+}
+
 .container-botao{
   width: 100%;
   max-width: 100%;
@@ -7,7 +14,7 @@
 
 .container-botao button{
   width: 100%;
-  background-color: #73283D;
+  background-color: var(--corBotao);
   padding: 7px;
   border: none;
   border-radius: 15px;
@@ -15,5 +22,9 @@
 }
 
 .container-botao button:hover{
-  background-color: #5d0e24;
+  background-color: white;
+  color: var(--corBotao);
+  border: 1px solid var(--corBotao);
+  transition: 0.5s;
+  font-weight: bold;
 }

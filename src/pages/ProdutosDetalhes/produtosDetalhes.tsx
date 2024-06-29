@@ -48,13 +48,16 @@ const ProdutosDetalhes: FC = () =>{
           <div className="preco-produto">
             <div className="preco">{`Preço: R$ ${produto?.preco}`}</div>
           </div>
-          <div className="botao-produto">
-            <InputQuantidade 
-              quantidade={quantidadeProduto} 
-              onChange={(quantidade:number) => {
-              setQuantidadeProduto(quantidade);
-            }}
-            />
+          
+            <div className="input-quantidade">
+              <InputQuantidade
+                quantidade={quantidadeProduto}
+                onChange={(quantidade:number) => {
+                setQuantidadeProduto(quantidade);
+              }}
+              />
+            </div>
+            <div className="botao-produto">
             <Botao
               label="Adicionar"
               onClick={() => {
