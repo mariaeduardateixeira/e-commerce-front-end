@@ -35,13 +35,13 @@ body {
 /* Imagem do produto */
 .imagem-produto {
   flex: 1;
-  min-width: 300px;
+  width: 100%;
   padding: 20px;
 }
 
 .imagem-produto img {
   width: 100%;
-  height: auto;
+  height: 98%;
   border-radius: 5px;
   border: 1px solid #ddd;
 }
@@ -53,13 +53,15 @@ body {
   flex-direction: column;
   padding: 10px;
   justify-content: left;
+  margin-bottom: 3%;
 }
 
 /* Nome do produto */
 .nome-produto {
   font-size: 24px;
   color: #f7941d;
-  margin-bottom: 10px;
+  margin-top: 16px;
+  margin-bottom: 5px;
 }
 
 /* Descrição do produto */
@@ -97,7 +99,7 @@ hr {
   width: 100%;
   border: none;
   border-top: 1px solid #ddd;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 /* Estilo do modal (caso necessário para estilização adicional) */

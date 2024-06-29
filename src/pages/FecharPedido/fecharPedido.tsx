@@ -63,7 +63,7 @@ const FecharPedido: FC = () => {
     try {
       const response = await apiPost('/enderecos/criarEndereco', {
         ...novoEndereco,
-        clienteId: 4
+        clienteId: clienteStore.id
       });
   
       if (response.status === STATUS_CODE.CREATED) {
@@ -80,53 +80,77 @@ const FecharPedido: FC = () => {
 
   return (
     <>
-      <div className="div-central-fieldset">
-        <fieldset className="fieldset">
-          <legend>Endereço de entrega</legend>
-          {enderecos.length > 0 ? (
-            enderecos.map((endereco: IEndereco) => (
-              <div className="container-fechar-pedido" key={endereco.id}>
-                <fieldset className="endereco">
-                  <div>
-                    <Radio 
-                      checked={endereco.id === (enderecoId || 0)}
-                      onChange={() => {
+      <div className="div-central">
+        <div className="div-central-fieldset">
+          <div className="container-enderecos">
+            <fieldset className="fieldset">
+              <legend id="titulo-endereco">Endereço de entrega</legend>
+              {enderecos.length > 0 ? (
+                enderecos.map((endereco: IEndereco) => (
+                  <div className="container-endereco-cadastrado" key={endereco.id}>
+                    
+                    <div className="endereco-content">
+                      <Radio
+                        className="radio"
+                        checked={endereco.id === (enderecoId || 0)}
+                        onChange={() => {
                         setEnderecoId(endereco.id);
-                      }}/>
-                    <p>{endereco.rua}, {endereco.bairro}, {endereco.cidade}, {endereco.estado}</p>
-                  </div>
-                </fieldset>
-              </div>
-            ))
-          ) : (
-            <div>Carregando dados...</div>
-          )}
-        </fieldset>
+                        }}
+                        sx={{
+                          color: "#888", // Cor quando não está selecionado
+                          '&.Mui-checked': {
+                            color: "#9088ba", // Cor quando está selecionado
+                          },
+                        }}
+                      />
+                        <p>{endereco.rua}, {endereco.bairro}, {endereco.cidade}, {endereco.estado}                </p>
+                    </div>
+                                
+                </div>
+              ))
+            ) : (
+              <div>Carregando dados...</div>
+            )}
+          </fieldset>
+          </div>
+          </div>
+        <div className="novo-endereco">
+          <Button variant="contained" onClick={handleOpenModal}>Adicionar novo endereço</Button>
+        </div>
+        <div className="container-fechar-pedido">
+          <div className="container-forma-pagamento">
+          <fieldset className="forma-pagamento">
+  <legend>Forma de pagamento</legend>
+  {formasPagamento.map(f => (
+    <div className="div-forma-pagamento" key={f.valor}>
+      <Radio
+        checked={f.valor === (pagamento || 0)}
+        onChange={() => {
+          setPagamento(f.valor);
+        }}
+        sx={{
+          color: "#888", // Cor quando não está selecionado
+          '&.Mui-checked': {
+            color: "#9088ba", // Cor quando está selecionado
+          },
+        }}
+      />
+      <label htmlFor="pix">{f.texto}</label>
+    </div>
+  ))}
+</fieldset>
+          </div>
+        </div>
+        <div className="container-botao">
+          <div className="button">
+            <Botao
+              label="Finalizar Compra"
+              onClick={() => {finalizarCompra()}}
+            />
+          </div>
+        </div>
       </div>
-      <div className="novo-endereco">
-        <Button variant="contained" onClick={handleOpenModal}>Adicionar novo endereço</Button>
-      </div>
-      <div className="container-fechar-pedido">
-        <fieldset className="forma-pagamento">
-          <legend>Forma de pagamento</legend>
-          {formasPagamento.map(f => (
-            <div key={f.valor}>
-              <Radio 
-                checked={f.valor === (pagamento || 0)}
-                onChange={() => {
-                  setPagamento(f.valor);
-                }}/>
-              <label htmlFor="pix">{f.texto}</label>
-            </div>
-          ))}
-        </fieldset>
-      </div>
-      <div className="botao-carrinho">
-        <Botao
-          label="Finalizar Compra"
-          onClick={() => {finalizarCompra()}}
-        />
-      </div>
+     
       <EnderecoModal
         aberto={isModalOpen}
         onFechar={handleCloseModal}

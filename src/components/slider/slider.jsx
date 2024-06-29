@@ -16,7 +16,7 @@ export default function Slider(props) {
     <div className="card">
       <img className="product--image" src={props.url} alt="" />
       <h2>{props.name}</h2> {/* Exibindo o nome do produto */}
-      <p className="price">{props.price}</p>
+      <p className="price">R$ {props.price}</p>
       {/* <p>{props.description}</p> */}
       <Botao
         label="Comprar"

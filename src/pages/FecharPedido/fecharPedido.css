@@ -1,13 +1,47 @@
-.container-fechar-pedido{
+:root{
+  --botaoLogin: #CECBDE;
+  --botaoHover: #9088ba;
+  --corTexto: #3d3c3c;
+  --corRosaFraco: #F4D5CD;
+  --corRosaForte: #EAAC9D;
+}
+
+.div-central{
+  padding-top: 15px;
+  margin-left: 25%;
+  margin-top: 15px;
+  background-color: white;
+  width: 50%;
   align-items: center;
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-hr{
+.div-central-fieldset, .novo-endereco, .container-fechar-pedido{
   width: 100%;
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;     /* Centraliza verticalmente */
 }
 
+.container-endereco-cadastrado{
+  justify-items: left;
+  justify-content: left;
+}
+
+.container-enderecos, .container-forma-pagamento{
+  width: 90%;
+  text-align: center;
+}
+
+.endereco{
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+legend{
+  margin-bottom: 15px;
+  font-weight: bold;
+}
 
 input {
   margin: 0.4rem;
@@ -20,15 +54,51 @@ input#endereco{
 .novo-endereco > p > a{
   margin: 1.6rem;
   text-decoration: none;
-  color: #73283D;
   font-weight: bold;
 }
 
-.endereco{
-  width: 90%;
-  margin-bottom: 20px;
+.novo-endereco button{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: var(--corRosaForte);
 }
 
-.forma-pagamento{
-  width: 90%;
+.novo-endereco button:hover{
+  background-color: white;
+  color: var(--corRosaForte);
+  border:1px solid var(--corRosaForte);
+}
+
+.endereco-content {
+  display: flex;
+  align-items: center;
+}
+
+.endereco-content .radio {
+  margin-right: 5px; /* Espaçamento entre o radio e o texto do endereço */
+}
+
+.endereco p {
+  margin: 0; /* Remove a margem padrão do parágrafo */
+}
+
+.container-botao{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container-botao .button{
+  width: 20%;
+  margin-bottom: 20px;
+
+}
+
+.fieldset{
+  width: 100%;
+}
+
+.div-forma-pagamento{
+  display: flex;
+  align-items: center;
 }

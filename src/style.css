@@ -52,14 +52,21 @@
 }
 
 
+/* Estilo para o rodapé */
 .footer {
-  position: fixed;  /* Fixa o rodapé na tela */
-  bottom: 0;        /* Alinha o rodapé ao final da página */
-  width: 100%;      /* Garante que o rodapé ocupa toda a largura */
+  position: fixed;        /* Fixa o rodapé na tela */
+  bottom: 0;              /* Alinha o rodapé ao final da página */
+  width: 100%;            /* Garante que o rodapé ocupa toda a largura */
   background-color: var(--corFundoMenu); /* Cor de fundo do rodapé */
   color: var(--corTextoMenu);      /* Cor do texto no rodapé */
-  text-align: center; /* Centraliza o conteúdo do rodapé */
-  padding: 10px 0;  /* Espaçamento interno do rodapé */
+  text-align: center;     /* Centraliza o conteúdo do rodapé */
+  padding: 10px 0;        /* Espaçamento interno do rodapé */
+}
+
+/* Estilo para o conteúdo principal */
+.div-corpo{
+  padding-bottom: 5%;   /* Adicione uma margem de 60px no final do conteúdo */
+  /* O valor deve ser igual ou maior que a altura do rodapé para garantir que o conteúdo não fique sobreposto */
 }
 
 

@@ -3,6 +3,7 @@
   --fonteSecundaria: "Raleway", sans-serif;
   --corBotaoHover: #F4D5CD;
   --corBotao: #EAAC9D;
+  
 }
 
 .container-botao{
@@ -15,9 +16,9 @@
 .container-botao button{
   width: 100%;
   background-color: var(--corBotao);
-  padding: 7px;
+  padding: 10px;
   border: none;
-  border-radius: 15px;
+  border-radius: 14px;
   color: white;
 }
 

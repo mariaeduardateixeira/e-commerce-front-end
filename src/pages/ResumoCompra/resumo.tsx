@@ -61,6 +61,7 @@ const Resumo: FC = () => {
       try {
         console.log(cliente)
         const response = await apiGet(`/enderecos/carregarEnderecoByCliente/${4}`);
+        //cliente.id
         if (response.status === STATUS_CODE.OK) {
           const enderecoEncontrado = response.data.find((endereco: IEndereco) => endereco.id === enderecoId);
           console.log("endereco>>", enderecoEncontrado);

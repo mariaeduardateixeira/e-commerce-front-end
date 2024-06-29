@@ -55,37 +55,39 @@ function App() {
   return (
     <div className="body">
       <div className='corpo'>
-        <header className="App-header">
-          <div className='logo'>
-            <h1 onClick={handleHomeClick} style={{ cursor: 'pointer' }}>Trio de Brilho</h1>
-            {authenticatedUser ? (
-              <div className="user-section">
-                <span className="user-name" onClick={toggleDropdown}>
-                  {authenticatedUser}
-                </span>
-                {showDropdown && (
-                  <div className="dropdown-menu">
-                    <ul>
-                      <li>Perfil</li>
-                      <li>Configurações</li>
-                      <li onClick={handleLogout}>Sair</li>
-                    </ul>
-                  </div>
-                )}
+        <div className="div-corpo">
+          <header className="App-header">
+            <div className='logo'>
+              <h1 onClick={handleHomeClick} style={{ cursor: 'pointer' }}>Trio de Brilho</h1>
+              {authenticatedUser ? (
+                <div className="user-section">
+                  <span className="user-name" onClick={toggleDropdown}>
+                    {authenticatedUser}
+                  </span>
+                  {showDropdown && (
+                    <div className="dropdown-menu">
+                      <ul>
+                        <li>Perfil</li>
+                        <li>Configurações</li>
+                        <li onClick={handleLogout}>Sair</li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <button onClick={openModal} className="login-button">Entre ou Registre-se</button>
+              )}
+              <div className='item-carrinho'>
+                <CarrinhoDrawer />
               </div>
-            ) : (
-              <button onClick={openModal} className="login-button">Entre ou Registre-se</button>
-            )}
-            <div className='item-carrinho'>
-              <CarrinhoDrawer />
             </div>
-          </div>
-          <MenuBar />
-        </header>
-        <Router />
-        {!authenticatedUser && (
-          <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAuthenticated={handleAuthentication} />
-        )}
+            <MenuBar />
+          </header>
+          <Router />
+          {!authenticatedUser && (
+            <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAuthenticated={handleAuthentication} />
+          )}
+        </div>
         <footer>
           <div className='footer'>
             <p>Projeto criado por Mariana, Maria Eduarda e Isac da 4º fase da turma de Análise e Desenvolvimento de Sistemas</p>
