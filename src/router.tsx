@@ -11,6 +11,7 @@ import Clientes from "./components/Clientes/clientes";
 import Enderecos from "./pages/Enderecos/Enderecos";
 import Resumo from "./pages/ResumoCompra/resumo";
 import FecharPedido from "./pages/FecharPedido/fecharPedido";
+import PaginaPerfil from "./pages/PaginaPerfil/PaginaPerfil";
 
 
 
@@ -27,7 +28,7 @@ const Router: FC = () => {
       <Route path="/clientes/" element={<Clientes/>}/>
       <Route path="/enderecos/" element={<Enderecos/>}/>
       <Route path="/resumo/" element={<Resumo/>}/>
-      
+      <Route path="/perfil/" element={<PaginaPerfil/>}/>
     </Routes>
   );
 };
