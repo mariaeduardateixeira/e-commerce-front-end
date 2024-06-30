@@ -207,6 +207,7 @@ const EnderecoModal: React.FC<EnderecoModalProps> = ({ aberto, endereco, onFecha
           Preencha as informações do endereço.
         </DialogContentText>
         <TextField
+        className='texto'
           autoFocus
           margin="dense"
           id="rua"

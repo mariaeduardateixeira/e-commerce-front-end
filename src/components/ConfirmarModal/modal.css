@@ -1,21 +1,27 @@
+:root{
+  --corBotao: #EAAC9D;
+  --corBotaoHover: #eec1b6;
+}
+
 .login-linha.button {
     width: 100%;
     max-width: 150px;
     padding: 5px;
     margin: 5px auto;
     border: none;
-    background-color: #73283D;
+    background-color: var(--corBotao);
     color: white;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
+    
     text-transform: uppercase;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .login-linha.button:hover {
-    background-color: #5d0e24;
+    background-color: var(--corBotaoHover);
+    border: 1px solid var(--corBotao);
     transform: translateY(-2px);
   }
   

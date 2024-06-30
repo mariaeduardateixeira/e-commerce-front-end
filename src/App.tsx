@@ -58,7 +58,6 @@ function App() {
         <div className="div-corpo">
           <header className="App-header">
             <div className='logo'>
-              <h1 onClick={handleHomeClick} style={{ cursor: 'pointer' }}>Trio de Brilho</h1>
               {authenticatedUser ? (
                 <div className="user-section">
                   <span className="user-name" onClick={toggleDropdown}>
@@ -77,6 +76,7 @@ function App() {
               ) : (
                 <button onClick={openModal} className="login-button">Entre ou Registre-se</button>
               )}
+               <h1 onClick={handleHomeClick} style={{ cursor: 'pointer' }}>Trio de Brilho</h1>
               <div className='item-carrinho'>
                 <CarrinhoDrawer />
               </div>
