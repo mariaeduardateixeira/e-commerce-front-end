@@ -87,11 +87,21 @@ const PaginaPerfil: React.FC = () => {
       <h1 className="perfil-header">Perfil do Usuário</h1>
       {editMode ? (
         <>
-          <TextField className="perfil-field" label="Nome" name="nome" value={paginaPerfil.nome} onChange={handleChange} />
-          <TextField className="perfil-field" label="Sobrenome" name="sobrenome" value={paginaPerfil.sobrenome} onChange={handleChange} />
-          <TextField className="perfil-field" label="Email" name="email" value={paginaPerfil.email} onChange={handleChange} />
-          <TextField className="perfil-field" label="Telefone" name="telefone" value={paginaPerfil.telefone} onChange={handleChange} />
-          <TextField className="perfil-field" label="CPF" name="cpf" value={paginaPerfil.cpf} onChange={handleChange} />
+          <div className="secao">
+            <TextField className="perfil-field" label="Nome" name="nome" value={paginaPerfil.nome} onChange={handleChange} />
+          </div>
+          <div className="secao">
+            <TextField className="perfil-field" label="Sobrenome" name="sobrenome" value={paginaPerfil.sobrenome} onChange={handleChange} />
+          </div>
+          <div className="secao">
+            <TextField className="perfil-field" label="Email" name="email" value={paginaPerfil.email} onChange={handleChange} />
+          </div>
+          <div className="secao">
+            <TextField className="perfil-field" label="Telefone" name="telefone" value={paginaPerfil.telefone} onChange={handleChange} />
+          </div>
+          <div className="secao">
+            <TextField className="perfil-field" label="CPF" name="cpf" value={paginaPerfil.cpf} onChange={handleChange} />
+          </div>
           <div className="perfil-actions">
             <IconButton color="primary" onClick={handleUpdate}>
               <SaveIcon />
@@ -104,10 +114,15 @@ const PaginaPerfil: React.FC = () => {
       ) : (
         <>
           <p><strong>Nome:</strong> {paginaPerfil.nome}</p>
+          <hr />
           <p><strong>Sobrenome:</strong> {paginaPerfil.sobrenome}</p>
+          <hr />
           <p><strong>Email:</strong> {paginaPerfil.email}</p>
+          <hr />
           <p><strong>Telefone:</strong> {paginaPerfil.telefone}</p>
+          <hr />
           <p><strong>CPF:</strong> {paginaPerfil.cpf}</p>
+          <hr />
           <div className="perfil-actions">
             <IconButton color="primary" onClick={handleEdit}>
               <EditIcon />
