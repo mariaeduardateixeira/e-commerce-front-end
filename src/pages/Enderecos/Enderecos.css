@@ -1,13 +1,38 @@
-.div-central {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+:root{
+  --fontePrincipal: "Montserrat", sans-serif;
+  --fonteSecundaria: "Raleway", sans-serif;
+  --corBotaoHover: #F4D5CD;
+  --corBotao: #EAAC9D;
+  
+}
+
+
+
+.div-principal {
+    width: 60%;
+    height: auto;
+    padding: 2%;
+    background-color: white;
+    margin-left: 20%;
+    margin-top: 3%;
   }
   
-  .h1-titulo {
+  .titulo {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
+  }
+
+  .botao-endereco button {
+    background: var(--corBotao);
+    margin-left: 2%;
+    justify-content: right;
+  }
+
+  .botao-endereco button:hover{
+    background-color: white;
+    border: 1px solid var(--corBotao);
+    color: var(--corBotao);
   }
   
   .lista-enderecos {

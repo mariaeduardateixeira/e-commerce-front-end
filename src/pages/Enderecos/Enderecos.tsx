@@ -101,6 +101,10 @@ import EnderecoModal from '../../components/EnderecoModal/EnderecoModal';
 import { Button, List, ListItem, ListItemText, Typography, IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import "./Enderecos.css";
+
+
+
 const Enderecos: React.FC = () => {
   const [enderecos, setEnderecos] = useState<IEndereco[]>([]);
   const [clienteStore, setClienteStore] = useState<any>(null);
@@ -171,13 +175,12 @@ const Enderecos: React.FC = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h4" gutterBottom>
-        Endereços Cadastrados
-      </Typography>
-      <Button variant="contained" color="primary" onClick={abrirModalParaCriar}>
-        Criar Novo Endereço
-      </Button>
+    <div className='div-principal'>
+      <div className="titulo">
+        <Typography variant="h4" gutterBottom>
+          Endereços Cadastrados
+        </Typography>
+      </div>
       {enderecos.length > 0 ? (
         <List>
           {enderecos.map((endereco) => (
@@ -201,6 +204,11 @@ const Enderecos: React.FC = () => {
       ) : (
         <Typography variant="subtitle1">Nenhum endereço cadastrado.</Typography>
       )}
+      <div className="botao-endereco">
+        <Button variant="contained" color="primary" onClick={abrirModalParaCriar}>
+          Criar Novo Endereço
+        </Button>
+      </div>
       <EnderecoModal
         aberto={isModalOpen}
         endereco={enderecoAtual || undefined}
