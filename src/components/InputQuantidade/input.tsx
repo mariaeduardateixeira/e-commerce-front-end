@@ -13,6 +13,8 @@ const InputQuantidade: FC <InputQuantidadeProperties>= ({
   quantidade,
   onChange
 }) => {
+  const atingiuMaximoEstoqueStorage = JSON.parse(localStorage.getItem("atingiuMaximoEstoque") || "{}");
+  const quantidadeProdutoStorage = JSON.parse(localStorage.getItem("quantidadeProduto") || "{}");
   return<>
     <div className="div-input-quantidade">
       <Box className="box">
@@ -51,6 +53,11 @@ const InputQuantidade: FC <InputQuantidadeProperties>= ({
             alert("Você só pode adicionar 5 unidades desse item");
             return;
           }
+          
+            if(atingiuMaximoEstoqueStorage === quantidadeProdutoStorage){
+              alert("Sem estoque suficiente")
+              return;
+            }
             if(qtde){
               onChange(qtde);
             }

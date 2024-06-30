@@ -6,16 +6,43 @@ import InputQuantidade from "../InputQuantidade/input";
 import Botao from "../Botao/botao";
 import "./carrinhoDrawer.css";
 import { ICarrinhoStore } from "../../store/CarrinhoStore/type";
+import { IProdutoDetalhe } from "../../pages/ProdutosDetalhes/types";
 
 const CarrinhoDrawer: FC = () => {
     const [openDrawer, setOpenDrawer] = useState(false);
     const [carrinho, setCarrinho] = useState<ICarrinhoStore[]>(carregarCarrinho());
     const totalCarrinho = JSON.parse(localStorage.getItem("calcularTotal") || "{}");
+    const atingiuMaximoEstoqueStorage = JSON.parse(localStorage.getItem("atingiuMaximoEstoque") || "{}");
+    const quantidadeProdutoStorage = JSON.parse(localStorage.getItem("quantidadeProduto") || "{}");
+    const [emEstoque, setEmEstoque] = useState<boolean>(true);
+    const [quantidadeSelecionada, setQuantidadeSelecionada] = useState<number>(1);
+    const [atingiuMaximoEstoque, setAtingiuMaximoEstoque] = useState<boolean>(false);
+    const [produto, setProduto] = useState<IProdutoDetalhe>();
+    const [quantidadeProduto, setQuantidadeProduto] = useState<number>(1);
+
 
     const atualizarQuantidadeCarrinho = (item: ICarrinhoStore) => {
+        if(atingiuMaximoEstoqueStorage === quantidadeProdutoStorage){
+            alert("Sem estoque suficiente")
+            return;
+          }
         const carrinhoAtualizado = addCarrinho(item);
         setCarrinho(carrinhoAtualizado);
+
+        
     };
+
+    
+    const handleQuantidadeChange = (quantidade: number) => {
+        if (produto && quantidade <= produto.quantidade) {
+          setQuantidadeSelecionada(quantidade);
+          setQuantidadeProduto(quantidade);
+          setAtingiuMaximoEstoque(quantidade === produto.quantidade);
+        } else {
+          alert("Estoque insuficiente para a quantidade solicitada");
+          return;
+        }
+      };
 
     const removerProdutoCarrinho = (id: number) => {
         const carrinhoAtualizado = removerItemCarrinho(id);
@@ -73,6 +100,7 @@ const CarrinhoDrawer: FC = () => {
                                         quantidade={c.quantidade}
                                         onChange={(quantidade: number) => {
                                             const carrinhoAtualizado = { ...c, quantidade };
+                                            handleQuantidadeChange(quantidade);
                                             atualizarQuantidadeCarrinho(carrinhoAtualizado);
                                         }}
                                     />
