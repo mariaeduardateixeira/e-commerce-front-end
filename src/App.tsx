@@ -115,6 +115,7 @@ import Router from './router';
 import CarrinhoDrawer from './components/CarrinhoDrawer/carrinhoDrawer';
 import LoginModal from './components/Login/LoginModal';
 
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [authenticatedUser, setAuthenticatedUser] = useState<string | null>(null);
@@ -122,6 +123,7 @@ function App() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const navigate = useNavigate();
+  
   
   useEffect(() => {
     const user = localStorage.getItem('authenticatedUser');
@@ -158,6 +160,11 @@ function App() {
     navigate('/');
   };
 
+  const handleProfileClick = () => {
+    navigate('/perfil/');
+    setShowDropdown(false);
+  }
+
   return (
     <div className="body">
       <div className='corpo'>
@@ -172,7 +179,7 @@ function App() {
                   {showDropdown && (
                     <div className="dropdown-menu">
                       <ul>
-                        <li>Perfil</li>
+                        <li onClick={handleProfileClick}>Perfil</li>
                         <li>Configurações</li>
                         <li onClick={handleLogout}>Sair</li>
                       </ul>
