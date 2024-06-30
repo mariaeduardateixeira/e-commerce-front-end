@@ -1,5 +1,5 @@
 import { Close, Delete, ShoppingCart } from "@mui/icons-material";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Badge, IconButton, Box, Button, Drawer, Grid, Typography } from "@mui/material";
 import { addCarrinho, carregarCarrinho, obterQuantidadeCarrinho, removerItemCarrinho } from "../../store/CarrinhoStore/carrinhoStore";
 import InputQuantidade from "../InputQuantidade/input";
@@ -7,6 +7,7 @@ import Botao from "../Botao/botao";
 import "./carrinhoDrawer.css";
 import { ICarrinhoStore } from "../../store/CarrinhoStore/type";
 import { IProdutoDetalhe } from "../../pages/ProdutosDetalhes/types";
+import LoginModal from "../Login/LoginModal";
 
 const CarrinhoDrawer: FC = () => {
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -19,6 +20,7 @@ const CarrinhoDrawer: FC = () => {
     const [atingiuMaximoEstoque, setAtingiuMaximoEstoque] = useState<boolean>(false);
     const [produto, setProduto] = useState<IProdutoDetalhe>();
     const [quantidadeProduto, setQuantidadeProduto] = useState<number>(1);
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
 
     const atualizarQuantidadeCarrinho = (item: ICarrinhoStore) => {
@@ -48,6 +50,26 @@ const CarrinhoDrawer: FC = () => {
     const calcularTotal = () => {
         return carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0);
     };
+    const handleOpenDrawer = () => {
+        const usuarioAutenticado = localStorage.getItem('authenticatedUser');
+        if(usuarioAutenticado){
+            setOpenDrawer(true)
+
+        }else{
+            setIsLoginModalOpen(true);
+
+        }
+    };
+
+    const handleFecharPedido = () => {
+        const usuarioAutenticado = localStorage.getItem('authenticatedUser');
+        if(!usuarioAutenticado){
+            setIsLoginModalOpen(true);
+        }else{
+            window.location.href = '/fecharPedido'
+        }
+    }
+    
 
 
 
@@ -127,13 +149,20 @@ const CarrinhoDrawer: FC = () => {
                             <div className="botao-carrinho">
                                 <Botao
                                     label="Fechar pedido"
-                                    onClick={() => window.location.href = `/fecharPedido`}
-                                />
+                                    onClick={handleFecharPedido}
+                                    />
                             </div>
                         </div>
                     </Box>
                 )}
             </Drawer>
+            <LoginModal
+                isOpen={isLoginModalOpen}
+                onClose={() => setIsLoginModalOpen(false)}
+                onAuthenticated={(username, idCliente) => {
+                    
+                }}
+            />
         </>
     );
 };
