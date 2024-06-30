@@ -22,10 +22,6 @@ const CarrinhoDrawer: FC = () => {
 
 
     const atualizarQuantidadeCarrinho = (item: ICarrinhoStore) => {
-        if(atingiuMaximoEstoqueStorage === quantidadeProdutoStorage){
-            alert("Sem estoque suficiente")
-            return;
-          }
         const carrinhoAtualizado = addCarrinho(item);
         setCarrinho(carrinhoAtualizado);
 
@@ -33,16 +29,16 @@ const CarrinhoDrawer: FC = () => {
     };
 
     
-    const handleQuantidadeChange = (quantidade: number) => {
-        if (produto && quantidade <= produto.quantidade) {
-          setQuantidadeSelecionada(quantidade);
-          setQuantidadeProduto(quantidade);
-          setAtingiuMaximoEstoque(quantidade === produto.quantidade);
-        } else {
-          alert("Estoque insuficiente para a quantidade solicitada");
-          return;
-        }
-      };
+    // const handleQuantidadeChange = (quantidade: number) => {
+    //     if (produto && quantidade <= produto.quantidade) {
+    //       setQuantidadeSelecionada(quantidade);
+    //       setQuantidadeProduto(quantidade);
+    //       setAtingiuMaximoEstoque(quantidade === produto.quantidade);
+    //     } else {
+    //       alert("Estoque insuficiente para a quantidade solicitada");
+    //       setQuantidadeProduto(1);
+    //     }
+    //   };
 
     const removerProdutoCarrinho = (id: number) => {
         const carrinhoAtualizado = removerItemCarrinho(id);
@@ -100,7 +96,7 @@ const CarrinhoDrawer: FC = () => {
                                         quantidade={c.quantidade}
                                         onChange={(quantidade: number) => {
                                             const carrinhoAtualizado = { ...c, quantidade };
-                                            handleQuantidadeChange(quantidade);
+                                            // handleQuantidadeChange(quantidade);
                                             atualizarQuantidadeCarrinho(carrinhoAtualizado);
                                         }}
                                     />
