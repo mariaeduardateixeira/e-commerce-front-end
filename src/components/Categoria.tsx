@@ -43,7 +43,7 @@ const Categoria: FC = () => {
                 <p>{produto.nome}</p>
               </div>
               <div className="produto_preco">
-                <p>{produto.preco}</p>
+                <p>R$ {produto.preco}</p>
               </div>
               <Botao
                 label="Comprar"

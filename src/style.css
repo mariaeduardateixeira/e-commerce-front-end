@@ -32,7 +32,7 @@
 .item-carrinho{
   display: flex;
   flex-direction: row-reverse;
-  margin-left: 10%;
+  margin-left: 12%;
   margin-right: 2%;
 
 }
@@ -84,6 +84,7 @@
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+  margin-left: 1%;
   
 }
 
@@ -159,9 +160,4 @@
 .search-results h1{
   margin-top: 3%;
   margin-left: 13%;
-}
-
-.user-section, .item-carrinho{
-  display: flex;
-  justify-content: space-between;
 }
