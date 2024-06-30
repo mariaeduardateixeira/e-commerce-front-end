@@ -202,7 +202,6 @@ const FecharPedido: FC = () => {
       setClienteStore(cliente);
     } else {
       console.log("Cliente não autenticado ou ID não definido");
-      console.log("FBbf", cliente.id)
     }
   }, []);
 
