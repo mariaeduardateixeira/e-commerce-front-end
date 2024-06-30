@@ -59,9 +59,6 @@ const FecharPedido: FC = () => {
     setIsModalOpen(false);
   };
 
-  const validaçãoCartaoCredito = () =>{
-    
-  }
   const handleSaveAddress = async (novoEndereco: { rua: string, bairro: string, cidade: string, estado: string }) => {
     if (enderecos.length >= 4) {
       alert("Você já cadastrou o número máximo de endereços (4).");

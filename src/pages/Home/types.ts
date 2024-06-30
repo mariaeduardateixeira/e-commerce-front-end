@@ -7,4 +7,5 @@ export interface IProduto {
   valor: number,
   imagemGrande: string,
   imagemPequena: string,
+  quantidade: number,
 }

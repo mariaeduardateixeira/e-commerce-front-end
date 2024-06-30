@@ -22,6 +22,7 @@ export default function Slider(props) {
         label="Comprar"
         onClick={() => {
           redirecionarDetalhesProduto(props.id);
+          
         }}
       />
     </div>

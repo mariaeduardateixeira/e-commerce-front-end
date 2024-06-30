@@ -6,14 +6,18 @@ import "./botao.css"
 interface BotaoProperties{
   label: string;
   onClick: () => void;
+  disabled?: boolean;
+  style?: React.CSSProperties;
 }
 const Botao: FC <BotaoProperties> = ({
   label,
-  onClick
+  onClick,
+  disabled = false, 
+  style
 }) => {
   return <>
     <div className="container-botao">
-        <button onClick={onClick}>
+        <button onClick={onClick} disabled={disabled} style={style}>
            {label}
         </button>
     </div>
