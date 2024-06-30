@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import { apiGet, apiPost, STATUS_CODE } from "../../api/RestClient";
 import { IEndereco, formasPagamento } from "./types";
 import "./fecharPedido.css";
-import EnderecoModal from "../../components/EnderecoModal/EnderecoModal";
+
 import { Button, Radio } from "@mui/material";
 import Botao from "../../components/Botao/botao";
+import EnderecoModal from "../../components/EnderecoModal/EnderecoModal";
 
 const FecharPedido: FC = () => {
   const { id } = useParams<{ id: string }>();
