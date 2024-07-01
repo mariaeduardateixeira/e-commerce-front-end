@@ -4,10 +4,12 @@
 }
 
 
-.box-detalhes{
-  width: 30%;
+.box-detalhes-resumo{
+  width: 35%;
   margin-right: 5%;
+  margin-left: 5%;
 }
+
 
 .endereco-entrega{
   margin-top: 6px;

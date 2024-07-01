@@ -108,7 +108,7 @@ const Resumo: FC = () => {
               <Grid className="box-imagem" item>
                 <img className="imagem" src={c.imagemPequena} alt="produto" />
               </Grid>
-              <Grid className="box-detalhes" item>
+              <Grid className="box-detalhes-resumo" item>
                 <Box>
                   <strong>{c.descricao}</strong>
                 </Box>
