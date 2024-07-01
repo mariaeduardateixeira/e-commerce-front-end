@@ -61,7 +61,8 @@
   background-color: var(--corFundoMenu); /* Cor de fundo do rodapé */
   color: var(--corTextoMenu);      /* Cor do texto no rodapé */
   text-align: center;     /* Centraliza o conteúdo do rodapé */
-  padding: 10px 0;        /* Espaçamento interno do rodapé */
+  padding: 10px 0;        
+  height: 36px;
 }
 
 /* Estilo para o conteúdo principal */
@@ -162,3 +163,4 @@
   margin-top: 3%;
   margin-left: 13%;
 }
+

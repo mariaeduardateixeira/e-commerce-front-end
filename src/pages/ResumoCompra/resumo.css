@@ -1,0 +1,37 @@
+.box-imagem{
+  margin-right: 6px;
+  margin-bottom: 6px
+}
+
+
+.box-detalhes{
+  width: 30%;
+  margin-right: 5%;
+}
+
+.endereco-entrega{
+  margin-top: 6px;
+  padding-left: 8px;
+  display: flex;
+}
+
+.forma-pagamento{
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 8px; 
+}
+
+.hr-produtos{
+  margin-bottom: 6px;
+}
+
+.botao-resumo{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.span-resumo{
+  width: 50%;
+}

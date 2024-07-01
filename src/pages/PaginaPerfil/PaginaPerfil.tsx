@@ -114,15 +114,15 @@ const PaginaPerfil: React.FC = () => {
       ) : (
         <>
           <p><strong>Nome:</strong> {paginaPerfil.nome}</p>
-          <hr />
+          <hr className='hr'/>
           <p><strong>Sobrenome:</strong> {paginaPerfil.sobrenome}</p>
-          <hr />
+          <hr className='hr'/>
           <p><strong>Email:</strong> {paginaPerfil.email}</p>
-          <hr />
+          <hr className='hr'/>
           <p><strong>Telefone:</strong> {paginaPerfil.telefone}</p>
-          <hr />
+          <hr className='hr'/>
           <p><strong>CPF:</strong> {paginaPerfil.cpf}</p>
-          <hr />
+          <hr className='hr'/>
           <div className="perfil-actions">
             <IconButton color="primary" onClick={handleEdit}>
               <EditIcon />

@@ -9,6 +9,7 @@ import { Box, Typography, Grid, IconButton } from "@mui/material";
 import InputQuantidade from "../../components/InputQuantidade/input";
 import { IEndereco, formasPagamento } from "../FecharPedido/types";
 import Botao from "../../components/Botao/botao";
+import "./resumo.css";
 
 const Resumo: FC = () => {
   const [clienteStore, setClienteStore] = useState<any>(null);
@@ -93,69 +94,74 @@ const Resumo: FC = () => {
   }, []);
 
   return (
-    <Box paddingLeft="10px" paddingRight="10px">
-      {!carrinho?.length ? (
-        <Box>
-          <Typography variant="body1">
-            <strong> Seu carrinho está vazio. </strong>
-          </Typography>
-        </Box>
-      ) : (
-        carrinho.map((c: ICarrinhoStore) => (
-          <Grid container key={c.id} alignItems="center">
-            <Grid className="box-imagem" item>
-              <img className="imagem" src={c.imagemPequena} alt="produto" />
+    <div className="div-principal">
+      <Box paddingLeft="10px" paddingRight="10px">
+        {!carrinho?.length ? (
+          <Box>
+            <Typography variant="body1">
+              <strong> Seu carrinho está vazio. </strong>
+            </Typography>
+          </Box>
+        ) : (
+          carrinho.map((c: ICarrinhoStore) => (
+            <Grid container key={c.id} alignItems="center">
+              <Grid className="box-imagem" item>
+                <img className="imagem" src={c.imagemPequena} alt="produto" />
+              </Grid>
+              <Grid className="box-detalhes" item>
+                <Box>
+                  <strong>{c.descricao}</strong>
+                </Box>
+              </Grid>
+              <Grid className="box-quantidade" item>
+                {c.quantidade}
+              </Grid>
+              <Grid className="box-preco" item>
+                <Box>
+                  <strong>{((c.quantidade) * (c.preco)).toFixed(2)}</strong>
+                </Box>
+              </Grid>
+              <hr className="hr-produtos"/>
             </Grid>
-            <Grid className="box-detalhes" item>
-              <Box>
-                <strong>{c.descricao}</strong>
-              </Box>
-            </Grid>
-            <Grid className="box-quantidade" item>
-              {c.quantidade}
-            </Grid>
-            <Grid className="box-preco" item>
-              <Box>
-                <strong>{((c.quantidade) * (c.preco)).toFixed(2)}</strong>
-              </Box>
-            </Grid>
-          </Grid>
-        ))
-      )}
-      <fieldset className="endereco-entrega">
-        <legend>Endereço de entrega</legend>
-        <div>
-          {enderecos?.id ? (
-            <div className="container-fechar-pedido" key={enderecos.id}>
-              <div>
-                <p>{enderecos.rua}, {enderecos.bairro}, {enderecos.cidade}, {enderecos.estado}</p>
-              </div>
+          ))
+        )}
+        <fieldset className="endereco-entrega">
+          <legend>Endereço de entrega</legend>
+          <div>
+            {enderecos?.id ? (
+              <div className="container-fechar-pedido" key={enderecos.id}>
+                <div>
+                  <p>{enderecos.rua}, {enderecos.bairro}, {enderecos.cidade}, {enderecos.estado}</p>
+                </div>
+            </div>
+            ) : (
+              <div>Carregando dados...</div>
+            )}
           </div>
-          ) : (
-            <div>Carregando dados...</div>
-          )}
-        </div>
-      </fieldset>
-      <fieldset className="forma-pagamento">
-      <legend>Forma de pagamento</legend>
-        <div>
-          <p>{formaPagamento ? formaPagamento : "Carregando forma de pagamento..."}</p>
-        </div>
-      </fieldset>
-      {carrinho.length > 0 && (
-        <Box paddingLeft="10px" paddingRight="10px">
-          <Typography variant="h6">
-            Total: {calcularTotal().toFixed(2)}
-          </Typography>
-        </Box>
-      )}
-       <div className="botao-carrinho">
-                            <Botao
-                                label="Confirmar pedido"
-                                onClick={() => {salvarPedido()}}
-                            />
-                        </div>
-    </Box>
+        </fieldset>
+        <fieldset className="forma-pagamento">
+        <legend>Forma de pagamento</legend>
+          <div>
+            <p>{formaPagamento ? formaPagamento : "Carregando forma de pagamento..."}</p>
+          </div>
+        </fieldset>
+        {carrinho.length > 0 && (
+          <Box paddingLeft="10px" paddingRight="10px">
+            <Typography variant="h6">
+              Total: {calcularTotal().toFixed(2)}
+            </Typography>
+          </Box>
+        )}
+         <div className="botao-resumo">
+                              <span className="span-resumo">
+                                <Botao
+                                    label="Confirmar pedido"
+                                    onClick={() => {salvarPedido()}}
+                                />
+                              </span>
+                          </div>
+      </Box>
+    </div>
 
   );
 }
