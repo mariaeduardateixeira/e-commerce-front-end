@@ -1,6 +1,6 @@
 // PaginaPerfil.tsx
 import React, { useState, useEffect } from 'react';
-import { apiGet, apiPut, apiDelete } from '../../api/RestClient';
+import { apiGet, apiPut, apiDelete, STATUS_CODE } from '../../api/RestClient';
 import { Button, TextField, IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -21,7 +21,7 @@ const PaginaPerfil: React.FC = () => {
 
     if (usuarioId) {
       apiGet(`/clientes/carregar/${usuarioId}`).then(response => {
-        if (response.status === 200) {
+        if (response.status === STATUS_CODE.OK) {
           setPaginaPerfil(response.data);
         }
       });
@@ -52,7 +52,7 @@ const PaginaPerfil: React.FC = () => {
   const handleUpdate = () => {
     if (paginaPerfil) {
       apiPut(`/clientes/atualizar/${paginaPerfil.id}`, paginaPerfil).then(response => {
-        if (response.status === 200) {
+        if (response.status === STATUS_CODE.OK) {
           alert('Perfil atualizado com sucesso!');
           setEditMode(false);
           setPaginaPerfil(response.data);
@@ -69,7 +69,7 @@ const PaginaPerfil: React.FC = () => {
   const handleDelete = () => {
     if (paginaPerfil && window.confirm('Tem certeza que deseja deletar sua conta?')) {
       apiDelete(`/clientes/deletar/${paginaPerfil.id}`).then(response => {
-        if (response.status === 200) {
+        if (response.status === STATUS_CODE.OK) {
           alert('Conta deletada com sucesso!');
           localStorage.removeItem('authenticatedUser');
           navigate('/');
