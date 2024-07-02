@@ -187,6 +187,9 @@ import "./fecharPedido.css";
 import { Button, Radio } from "@mui/material";
 import Botao from "../../components/Botao/botao";
 import EnderecoModal from "../../components/EnderecoModal/EnderecoModal";
+import { useNavigate } from "react-router-dom";
+import CreditoModal from "../../components/CreditoModal/CreditoModal";
+
 
 const FecharPedido: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -195,6 +198,9 @@ const FecharPedido: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [enderecoId, setEnderecoId] = useState<number>();
   const [pagamento, setPagamento] = useState<string>();
+  const [isCreditCardModalOpen, setIsCreditCardModalOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
@@ -204,6 +210,10 @@ const FecharPedido: FC = () => {
       console.log("Cliente não autenticado ou ID não definido");
     }
   }, []);
+
+  const handleEnderecoClick = () => {
+    navigate('/enderecos/');
+  }
 
 
   useEffect(() => {
@@ -253,6 +263,14 @@ const FecharPedido: FC = () => {
     handleCloseModal();
   };
 
+  const handlePaymentChange = (valor: string) => {
+    setPagamento(valor);
+    if (valor === "CREDITO") {
+      setIsCreditCardModalOpen(true); // Abre o modal de pagamento com cartão de crédito
+    }
+  };
+  
+
   const finalizarCompra = () => {
     const data = {
       clienteId: clienteStore.id,
@@ -298,7 +316,7 @@ const FecharPedido: FC = () => {
           </div>
         </div>
         <div className="novo-endereco">
-          <Button variant="contained" onClick={handleOpenModal}>Adicionar novo endereço</Button>
+          <Button variant="contained" onClick={handleEnderecoClick}>ABRIR GERENCIADOR DE ENDEREÇOS</Button>
         </div>
         <div className="container-fechar-pedido">
           <div className="container-forma-pagamento">
@@ -308,7 +326,7 @@ const FecharPedido: FC = () => {
                 <div className="div-forma-pagamento" key={f.valor}>
                   <Radio
                     checked={f.valor === (pagamento || '')}
-                    onChange={() => setPagamento(f.valor)}
+                    onChange={() => handlePaymentChange(f.valor)}
                     sx={{
                       color: "#888", // Cor quando não está selecionado
                       '&.Mui-checked': {
@@ -337,6 +355,11 @@ const FecharPedido: FC = () => {
         onFechar={handleCloseModal}
         onSalvar={handleSaveAddress}
       />
+      <CreditoModal
+  open={isCreditCardModalOpen}
+  onClose={() => setIsCreditCardModalOpen(false)}
+  // Você pode passar outras props necessárias para o modal aqui
+/>
     </>
   );
 };
