@@ -21,7 +21,7 @@ const Resumo: FC = () => {
   const salvarPedido = async () => {
     const data = {
       clienteId: clienteStore.id,
-      enderecoId: enderecos,
+      enderecoId: enderecos?.id || 0,
       forma_pagamento: formaPagamento,
       itens: carrinho.map((item: ICarrinhoStore) => {
         return {
@@ -35,7 +35,7 @@ const Resumo: FC = () => {
     console.log("DATA>>>>", data);
 
 
-    const response = await apiPost(`/pedidos/criar/${clienteStore.id}`, data);
+    const response = await apiPost(`/pedidos/criar`, data);
       if(response.status === STATUS_CODE.CREATED){
           alert("Pedido gerado com sucesso");
       }else{

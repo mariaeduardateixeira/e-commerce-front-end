@@ -213,7 +213,7 @@ const ProdutosDetalhes: FC = () => {
         }}
         onConfirmar={() => {
           if (produto) {
-            const carrinhoItem: ICarrinhoStore = { ...produto, quantidade: quantidadeProduto || 0 };
+            const carrinhoItem: ICarrinhoStore = { ...produto, quantidade: quantidadeProduto || 0 , estoque:produto.quantidade};
             addCarrinho(carrinhoItem);
             window.location.href = "/home";
           }

@@ -117,9 +117,13 @@ const CarrinhoDrawer: FC = () => {
                                     <InputQuantidade 
                                         quantidade={c.quantidade}
                                         onChange={(quantidade: number) => {
+                                            if(c.estoque < quantidade){
+                                                alert("ESTOQUE INSUFICIENTE")
+                                                return;
+                                            }
                                             const carrinhoAtualizado = { ...c, quantidade };
-                                            // handleQuantidadeChange(quantidade);
                                             atualizarQuantidadeCarrinho(carrinhoAtualizado);
+                                        
                                         }}
                                     />
                                 </Grid>
