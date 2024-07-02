@@ -1,0 +1,46 @@
+/* confirmarPedido.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .subtitle {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .pedidos-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .pedido-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .pedido-item .pedido-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  @media (max-width: 600px) {
+    .title {
+      font-size: 24px;
+    }
+    
+    .subtitle {
+      font-size: 20px;
+    }
+  }
+  

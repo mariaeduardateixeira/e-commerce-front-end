@@ -30,17 +30,16 @@ const Resumo: FC = () => {
     setIsCartaoModalOpen(true);
   }
 
-
+  const navigate = useNavigate();
 
   const salvarPedido = async () => {
     const data = {
       clienteId: clienteStore.id,
       enderecoId: enderecos?.id || 0,
-      forma_pagamento: formaPagamento,
-      itens: carrinho.map((item: ICarrinhoStore) => {
+      formaPagamento: formaPagamento,
+      carrinho: carrinho.map((item: ICarrinhoStore) => {
         return {
           produtoId: item.id,
-          clienteId: clienteStore.id,
           quantidade: item.quantidade,
           valor: item.valor,
         }
@@ -52,7 +51,8 @@ const Resumo: FC = () => {
     const response = await apiPost(`/pedidos/criar`, data);
       if(response.status === STATUS_CODE.CREATED){
           alert("Pedido gerado com sucesso");
-      }else{
+          navigate('/caminho/para/confirmarPedido');
+        }else{
         alert("Erro ao gerar pedido")
       }
     // Implementar a lógica para salvar o pedido

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './confirmarPedido.css'; // Importe o CSS aqui
+
 
 const ConfirmarPedido = () => {
   const [pedidos, setPedidos] = useState([]);
