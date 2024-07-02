@@ -129,7 +129,7 @@ const CarrinhoDrawer: FC = () => {
                                 </Grid>
                                 <Grid className="box-preco" item>
                                     <Box>
-                                        <strong>{((c.quantidade) * (c.preco)).toFixed(2)}</strong>
+                                        <strong>R${((c.quantidade) * (c.preco)).toFixed(2)}</strong>
                                     </Box>
                                 </Grid>
                                 <Grid className="box-remover" item>
@@ -144,7 +144,7 @@ const CarrinhoDrawer: FC = () => {
                 {carrinho.length > 0 && (
                     <Box paddingLeft="10px" paddingRight="10px" className="total-carrinho">
                         <Typography variant="h6">
-                            Total: {calcularTotal().toFixed(2)}
+                            Total: R${calcularTotal().toFixed(2)}
                         </Typography>
                         <div className="frete-info-botao">
                             <Typography variant="body2" color="textSecondary" className="frete-info">

@@ -102,6 +102,7 @@ import { Button, List, ListItem, ListItemText, Typography, IconButton } from '@m
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import "./Enderecos.css";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -110,6 +111,7 @@ const Enderecos: React.FC = () => {
   const [clienteStore, setClienteStore] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [enderecoAtual, setEnderecoAtual] = useState<IEndereco | null>(null);
+  const navigate = useNavigate();
   useEffect(() => {
     const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
     if (cliente?.id) {
@@ -131,6 +133,10 @@ const Enderecos: React.FC = () => {
     setEnderecoAtual(null);
     setIsModalOpen(true);
   };
+
+  const voltar = () => {
+    navigate('/');
+  }
 
   const abrirModalParaEditar = (endereco: IEndereco) => {
     setEnderecoAtual(endereco);
@@ -207,6 +213,10 @@ const Enderecos: React.FC = () => {
       <div className="botao-endereco">
         <Button variant="contained" color="primary" onClick={abrirModalParaCriar}>
           Criar Novo Endereço
+        </Button>
+        
+        <Button variant="contained" color="primary" onClick={voltar}>
+          Voltar
         </Button>
       </div>
       <EnderecoModal

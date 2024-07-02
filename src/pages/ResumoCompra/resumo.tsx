@@ -118,7 +118,7 @@ const Resumo: FC = () => {
               </Grid>
               <Grid className="box-preco" item>
                 <Box>
-                  <strong>{((c.quantidade) * (c.preco)).toFixed(2)}</strong>
+                  <strong>R${((c.quantidade) * (c.preco)).toFixed(2)}</strong>
                 </Box>
               </Grid>
               <hr className="hr-produtos"/>
@@ -148,7 +148,7 @@ const Resumo: FC = () => {
         {carrinho.length > 0 && (
           <Box paddingLeft="10px" paddingRight="10px">
             <Typography variant="h6">
-              Total: {calcularTotal().toFixed(2)}
+              Total: R${calcularTotal().toFixed(2)}
             </Typography>
           </Box>
         )}
