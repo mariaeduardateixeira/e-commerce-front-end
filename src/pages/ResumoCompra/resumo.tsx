@@ -5,17 +5,31 @@ import { ICarrinhoStore } from "../../store/CarrinhoStore/type";
 import { useParams } from "react-router-dom";
 import { addCarrinho, carregarCarrinho, removerItemCarrinho } from "../../store/CarrinhoStore/carrinhoStore";
 import { Delete } from "@mui/icons-material";
-import { Box, Typography, Grid, IconButton } from "@mui/material";
+import { Box, Typography, Grid, IconButton, Button } from "@mui/material";
 import InputQuantidade from "../../components/InputQuantidade/input";
 import { IEndereco, formasPagamento } from "../FecharPedido/types";
 import Botao from "../../components/Botao/botao";
 import "./resumo.css";
+import { DadosCartao } from "./types";
+import { useNavigate } from "react-router-dom";
+import CreditoModal from "../../components/CreditoModal/CreditoModal";
+
+
 
 const Resumo: FC = () => {
   const [clienteStore, setClienteStore] = useState<any>(null);
   const [enderecos, setEnderecos] = useState<IEndereco>();
   const [formaPagamento, setFormaPagamento] = useState<string | null>(null);
   const [carrinho, setCarrinho] = useState<ICarrinhoStore[]>(carregarCarrinho());
+  const [dadosCartao, setDadosCartao] = useState<DadosCartao | null>(null);
+  const [isCartaoModalOpen, setIsCartaoModalOpen] = useState(false);
+  const [cartoes, setCartoes] = useState<DadosCartao[]>();
+
+
+  const handleOpenCartaoModal = () => {
+    setIsCartaoModalOpen(true);
+  }
+
 
 
   const salvarPedido = async () => {
@@ -53,6 +67,7 @@ const Resumo: FC = () => {
     const cliente = JSON.parse(localStorage.getItem("authenticatedUser") || "{}");
     if (cliente?.id) {
       setClienteStore(cliente);
+      buscarDadosCartaoPorCliente(cliente.id);
       console.log("Cliente carregado:", cliente);
     } else {
       console.log("Cliente não autenticado ou ID não definido");
@@ -92,6 +107,15 @@ const Resumo: FC = () => {
       console.log("Nenhuma forma de pagamento armazenada encontrada");
     }
   }, []);
+
+  const buscarDadosCartaoPorCliente = async (clienteId: string) => {
+    const response = await apiGet(`/cartoes/carregarPorCliente/${clienteId}`);
+    if(response.status === STATUS_CODE.OK && response.data.length > 0){
+      setDadosCartao(response.data[0]);
+    }else{
+      console.error('Erro ao buscar dados do cartão:', response.message);
+    }
+  }
 
   return (
     <div className="div-principal">
@@ -143,6 +167,16 @@ const Resumo: FC = () => {
         <legend>Forma de pagamento</legend>
           <div>
             <p>{formaPagamento ? formaPagamento : "Carregando forma de pagamento..."}</p>
+            <p>{formaPagamento === 'CREDITO' && dadosCartao && (
+            <div>
+              <h3>Dados do Cartão</h3>
+              <p>Numero: **** **** **** {dadosCartao.numero.slice(-4)}</p>
+              <p>Titular: {dadosCartao.titular}</p>
+              <p>Validade: {dadosCartao.dataValidade}</p>
+
+              <Button onClick={handleOpenCartaoModal}>Adicionar um novo cartão</Button>
+            </div>
+          )}</p>
           </div>
         </fieldset>
         {carrinho.length > 0 && (
@@ -161,7 +195,13 @@ const Resumo: FC = () => {
                               </span>
                           </div>
       </Box>
+      <CreditoModal
+        open={isCartaoModalOpen}
+        onClose={() => setIsCartaoModalOpen(false)}
+      />
     </div>
+
+    
 
   );
 }

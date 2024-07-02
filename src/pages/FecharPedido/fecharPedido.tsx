@@ -188,7 +188,7 @@ import { Button, Radio } from "@mui/material";
 import Botao from "../../components/Botao/botao";
 import EnderecoModal from "../../components/EnderecoModal/EnderecoModal";
 import { useNavigate } from "react-router-dom";
-import CreditoModal from "../../components/CreditoModal/CreditoModal";
+
 
 
 const FecharPedido: FC = () => {
@@ -198,7 +198,6 @@ const FecharPedido: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [enderecoId, setEnderecoId] = useState<number>();
   const [pagamento, setPagamento] = useState<string>();
-  const [isCreditCardModalOpen, setIsCreditCardModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -265,9 +264,6 @@ const FecharPedido: FC = () => {
 
   const handlePaymentChange = (valor: string) => {
     setPagamento(valor);
-    if (valor === "CREDITO") {
-      setIsCreditCardModalOpen(true); // Abre o modal de pagamento com cartão de crédito
-    }
   };
   
 
@@ -355,11 +351,6 @@ const FecharPedido: FC = () => {
         onFechar={handleCloseModal}
         onSalvar={handleSaveAddress}
       />
-      <CreditoModal
-  open={isCreditCardModalOpen}
-  onClose={() => setIsCreditCardModalOpen(false)}
-  // Você pode passar outras props necessárias para o modal aqui
-/>
     </>
   );
 };

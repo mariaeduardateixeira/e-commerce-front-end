@@ -37,3 +37,8 @@
 .span-resumo{
   width: 50%;
 }
+.dados-cartao{
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 8px; 
+}

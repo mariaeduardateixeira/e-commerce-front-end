@@ -36,6 +36,7 @@ const CreditoModal: FC<CreditoModalProps> = ({ open, onClose }) => {
 
     if (response.status === STATUS_CODE.OK || response.status === STATUS_CODE.CREATED) {
       console.log('Cartão cadastrado com sucesso:', response.data);
+      localStorage.setItem('cartaoId', response.data.id);
       onClose(); // Fecha o modal
     } else {
       console.error('Falha ao cadastrar cartão:', response.message);
@@ -108,10 +109,12 @@ const CreditoModal: FC<CreditoModalProps> = ({ open, onClose }) => {
         
         <TextField
           label="CVV"
+          type='password'
           value={cvv}
           onChange={(e) => setCvv(e.target.value)}
           fullWidth
           margin="normal"
+          inputProps={{maxLength: 3}}
         />
       </DialogContent>
       <DialogActions>
