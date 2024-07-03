@@ -68,7 +68,7 @@
 }
 
 .menu li a:hover {
-  background-color: white;
+  background-color: #c2bcdb;
   color: var(--corHoverMenu);
   border-radius: var(--radiusBorda);
  transition: 0.5s;
