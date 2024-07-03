@@ -48,7 +48,7 @@ const LoginModal: React.FC<IProps> = ({ isOpen, onClose, onAuthenticated }) => {
         {error && <p className="error-message">{error}</p>}
         <input
           type="text"
-          placeholder="Usuário"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />

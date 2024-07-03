@@ -177,7 +177,7 @@ const Resumo: FC = () => {
                             },
                           }}
                         />
-                        <p>{`${cartao.titular}, ${cartao.numero} - ${cartao.dataValidade}`}</p>
+                        <p>{`${cartao.titular}, **** **** **** ${cartao.numero.slice(-4)} - ${cartao.dataValidade}`}</p>
                       </div>
                       <hr/>
                     </div>
@@ -207,7 +207,8 @@ const Resumo: FC = () => {
       </Box>
       <CreditoModal
         open={isCartaoModalOpen}
-        onClose={() => setIsCartaoModalOpen(false)}
+        onClose={() => setIsCartaoModalOpen(false)} 
+        clienteId={clienteStore?.id}        
       />
     </div>
   );

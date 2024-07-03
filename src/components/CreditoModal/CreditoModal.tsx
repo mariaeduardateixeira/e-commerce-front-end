@@ -3,13 +3,15 @@ import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, F
 import { apiPost, STATUS_CODE } from '../../api/RestClient';
 import { CreditoModalProps } from './types';
 
-const CreditoModal: FC<CreditoModalProps> = ({ open, onClose }) => {
+const CreditoModal: FC<CreditoModalProps> = ({ open, onClose, clienteId }) => {
   const [numeroCartao, setNumeroCartao] = useState('');
   const [nomeTitular, setNomeTitular] = useState('');
   const [dataValidade, setDataValidade] = useState('');
   const [mesValidade, setMesValidade] = useState('');
   const [anoValidade, setAnoValidade] = useState('');
   const [cvv, setCvv] = useState('');
+
+  
 
   const formatarNumeroCartao = (value: string) => {
     const apenasDigitos = value.replace(/\D/g, '');
@@ -25,11 +27,16 @@ const CreditoModal: FC<CreditoModalProps> = ({ open, onClose }) => {
   const dataValidadeCompleta = `${mesValidade.padStart(2, '0')}/${anoValidade}`;
 
   const handleSubmit = async (): Promise<void> => {
+    if(!clienteId){
+      console.error('ID do cliente não fornecido');
+      return;
+    }
     const dadosCartao = {
       numero: numeroCartao.replace(/\s/g, ''),
       titular: nomeTitular,
       dataValidade: dataValidadeCompleta,
-      cvv
+      cvv,
+      clienteId: clienteId,
     };
 
     const response = await apiPost('/cartoes/cadastrar', dadosCartao);

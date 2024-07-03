@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material';
 import { apiPost, STATUS_CODE } from '../../api/RestClient';
 import './clientes.css';
+import { useNavigate } from 'react-router-dom';
 
 const Clientes: FC = () => {
     const [nome, setNome] = useState<string>('');
@@ -10,6 +11,7 @@ const Clientes: FC = () => {
     const [email, setEmail] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
     const [telefone, setTelefone] = useState<string>('');
+    const navigate = useNavigate();
 
     const salvarCliente = async () => {
         const data = {
@@ -28,6 +30,7 @@ const Clientes: FC = () => {
             alert(`Erro ao cadastrar cliente`);
         }
       console.log(">>>>",data)
+      navigate('/');
     };
 
     return (

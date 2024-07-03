@@ -8,6 +8,7 @@ import "./carrinhoDrawer.css";
 import { ICarrinhoStore } from "../../store/CarrinhoStore/type";
 import { IProdutoDetalhe } from "../../pages/ProdutosDetalhes/types";
 import LoginModal from "../Login/LoginModal";
+import ModalErro from "../ModalErro/ModalErro";
 
 const CarrinhoDrawer: FC = () => {
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -21,6 +22,7 @@ const CarrinhoDrawer: FC = () => {
     const [produto, setProduto] = useState<IProdutoDetalhe>();
     const [quantidadeProduto, setQuantidadeProduto] = useState<number>(1);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const [isModalErroOpen, setIsModalErroOpen] = useState(false);
 
 
     const atualizarQuantidadeCarrinho = (item: ICarrinhoStore) => {
@@ -64,7 +66,7 @@ const CarrinhoDrawer: FC = () => {
     const handleFecharPedido = () => {
         const usuarioAutenticado = localStorage.getItem('authenticatedUser');
         if(!usuarioAutenticado){
-            setIsLoginModalOpen(true);
+            setIsModalErroOpen(true);
         }else{
             window.location.href = '/fecharPedido'
         }
@@ -160,12 +162,10 @@ const CarrinhoDrawer: FC = () => {
                     </Box>
                 )}
             </Drawer>
-            <LoginModal
-                isOpen={isLoginModalOpen}
-                onClose={() => setIsLoginModalOpen(false)}
-                onAuthenticated={(username, idCliente) => {
-                    
-                }}
+            <ModalErro
+                open={isModalErroOpen}
+                onClose={() => setIsModalErroOpen(false)}
+    
             />
         </>
     );
