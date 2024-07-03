@@ -51,7 +51,7 @@ const Resumo: FC = () => {
     const response = await apiPost(`/pedidos/criar`, data);
       if(response.status === STATUS_CODE.CREATED){
           alert("Pedido gerado com sucesso");
-          navigate('/caminho/para/confirmarPedido');
+          navigate('/confirmar-pedido');
         }else{
         alert("Erro ao gerar pedido")
       }
