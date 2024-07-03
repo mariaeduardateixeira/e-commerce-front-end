@@ -7,12 +7,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { useNavigate } from 'react-router-dom';
+import ModalUltimosPedidos from '../Historico/ModalUltimosPedidos';
 import { IPaginaPerfil } from './types';
 import './PaginaPerfil.css';
 
 const PaginaPerfil: React.FC = () => {
   const [paginaPerfil, setPaginaPerfil] = useState<IPaginaPerfil | null>(null);
   const [editMode, setEditMode] = useState(false);
+  const [openPedidosModal, setOpenPedidosModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -78,6 +80,14 @@ const PaginaPerfil: React.FC = () => {
     }
   };
 
+  const handleOpenPedidosModal = () => {
+    setOpenPedidosModal(true);
+  };
+
+  const handleClosePedidosModal = () => {
+    setOpenPedidosModal(false);
+  };
+
   if (!paginaPerfil) {
     return <div>Carregando perfil...</div>;
   }
@@ -131,8 +141,16 @@ const PaginaPerfil: React.FC = () => {
               <DeleteIcon />
             </IconButton>
           </div>
+          <Button variant="contained" color="primary" onClick={handleOpenPedidosModal}>
+            Ver Últimos Pedidos
+          </Button>
         </>
       )}
+      <ModalUltimosPedidos
+        open={openPedidosModal}
+        onClose={handleClosePedidosModal}
+        clienteId={paginaPerfil.id}
+      />
     </div>
   );
 };
