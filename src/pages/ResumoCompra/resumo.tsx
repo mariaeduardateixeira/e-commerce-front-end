@@ -156,7 +156,6 @@ const Resumo: FC = () => {
           </div>
         </fieldset>
         <fieldset className="forma-pagamento">
-          <Button onClick={handleOpenCartaoModal}>Adicionar um novo cartão</Button>
           <legend>Forma de pagamento</legend>
           <div>
             <p>{formaPagamento ? formaPagamento : "Carregando forma de pagamento..."}</p>
@@ -185,6 +184,7 @@ const Resumo: FC = () => {
                 ) : (
                   <div>Carregando dados...</div>
                 )}
+                <Button onClick={handleOpenCartaoModal}>Adicionar um novo cartão</Button>
               </div>
             )}
           </div>
