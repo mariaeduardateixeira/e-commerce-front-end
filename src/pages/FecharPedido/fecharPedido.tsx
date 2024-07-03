@@ -316,6 +316,7 @@ const FecharPedido: FC = () => {
         </div>
         <div className="container-fechar-pedido">
           <div className="container-forma-pagamento">
+            
             <fieldset className="forma-pagamento">
               <legend>Forma de pagamento</legend>
               {formasPagamento.map(f => (
