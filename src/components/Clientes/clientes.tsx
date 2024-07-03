@@ -13,12 +13,43 @@ const Clientes: FC = () => {
     const [telefone, setTelefone] = useState<string>('');
     const navigate = useNavigate();
 
+
+    const aplicarMascaraDocumento = (documento: string) => {
+        const apenasDigitos = documento.replace(/\D/g, '').slice(0,14);
+    
+        if (apenasDigitos.length <= 11) {
+          return apenasDigitos
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        } else {
+          return apenasDigitos
+            .replace(/^(\d{2})(\d)/, '$1.$2')
+            .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+            .replace(/\.(\d{3})(\d)/, '.$1/$2')
+            .replace(/(\d{4})(\d)/, '$1-$2');
+            
+        }
+      };
+      const formatarTelefone = (telefone: string) => {
+        return telefone
+          .replace(/\D/g, '')
+          .replace(/(\d{2})(\d)/, '($1) $2')
+          .replace(/(\d{4})(\d)/, '$1-$2')
+          .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+          .replace(/(-\d{4})\d+?$/, '$1');
+      };
+
+      const removerCaracteresNaoNumericos = (valor: string) => {
+        return valor.replace(/\D/g, '');
+      }
+
     const salvarCliente = async () => {
         const data = {
             nome: nome,
             sobrenome: sobrenome,
-            cpf: cpf,
-            telefone: telefone,
+            cpf: removerCaracteresNaoNumericos(cpf),
+            telefone: removerCaracteresNaoNumericos(telefone),
             email: email,
             senha: senha,
         };
@@ -58,22 +89,20 @@ const Clientes: FC = () => {
                     />
                 </div>
                 <div className="div-login-linha">
-                    <TextField
-                        fullWidth
-                        label="CPF"
-                        value={cpf}
-                        onChange={(event) => setCPF(event.target.value)}
-                        type="number"
-                    />
+                <TextField
+            fullWidth
+            label="CPF/CNPJ"
+            value={cpf}
+            onChange={(event) => setCPF(aplicarMascaraDocumento(event.target.value))}
+          />
                 </div>
                 <div className="div-login-linha">
-                    <TextField
-                        fullWidth
-                        label="Telefone"
-                        value={telefone}
-                        onChange={(event) => setTelefone(event.target.value)}
-                        type="number"
-                    />
+                <TextField
+            fullWidth
+            label="Telefone"
+            value={telefone}
+            onChange={(event) => setTelefone(formatarTelefone(event.target.value))}
+          />
                 </div>
                 <div className="div-login-linha">
                     <TextField
