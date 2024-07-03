@@ -28,11 +28,9 @@ const Router: FC = () => {
       <Route path="/enderecos/" element={<Enderecos />} />
       <Route path="/resumo/" element={<Resumo />} />
       <Route path="/perfil/" element={<PaginaPerfil />} />
+      <Route path="/confirmar-pedido/" element={<ConfirmarPedido />} />
       {/* Exemplo de passagem de propriedades para ConfirmarPedido */}
-      <Route 
-        path="/confirmar-pedido" 
-        element={<ConfirmarPedido open={true} onClose={() => console.log('Modal fechada')} clienteId={1} />} 
-      />
+      
     </Routes>
   );
 };
