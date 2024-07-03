@@ -1,28 +1,74 @@
 /* ModalUltimosPedidos.css */
-h3 {
-    margin: 0;
-  }
-  
-  h4 {
-    margin: 10px 0 5px;
-  }
-  
-  p {
-    margin: 5px 0;
-  }
-  
-  ul {
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  li {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-  }
-  
-  .avatar {
-    margin-right: 10px;
-  }
-  
+
+h3, h4, p {
+  margin: 0;
+  padding: 0;
+}
+
+h4 {
+  margin: 10px 0 5px;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+li {
+  padding: 10px 0;
+}
+
+.pedido {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.pedido strong {
+  font-size: 1.2em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.produto {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.produto img {
+  margin-right: 16px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.produto-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.produto-info div {
+  margin-bottom: 4px;
+}
+
+.produto-info div:last-child {
+  margin-bottom: 0;
+}
+
+.pedido-detalhes {
+  margin-top: 8px;
+}
+
+.pedido-detalhes div {
+  margin-bottom: 8px;
+}
+
+.pedido-detalhes div:last-child {
+  margin-bottom: 0;
+}

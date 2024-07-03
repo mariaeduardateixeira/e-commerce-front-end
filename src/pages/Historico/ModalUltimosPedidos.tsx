@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { apiGet, STATUS_CODE } from '../../api/RestClient';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Box } from '@mui/material';
 import { IPedido } from '../Historico/types';
+import './ModalUltimosPedidos.css';
 
 interface ModalUltimosPedidosProps {
   open: boolean;
@@ -44,21 +45,29 @@ const ModalUltimosPedidos: React.FC<ModalUltimosPedidosProps> = ({ open, onClose
             {pedidos.length > 0 ? (
               <ul>
                 {pedidos.map(pedido => (
-                  <li key={pedido.id} style={{ marginBottom: '1rem' }}>
+                  <li key={pedido.id} className="pedido">
                     <div>
                       <strong>Pedido #{pedido.id}</strong>
                     </div>
-                    <div>Status: {pedido.status || 'Não disponível'}</div>
-                    <div>Forma de Pagamento: {pedido.formaPagamento}</div>
-                    <div>Valor Total: {pedido.valorTotal ? `R$${pedido.valorTotal.toFixed(2)}` : 'Não disponível'}</div>
+                    <div className="pedido-detalhes">
+                      <div>Status: {pedido.status || 'Não disponível'}</div>
+                      <div>Forma de Pagamento: {pedido.formaPagamento}</div>
+                      <div>Valor Total: {pedido.valorTotal ? `R$${pedido.valorTotal.toFixed(2)}` : 'Não disponível'}</div>
+                    </div>
                     <div>Produtos:</div>
                     <ul>
                       {pedido.carrinho.produtos.map(produto => (
-                        <li key={produto.produto.id}>
-                          <div>{produto.produto.nome}</div>
-                          <div>Descrição: {produto.produto.descricao}</div>
-                          <div>Preço Unitário: R${produto.produto.preco.toFixed(2)}</div>
-                          <div>Quantidade: {produto.quantidade}</div>
+                        <li key={produto.produto.id} className="produto">
+                          <img 
+                            src={produto.produto.imagemPequena} 
+                            alt={produto.produto.nome} 
+                          />
+                          <div className="produto-info">
+                            <div>{produto.produto.nome}</div>
+                            <div>Descrição: {produto.produto.descricao}</div>
+                            <div>Preço Unitário: R${produto.produto.preco.toFixed(2)}</div>
+                            <div>Quantidade: {produto.quantidade}</div>
+                          </div>
                         </li>
                       ))}
                     </ul>
