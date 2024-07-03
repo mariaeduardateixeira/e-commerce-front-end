@@ -14,7 +14,6 @@ import FecharPedido from "./pages/FecharPedido/fecharPedido";
 import PaginaPerfil from "./pages/PaginaPerfil/PaginaPerfil";
 import ConfirmarPedido from "./pages/ConfirmarPedido/ConfirmarPedido";
 
-
 const Router: FC = () => {
   return (
     <Routes>
@@ -25,11 +24,15 @@ const Router: FC = () => {
       <Route path="/categoria/:categoria" element={<Categoria />} />
       <Route path="/search" element={<SearchResults />} />
       <Route path="/fecharPedido/" element={<FecharPedido />} />
-      <Route path="/clientes/" element={<Clientes/>}/>
-      <Route path="/enderecos/" element={<Enderecos/>}/>
-      <Route path="/resumo/" element={<Resumo/>}/>
-      <Route path="/perfil/" element={<PaginaPerfil/>}/>
-      <Route path="/confirmar-pedido" element={<ConfirmarPedido/>} />
+      <Route path="/clientes/" element={<Clientes />} />
+      <Route path="/enderecos/" element={<Enderecos />} />
+      <Route path="/resumo/" element={<Resumo />} />
+      <Route path="/perfil/" element={<PaginaPerfil />} />
+      {/* Exemplo de passagem de propriedades para ConfirmarPedido */}
+      <Route 
+        path="/confirmar-pedido" 
+        element={<ConfirmarPedido open={true} onClose={() => console.log('Modal fechada')} clienteId={1} />} 
+      />
     </Routes>
   );
 };

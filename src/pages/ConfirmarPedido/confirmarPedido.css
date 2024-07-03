@@ -1,46 +1,20 @@
-/* confirmarPedido.css */
+.confirmar-pedido {
+  text-align: center;
+  margin: 20px;
+}
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .subtitle {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .pedidos-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .pedido-item {
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  .pedido-item .pedido-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  @media (max-width: 600px) {
-    .title {
-      font-size: 24px;
-    }
-    
-    .subtitle {
-      font-size: 20px;
-    }
-  }
-  
+.confirmar-pedido h1 {
+  font-size: 24px;
+  color: #4CAF50;
+}
+
+.confirmar-pedido h2 {
+  font-size: 18px;
+  color: #FF0000;
+}
+
+.imagem-pagamento {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
