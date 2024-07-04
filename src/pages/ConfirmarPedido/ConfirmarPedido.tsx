@@ -23,7 +23,7 @@ const ConfirmarPedido = () => {
     <div className="confirmar-pedido">
       <h1>Pedido concluído com sucesso!</h1>
       <h2>Realize o pagamento em até 25 minutos ou o pedido será cancelado.</h2>
-      <img src="caminho/para/imagem.jpg" alt="Pagamento" className="imagem-pagamento" />
+      <img src='./imagem-pagamento.png' alt="Pagamento" className="imagem-pagamento" />
     </div>
   );
 };

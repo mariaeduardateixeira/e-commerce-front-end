@@ -34,13 +34,14 @@ li {
   margin-bottom: 8px;
 }
 
-.produto {
+.produto-d {
   display: flex;
   align-items: flex-start;
   margin-bottom: 12px;
+
 }
 
-.produto img {
+.produto-d img {
   margin-right: 16px;
   width: 100px;
   height: 100px;

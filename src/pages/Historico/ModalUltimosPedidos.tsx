@@ -20,7 +20,13 @@ const ModalUltimosPedidos: React.FC<ModalUltimosPedidosProps> = ({ open, onClose
       apiGet(`/pedidos/ultimos/${clienteId}`)
         .then(response => {
           if (response.status === STATUS_CODE.OK) {
-            setPedidos(response.data);
+            const pedidosComValorTotal = response.data.map((pedido: IPedido) => {
+              const valorTotal = pedido.carrinho.produtos.reduce((acc, produto) => {
+                return acc + (produto.produto.preco * produto.quantidade);
+              }, 0);
+              return { ...pedido, valorTotal };
+            });
+            setPedidos(pedidosComValorTotal);
           } else {
             console.error('Erro ao buscar os pedidos:', response.status);
           }
@@ -52,12 +58,11 @@ const ModalUltimosPedidos: React.FC<ModalUltimosPedidosProps> = ({ open, onClose
                     <div className="pedido-detalhes">
                       <div>Status: {pedido.status || 'Não disponível'}</div>
                       <div>Forma de Pagamento: {pedido.formaPagamento}</div>
-                      <div>Valor Total: {pedido.valorTotal ? `R$${pedido.valorTotal.toFixed(2)}` : 'Não disponível'}</div>
+                    <div>Valor Total: R${pedido.valorTotal ? pedido.valorTotal.toFixed(2) : 'Não disponível'}</div>
                     </div>
-                    <div>Produtos:</div>
                     <ul>
                       {pedido.carrinho.produtos.map(produto => (
-                        <li key={produto.produto.id} className="produto">
+                        <li key={produto.produto.id} className="produto-d">
                           <img 
                             src={produto.produto.imagemPequena} 
                             alt={produto.produto.nome} 

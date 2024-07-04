@@ -180,7 +180,6 @@ function App() {
                     <div className="dropdown-menu">
                       <ul>
                         <li onClick={handleProfileClick}>Perfil</li>
-                        <li>Configurações</li>
                         <li onClick={handleLogout}>Sair</li>
                       </ul>
                     </div>
